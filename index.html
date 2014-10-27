@@ -1,23 +1,26 @@
 ---
 layout: default
 ---
-
-<div class="home">
-
-  <h1 class="page-heading">Posts</h1>
-
-  <ul class="post-list">
+<section id="blog-roll" style="display: flex; margin-top: 2rem">
+  <ul style="list-style-type: none; margin: 0; padding: 0; flex: 1; padding-right: 4rem">
     {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
+      <li style="border-bottom: solid 1px #CCC; background: #fff; margin-bottom: 4rem">
+        <header style="display: flex; justify-content: space-between">
+          <h2>
+            <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+          </h2>
+          <div style="align-self: flex-end">{{ post.date | date: "%b %-d, %Y" }}</div>
+        </header>
+        {{ post.excerpt }}
       </li>
     {% endfor %}
   </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
-</div>
+  <aside style="width: 30%">
+    <h3>Recent Posts</h3>
+    <ul>
+      {% for post in site.posts %}
+      <li><a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </aside>
+</section>

@@ -1,204 +1,153 @@
-/**
- * Reset some basic elements
- */
-body, h1, h2, h3, h4, h5, h6,
-p, blockquote, pre, hr,
-dl, dd, ol, ul, figure {
-    margin: 0;
-    padding: 0;
+// ---------- SASS Variables ----------
+
+// Colors
+$white: #ddd;
+$black: #333;
+$blue: #369;
+$light-blue: saturate(lighten($blue, 33), 12);
+$dark-blue: darken($blue, 3);
+
+// Fonts
+$architects-daughter: 'Architects Daughter', sans-serif;
+$lato: 'Lato', sans-serif;
+
+// ---------- SASS Functions ----------
+
+// Functions
+@function calculateRem($size) {
+  $remSize: $size / 10px;
+  @return $remSize * 1rem;
 }
 
+// ---------- SASS Mixins ----------
 
+@mixin font-size($size: 16px) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
 
-/**
- * Basic styling
- */
+// *** insert 1 ***
+@mixin bp($point) {
+  // Small devices (tablets, 768px and up)
+  @if $point == small {
+    @media all and (min-width: 768px) { @content; }
+  }
+  // Medium devices (desktops, 992px and up)
+  @else if $point == medium {
+    @media all and (min-width: 992px) { @content; }
+  }
+  // Large devices (large desktops, 1200px and up)
+  @else if $point == large {
+    @media all and (min-width: 1200px)  { @content; }
+  }
+}
+
+// ---------- Tag Selectors ----------
+
+html {
+  font-size: 62.5%;
+}
+
 body {
-    font-family: $base-font-family;
-    font-size: $base-font-size;
-    line-height: $base-line-height;
-    font-weight: 300;
-    color: $text-color;
-    background-color: $background-color;
-    -webkit-text-size-adjust: 100%;
+  color: $black;
+  font-family: $lato;
+//  @include font-size(16px);
+}
+
+h1 {
+  @include font-size(30px);
+  font-weight: 300;
+}
+
+section {
+  margin: 0 auto;
+  padding: 0 2rem;
+  @include bp(small) { width: 750px; }
+  @include bp(medium) { width: 970px; }
+  @include bp(large) { width: 1170px; }
 }
 
 
-
-/**
- * Set `margin-bottom` to maintain vertical rhythm
- */
-h1, h2, h3, h4, h5, h6,
-p, blockquote, pre,
-ul, ol, dl, figure,
-%vertical-rhythm {
-    margin-bottom: $spacing-unit / 2;
-}
-
-
-
-/**
- * Images
- */
-img {
-    max-width: 100%;
-    vertical-align: middle;
-}
-
-
-
-/**
- * Figures
- */
-figure > img {
-    display: block;
-}
-
-figcaption {
-    font-size: $small-font-size;
-}
-
-
-
-/**
- * Lists
- */
-ul, ol {
-    margin-left: $spacing-unit;
-}
-
-li {
-    > ul,
-    > ol {
-         margin-bottom: 0;
-    }
-}
-
-
-
-/**
- * Headings
- */
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 300;
-}
-
-
-
-/**
- * Links
- */
-a {
-    color: $brand-color;
+h1 {
+  @include font-size(50px);
+  font-weight: 300;
+  margin: 0;
+  a {
+    color: $white;
     text-decoration: none;
+  }
+}
 
-    &:visited {
-        color: darken($brand-color, 15%);
+h2 {
+  @include font-size(30px);
+  font-weight: normal;
+  margin: 0;
+  a {
+    color: $black;
+    text-decoration: none;
+  }
+}
+
+a {
+  color: #73000A;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+p {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+}
+
+// ---------- ID Selectors ----------
+
+#header-wrapper {
+  background: $black;
+  color: $white;
+  padding: 20px;
+}
+
+#h1-tag-line {
+  @include font-size(20px);
+}
+
+#nav-top ul {
+  list-style-type: none;
+  margin: 15px 0 0 0;
+  padding: 0;
+  li {
+    display: inline;
+    padding: 0 4px;
+    a {
+      color: #ddd;
+      text-decoration: none;
     }
-
-    &:hover {
-        color: $text-color;
-        text-decoration: underline;
-    }
+  }
 }
 
+// ---------- Class Selectors ----------
 
-
-/**
- * Blockquotes
- */
-blockquote {
-    color: $grey-color;
-    border-left: 4px solid $grey-color-light;
-    padding-left: $spacing-unit / 2;
-    font-size: 18px;
-    letter-spacing: -1px;
-    font-style: italic;
-
-    > :last-child {
-        margin-bottom: 0;
-    }
+.cf:before, .cf:after {
+    content: " ";
+    display: table;
 }
 
-
-
-/**
- * Code formatting
- */
-pre,
-code {
-    font-size: 15px;
-    border: 1px solid $grey-color-light;
-    border-radius: 3px;
-    background-color: #eef;
+.cf:after {
+    clear: both;
 }
 
-code {
-    padding: 1px 5px;
+.cf {
+    *zoom: 1;
 }
 
-pre {
-    padding: 8px 12px;
-    overflow-x: scroll;
-
-    > code {
-        border: 0;
-        padding-right: 0;
-        padding-left: 0;
-    }
+.lfloat {
+  float: left;
 }
 
-
-
-/**
- * Wrapper
- */
-.wrapper {
-    max-width: -webkit-calc(800px - (#{$spacing-unit} * 2));
-    max-width:         calc(800px - (#{$spacing-unit} * 2));
-    margin-right: auto;
-    margin-left: auto;
-    padding-right: $spacing-unit;
-    padding-left: $spacing-unit;
-    @extend %clearfix;
-
-    @include media-query($on-laptop) {
-        max-width: -webkit-calc(800px - (#{$spacing-unit}));
-        max-width:         calc(800px - (#{$spacing-unit}));
-        padding-right: $spacing-unit / 2;
-        padding-left: $spacing-unit / 2;
-    }
+.rfloat {
+  float: right;
 }
 
-
-
-/**
- * Clearfix
- */
-%clearfix {
-
-    &:after {
-        content: "";
-        display: table;
-        clear: both;
-    }
-}
-
-
-
-/**
- * Icons
- */
-.icon {
-
-    > svg {
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-        vertical-align: middle;
-
-        path {
-            fill: $grey-color;
-        }
-    }
-}
