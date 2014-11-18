@@ -206,6 +206,10 @@ header {
   margin-top: 4rem;
   border-top: solid 1px $black; 
   text-align: right; 
+
+  div.container {
+    margin-bottom: 0;
+  }
 }
 
 
