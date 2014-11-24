@@ -67,7 +67,7 @@ header {
   justify-content: space-between;
   padding: 2rem;
 
-  @include bp(sm) {
+  @include bp(phone) {
     flex-direction: row;
   }
 }
@@ -75,7 +75,7 @@ header {
 #title {
   margin-bottom: 2rem;
   align-self: flex-start;
-  @include bp(sm) {
+  @include bp(phone) {
     margin-bottom: 0;
   }
 }
@@ -90,7 +90,7 @@ header {
 #nav-top {
 
   width: 100%;
-  @include bp(sm) {
+  @include bp(phone) {
     width: auto;
   }
 
@@ -102,7 +102,7 @@ header {
     padding: 0;
     width: 100%;
     justify-content: space-between;
-    @include bp(sm) {
+    @include bp(phone) {
       justify-content: flex-end;
     }
 
@@ -112,7 +112,7 @@ header {
 
       &.separator {
         display: none;
-        @include bp(sm) {
+        @include bp(phone) {
           display: inline;
         }
       }
@@ -125,14 +125,14 @@ header {
 #about-me {
   @include flexbox;
   flex-direction: column;
-  @include bp(sm) {
+  @include bp(phone) {
     flex-direction: row;
   }
 
   img {
     border: solid 2px $black;
     margin: 0 auto;
-    @include bp(sm) {
+    @include bp(phone) {
       margin: 0 0 0 1.5rem;
     }
     height: auto;
