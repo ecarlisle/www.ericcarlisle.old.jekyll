@@ -1,60 +1,11 @@
-// ---------- SASS Variables ----------
-
-// Colors
-$white: #ddd;
-$black: #333;
-$blue: #369;
-$periwinkle: #85b6d7;
-$light-gray: #F0F0F0;
-
-// Fonts
-$lato: 'Lato', sans-serif;
-$oswald: 'Oswald', sans-serif;
-
-// ---------- SASS Functions ----------
-
-// Functions
-@function calculateRem($size) {
-  $remSize: $size / 10px;
-  @return $remSize * 1rem;
-}
-
-// ---------- SASS Mixins ----------
-
-@mixin font-size($size: 16px) {
-  font-size: $size;
-  font-size: calculateRem($size);
-}
-
-@mixin flexbox {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-@mixin bp($point) {
-  // Small devices (tablets, 768px and up)
-  @if $point == small {
-    @media all and (min-width: 768px) { @content; }
-  }
-  // Medium devices (desktops, 992px and up)
-  @else if $point == medium {
-    @media all and (min-width: 992px) { @content; }
-  }
-  // Large devices (large desktops, 1200px and up)
-  @else if $point == large {
-    @media all and (min-width: 1200px)  { @content; }
-  }
-}
-
-
 // ---------- Tag Selectors ----------
+
+html {
+  font-size: 10px;
+}
 
 body {
   color: $black;
-  font-size: 10px;
   font-family: $lato;
 }
 
@@ -102,29 +53,31 @@ p {
   margin: 1rem 0;
 }
 
-.container {
-  @include font-size(16px);
-  margin-bottom: 2rem;
-  width: 1170px;
-  padding: 1.5rem;
+figure {
+  margin: 0 1rem 2rem;
+  text-align: center;
 }
-
-
 
 // ---------- Header ----------
 
-#header-wrapper {
-  background: url('/img/bg.png');
-  color: $periwinkle;
-  margin: 0 0 2rem 0;
-  padding: 0px;
+header {
+  @include flexbox;
+  align-items: flex-end;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+
+  @include bp(sm) {
+    flex-direction: row;
+  }
 }
 
-header {
-  align-items: flex-end;
-  display: flex;
-  @include flexbox;
-  justify-content: space-between;
+#title {
+  margin-bottom: 2rem;
+  align-self: flex-start;
+  @include bp(sm) {
+    margin-bottom: 0;
+  }
 }
 
 
@@ -134,17 +87,34 @@ header {
 }
 
 
-#nav-top ul {
-  list-style-type: none;
-  margin: 0;
-  li {
-    display: inline;
-    padding: 0 4px;
-    a {
-      color: $periwinkle;
-      text-decoration: none;
-      &:hover {
-        text-decoration: underline;
+#nav-top {
+
+  width: 100%;
+  @include bp(sm) {
+    width: auto;
+  }
+
+
+  ul {
+    @include flexbox;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    justify-content: space-between;
+    @include bp(sm) {
+      justify-content: flex-end;
+    }
+
+
+    li {
+      padding: 0 0 0 4px;
+
+      &.separator {
+        display: none;
+        @include bp(sm) {
+          display: inline;
+        }
       }
     }
   }
@@ -153,19 +123,26 @@ header {
 // ---------- Homepage ----------
 
 #about-me {
-  display: flex;
-  article {
-    flex: 1;
+  @include flexbox;
+  flex-direction: column;
+  @include bp(sm) {
+    flex-direction: row;
   }
+
   img {
     border: solid 2px $black;
-    margin: 0 0 0 1.5rem;
+    margin: 0 auto;
+    @include bp(sm) {
+      margin: 0 0 0 1.5rem;
+    }
+    height: auto;
   }
 }
 
 #social-icons {
   @include flexbox();
   justify-content: flex-start;
+  flex-wrap: wrap;
 
   a {
     margin: 1rem 2rem 2rem 0;
@@ -194,26 +171,37 @@ header {
 
       td {
         padding: 2rem;
+        vertical-align: top;
       }
     }
   }
 }
 
-#footer-wrapper {
-  background: url('/img/bg.png');
-  color: $periwinkle;
-  margin-bottom: 0;
-  margin-top: 4rem;
-  border-top: solid 1px $black; 
-  text-align: right; 
-
-  div.container {
-    margin-bottom: 0;
+// ---------- Class Selectors ----------
+.container {
+  @include font-size(16px);
+  margin: 0 auto;
+  padding: 1.5rem;
+  @include bp(lg){
+    width: 1170px
   }
 }
 
+.wrapper {
+  background: url('/img/bg.png');
+  color: $periwinkle;
+  a {
+    color: $periwinkle;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
 
-// ---------- Class Selectors ----------
+.bmar {
+  margin-bottom: 2rem;
+}
 
 .cf:before, .cf:after {
     content: " ";
@@ -235,5 +223,3 @@ header {
 .rfloat {
   float: right;
 }
-
-@import url('bootstrap-grid.css');

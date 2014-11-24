@@ -1,34 +1,25 @@
-<div id="header-wrapper">
-  <div class="container">
-    <header>
-      <div>
-        <h1><a href="{{ site.baseurl }}/">{{ site.title }}</a></h1>
-        <span id="h1-tag-line">ui / ux architect</span>
-      </div>
+<div class="wrapper bmar">
+  <header class="container">
+    <div id="title">
+      <h1><a href="{{ site.baseurl }}/">{{ site.title }}</a></h1>
+      <span id="h1-tag-line">ui / ux architect</span>
+    </div>
 
-      <nav id="nav-top" class="rfloat">
-        <ul>
-          <li>
-            <a href="#about-me">about me</a>
-          </li>
-          <li>|</li>
-          <li>
-            <a href="#social">social</a>
-          </li>
-          <li>|</li>
-          <li>
-            <a href="#speaking">speaking</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
-  </div>
+    <nav id="nav-top">
+      <ul>
+        <li>
+          <a href="#about-me">about me</a>
+        </li>
+        <li class="separator">|</li>
+        <li>
+          <a href="#social">social</a>
+        </li>
+        <li class="separator">|</li>
+        <li>
+          <a href="#speaking">speaking</a>
+        </li>
+      </ul>
+    </nav>
+
+  </header>
 </div>
-
-<!--
-{% for page in site.pages %}
-  {% if page.title %}
-  <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-  {% endif %}
-{% endfor %}
--->
