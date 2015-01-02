@@ -1,0 +1,63 @@
+// ---------- Homepage ----------
+
+#headshot {
+  margin: 5rem 0 0 0;
+}
+
+
+/*
+#about-me {
+  @include flexbox;
+  flex-direction: column;
+  @include bp(sm) {
+    flex-direction: row;
+  }
+
+  img {
+    border: solid 2px $black;
+    margin: 0 auto;
+    @include bp(sm) {
+      margin: 0 0 0 1.5rem;
+    }
+    height: auto;
+  }
+}
+
+#social-icons {
+  @include flexbox();
+  justify-content: flex-start;
+  flex-wrap: wrap;
+
+  a {
+    margin: 1rem 2rem 2rem 0;
+
+    img {
+      height: 6.4rem;
+      width: 6.4rem;
+    }
+  }
+}
+
+#speaking {
+
+  h3 {
+    margin-top: 2rem;
+  }
+
+  table {
+    margin: 1rem 0 0 0;
+
+    tr {
+
+      &:nth-child(odd) {
+        background: $light-gray;
+      }
+
+      td {
+        padding: 2rem;
+        vertical-align: top;
+      }
+    }
+  }
+}
+*/
