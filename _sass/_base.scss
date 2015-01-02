@@ -47,30 +47,28 @@ a {
 }
 
 p {
-  font-family: "Open Sans", sans-serif;
-  font-size: 1.4rem;
+  font-family: $open-sans;
+  font-size: 1.5rem;
   line-height: 2.4rem;
-  margin: 1rem 0;
+  margin: 1.4rem 0;
 }
 
-figure {
-  margin: 0 1rem 2rem;
-  text-align: center;
+header, footer {
+  a {
+    color: $periwinkle;
+    text-decoration: none;
+    &:hover {
+      color: $periwinkle;
+      text-decoration: underline;
+    }
+  }
+}
+
+header, footer {
+  padding: 2rem 0;
 }
 
 // ---------- Header ----------
-
-header {
-  @include flexbox;
-  align-items: flex-end;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 2rem;
-
-  @include bp(sm) {
-    flex-direction: row;
-  }
-}
 
 #title {
   margin-bottom: 2rem;
@@ -88,119 +86,72 @@ header {
 
 
 #nav-top {
-
-  width: 100%;
-  @include bp(sm) {
-    width: auto;
-  }
-
-
+  padding: 5rem 0 0 0;
   ul {
-    @include flexbox;
     list-style-type: none;
     margin: 0;
     padding: 0;
     width: 100%;
-    justify-content: space-between;
-    @include bp(sm) {
-      justify-content: flex-end;
-    }
-
 
     li {
+      display: inline;
       padding: 0 0 0 1rem;
-
-      &.separator {
-        display: none;
-        @include bp(sm) {
-          display: inline;
-        }
-      }
     }
-  }
-}
-
-// ---------- Homepage ----------
-
-#about-me {
-  @include flexbox;
-  flex-direction: column;
-  @include bp(sm) {
-    flex-direction: row;
-  }
-
-  img {
-    border: solid 2px $black;
-    margin: 0 auto;
-    @include bp(sm) {
-      margin: 0 0 0 1.5rem;
-    }
-    height: auto;
   }
 }
 
 #social-icons {
-  @include flexbox();
-  justify-content: flex-start;
-  flex-wrap: wrap;
 
-  a {
-    margin: 1rem 2rem 2rem 0;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 
-    img {
-      height: 6.4rem;
-      width: 6.4rem;
-    }
-  }
-}
-
-#speaking {
-
-  h3 {
-    margin-top: 2rem;
+  li {
+    display: inline;
+    padding: 0 1rem 0 0;
   }
 
-  table {
-    margin: 1rem 0 0 0;
-
-    tr {
-
-      &:nth-child(odd) {
-        background: $light-gray;
-      }
-
-      td {
-        padding: 2rem;
-        vertical-align: top;
-      }
-    }
-  }
 }
 
 // ---------- Class Selectors ----------
 .container {
   @include font-size(16px);
-  margin: 0 auto;
-  padding: 1.5rem;
-  @include bp(lg){
-    width: 1170px
-  }
 }
 
-.wrapper {
+.highlight {
+  background: $gray;
+  padding: 0.2rem 1rem;
+}
+
+.header-wrapper, .footer-wrapper {
   background: url('/img/bg.png');
   color: $periwinkle;
-  a {
-    color: $periwinkle;
-    text-decoration: none;
-    &:hover {
-      text-decoration: underline;
+}
+
+.header-wrapper {
+  margin: 0 0 3rem 0;
+}
+
+.listing-table {
+
+  margin: 1rem 0 0 0;
+
+  tr {
+
+    &:nth-child(odd) {
+      background: $light-gray;
+    }
+
+    td {
+      padding: 2rem;
+      vertical-align: top;
     }
   }
 }
 
 .bmar {
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
 }
 
 .cf:before, .cf:after {
