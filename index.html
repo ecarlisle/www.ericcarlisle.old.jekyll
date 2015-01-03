@@ -14,63 +14,68 @@ title: Eric Carlisle - UI / UX Architect
 
       <p>I’ve been working with the web for the past 20 years, wearing several hats on many projects.  Over that time I’ve become experienced with just about every aspect of web production.  I’ve also worked with several business verticals including automotive, e-commerce, marketing, nonprofit, sports, energy, and medical.</p>
 
-      <p class="bmar">I am a Lead UI/UX Architect at <a href="http://www.lgscout.com">Lookingglass Cyber Solutions</a>, a world leader in cyber threat intelligence management.  I also speak at conferences, code camps, and user groups regarding several aspects of web production and management.</p>
+      <p>I am a Lead UI/UX Architect at <a href="http://www.lgscout.com">Lookingglass Cyber Solutions</a>, a world leader in cyber threat intelligence management.  I also speak at conferences, code camps, and user groups regarding several aspects of web production and management.</p>
 
+    </div>
+    <div class="col-xs-12 col-md-4">
+      <img src="/img/eric-carlisle.jpg" id="headshot" class="img-responsive" title="Eric Carlisle" alt="Eric Carlisle" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-md-8 cf">
 
-      <a class="tmar" name="social" class=""></a>
-      <h2 class="tmar">Social</h2>
+      <a name="social" class="tmar3 block"></a>
+      <h2>Social</h2>
 
-      <ul id="social-icons" class="bmar">
+      <ul id="social-icons">
         <li>
           <a href="https://www.twitter.com/eric_carlisle">
-            <img src="/img/twitter-icon.png" alt="My Twitter Profile" title="My Twitter Profile"  />
+            <img src="/img/twitter-icon.png" alt="My Twitter Profile" title="My Twitter Profile" class="bmar1"  />
           </a>
         </li>
         <li>
           <a href="https://github.com/ecarlisle">
-            <img src="/img/github-icon.png" alt="My Github Profile" title="My Github Profile" />
+            <img src="/img/github-icon.png" alt="My Github Profile" title="My Github Profile" class="bmar1" />
           </a>
         </li>
         <li>
           <a href="https://www.linkedin.com/profile/view?id=9282479">
-            <img src="/img/linkedin-icon.png" alt="My LinkedIn Profile" title="My LinkedIn Profile" />
+            <img src="/img/linkedin-icon.png" alt="My LinkedIn Profile" title="My LinkedIn Profile" class="bmar1" />
           </a>
         </li>
         <li>
           <a href="http://www.slideshare.net/ericcarlisle">
-            <img src="/img/slideshare-icon.png" alt="My Slideshare Presentations" title="My Slideshare Presentations" />
+            <img src="/img/slideshare-icon.png" alt="My Slideshare Presentations" title="My Slideshare Presentations" class="bmar1" />
           </a>
         </li>
         <li>
           <a href="https://www.facebook.com/eric.carlisle">
-            <img src="/img/facebook-icon.png" alt="My Facebook Profile" title="My Facebook Profile" />
+            <img src="/img/facebook-icon.png" alt="My Facebook Profile" title="My Facebook Profile" class="bmar1" />
           </a>
         </li>
         <li>
           <a href="http://tumblr.ericcarlisle.com/">
-            <img src="/img/tumblr-icon.png" alt="My Tumblr Page" title="My Tumblr Page" />
+            <img src="/img/tumblr-icon.png" alt="My Tumblr Page" title="My Tumblr Page" class="bmar1" />
           </a>
         </li>
         <li>
           <a href="http://stackoverflow.com/users/1165150/eric-carlisle/">
-            <img src="/img/stack-overflow-icon.png" alt="My Stack Overflow Profile" title="My Stack Overflow Profile" />
+            <img src="/img/stack-overflow-icon.png" alt="My Stack Overflow Profile" title="My Stack Overflow Profile" class="bmar1" />
           </a>
         </li>
         <li>
           <a href="{{ "/feed.xml" | prepend: site.baseurl }}">
-            <img src="/img/rss-icon.png" alt="RSS Feed" title="RSS Feed" />
+            <img src="/img/rss-icon.png" alt="RSS Feed" title="RSS Feed" class="bmar1" />
           </a>
         </li>
       </ul>
 
-      <div class="bmar"></div>
-  
-      <a name="speaking"></a>
+      <a name="speaking" class="tmar3 block"></a>
       <h2>Speaking</h2>
 
       <p>This is a listing of my most recent presentations. If you'd like me to speak at your conference, feel free to contact me at eric at eric carlisle dot com.</p>
 
-      <table class="listing-table bmar">
+      <table class="listing-table-banded">
         <tr>
           <td><a href="http://www.nationjs.com/">NationJS</td>
           <td>November 7th, 2014</td>
@@ -91,16 +96,20 @@ title: Eric Carlisle - UI / UX Architect
     </div>
 
     <div class="col-xs-12 col-md-4">
+<!--
+      <h3 class="tmar2">Recent Blog Posts</h3>
 
-      <img src="/img/eric-carlisle.jpg" id="headshot" class="img-responsive" title="Eric Carlisle" alt="Eric Carlisle" />
-
-      <!--
-      <h3>Recent Blog Posts</h3>
-      {% for post in site.posts %}
-        {{ post.title }}
-      {% endfor %}
-      -->
-
+      <table class="listing-table">
+        {% for post in site.posts %}
+        <tr>
+          <td>{{post.date | date: "%m/%d/%Y" }}</td>
+          <td>
+            <a href="{{post.url}}">{{ post.title }}</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+-->
     </div>
  
   </div><!-- /.row -->

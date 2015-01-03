@@ -13,7 +13,7 @@ markdown: kramdown
 
 # Outputting
 permalink: pretty
-
+highlighter: pygments
 sass:
     sass_dir: _sass
     style: :compressed
