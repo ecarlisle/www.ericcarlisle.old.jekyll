@@ -27,7 +27,7 @@ h1 {
   }
 }
 
-h2, h3 {
+h2, h3, h4 {
   font-family: $oswald;
   font-weight: normal;
   margin-bottom: 1rem;
@@ -43,6 +43,11 @@ h2 {
 
 h3 {
   @include font-size(24px);
+}
+
+h4 {
+  @include font-size(14px);
+  text-transform: uppercase;
 }
 
 a {

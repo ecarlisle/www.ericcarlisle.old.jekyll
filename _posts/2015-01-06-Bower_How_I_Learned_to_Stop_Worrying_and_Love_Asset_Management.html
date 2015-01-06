@@ -1,0 +1,89 @@
+---
+layout: post
+title: Bower &#58; How I Learned to Stop Worrying and Love Client-Side Asset Management
+author: Eric Carlisle
+date: 2015-01-06 8:00:00
+categories: Node.js bower 
+---
+
+<p>Management of client-side assets like libraries and frameworks has always been a tedious task.  On each new project we ask ourselves:</p>
+
+<blockquote>
+	<em>	
+		What kind of assets do I need?<br/>
+		What versions of each should I use?<br/>
+		How will I to keep all of my assets manageable?
+	</em>
+</blockquote>
+
+<p>Upon using the <a href="http://bower.io/">Bower</a> package manager, I’ve found it much easier to answer such questions.  At a high level Bower is similar to other command-line software managers like <a href="http://brew.sh/">Homebrew</a> or <a href="http://nodejs.org/">npm</a>.  Use it for installing, updating, removing, and ultimately <a href="http://bower.io/docs/api/">managing</a> your inventory of client-side assets.</p>
+
+<p>Compare this to handling everything manually and the benefits show themselves very quickly.</p>
+
+<p>To get started with Bower, you will need <a href="http://nodejs.org/download/">Node.js, npm</a>, and <a href="http://git-scm.com/">Git</a>. Once you have those, open a terminal or command prompt and install bower using npm (another groovy package manager).</p>
+
+{% highlight powershell %}
+$ npm install -g bower
+{% endhighlight %}
+
+<p>This will install bower globally, making it available to all of your projects.</p>
+
+<p>We’ll then initialize bower.</p>
+
+{% highlight powershell %}
+$bower init
+{% endhighlight %}
+
+<p>Initialization is important as it will generate bower.json, a manifest of all the dependencies you will set.</p>
+
+<p>Now, let’s install some client-side packages.</p>
+
+{% highlight powershell %}
+$ bower install jquery normalize.css bootstrap -S
+{% endhighlight %}
+
+<p>When the process completes, you’ll have:</p>
+
+<ol>
+	<li>A bower_components folder with the three packages we've selected</li>
+	<li>An updated bower.json file</li>
+</ol>
+
+<p>The bower_components folder contains a comprehensive file-set for each of your requested assets.  You will probably need only portion of these files for a production install, so you’ll want to add the bower_components to your <a href="http://git-scm.com/docs/gitignore">.gitignore</a> file.  We’ll talking about configuring the files you need for production use.</p>
+
+<p>Since we used “-S” when installing assets, these are saved as dependencies in your bower.json file.</p>
+
+{% highlight js %}
+"dependencies": {
+  "jquery": "~2.1.3",
+  "normalize.css": "~3.0.2",
+  "bootstrap": "~3.3.1"
+}
+{% endhighlight %}
+
+<p>Since your assets are now tracked in the bower.json manifest, your bower_components folder may be restored at any time by executing “bower install.”<p>
+
+<p>Finally, let’s talk about using only the files you need for production use.  Bower can save dependencies for development- or production-only usage, but we can use the <a href="https://github.com/blittle/bower-installer">bower-installer</a> component to take a more surgical approach.</p>  
+
+{% highlight powershell %}
+$ npm install -g bower-installer
+{% endhighlight %}
+
+<p>Now we’ll edit bower.json, indicating the files we need and where to store them.  We’ll add the following:</p>
+
+{% highlight js %}
+"install" : {
+  "path" : "assets",
+  "sources" : {
+    "jquery" : "bower_components/jquery/jquery.min.js",
+    "normalize.css" : "bower_components/normalize.css/normalize.css",
+    "bootstrap": "bower_components/bootstrap/dist/css/bootstrap.min.css"
+   }
+}
+{% endhighlight %}
+
+Now upon executing “bower-installer,” a much more lightweight set of files will be copied to an “assets” directory.  We will use these files on the production install of our application.
+
+As a UI geek, Bower has made client-side asset management absolutely dreamy for me!  In addition to file management automation, my upgrade lifecycles are more streamlined as well.  Additionally, I can further automate these processes by using them within <a href="http://gruntjs.com/">Grunt</a> or <a href="http://gulpjs.com/">Gulp</a>.
+
+<p>Keep up the great work, <a href="http://bower.io/">Bower</a>!</p>
