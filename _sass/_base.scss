@@ -126,6 +126,10 @@ header, footer {
 
 }
 
+#disqus_thread {
+  margin: 3rem 0 0 0;
+}
+
 // ---------- Class Selectors ----------
 .container {
   @include font-size(16px);
