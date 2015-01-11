@@ -26,7 +26,7 @@
   <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png" />
 
   <!-- Twitter Card data -->
-  <meta name="twitter:card" content="Eric Carlisle, UI / UX architect">
+  <meta name="twitter:card" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
   <meta name="twitter:site" content="@eric_carlisle">
   <meta name="twitter:title" content="Eric Carlisle, UI / UX architect">
   <meta name="twitter:description" content="{{ site.description }}">
@@ -34,7 +34,7 @@
   <meta name="twitter:image" content="http://www.ericcarlisle.com/img/eric-carlisle.jpg">
 
   <!-- Open Graph data -->
-  <meta property="og:title" content="Eric Carlisle, UI / UX Architect" />
+  <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="http://www.ericcarlisle.com/" />
   <meta property="og:image" content="http://www.ericcarlisle.com/img/eric-carlisle.jpg" />
