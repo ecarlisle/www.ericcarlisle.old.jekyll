@@ -66,27 +66,47 @@ $ bower install jquery normalize.css bootstrap -S
 
 <p>Since your assets are now tracked in the bower.json manifest, your bower_components folder may be restored at any time by executing “bower install.”<p>
 
-<p>Finally, let’s talk about using only the files you need for production use.  Bower can save dependencies for development- or production-only usage, but we can use the <a href="https://github.com/blittle/bower-installer">bower-installer</a> component to take a more surgical approach.</p>  
+<p>Finally, let’s talk about using only the files you need for production use. When installing a requested package, bower will install the entire <a href="http://www.github.com">GitHub</a> repository into a <em>/bower_components</em> folder. This is great for development, but we'll probably need only a portion of those files for production use. We can then use the <a href="https://github.com/blittle/bower-installer">bower-installer</a> package to copy only the files we need to our asset folders.</p>
 
 {% highlight powershell %}
 $ npm install -g bower-installer
 {% endhighlight %}
 
-<p>Now we’ll edit bower.json, indicating the files we need and where to store them.  We’ll add the following:</p>
+<p>Now we can add the following to our bower.json file. We indicate a base path that contains our asset folders.</p>
 
 {% highlight js %}
-"install" : {
-  "path" : "assets",
-  "sources" : {
-    "jquery" : "bower_components/jquery/jquery.min.js",
-    "normalize.css" : "bower_components/normalize.css/normalize.css",
-    "bootstrap": "bower_components/bootstrap/dist/css/bootstrap.min.css"
-   }
+"install": {
+    "base":  "assets",
+        "path" : {
+            "js": "{name}/js",
+            "css": "{name}/css",
+            "eot": "{name}/fonts",
+            "svg": "{name}/fonts",
+            "ttf": "{name}/fonts",
+            "woff": "{name}/fonts"
+        }       
+    }
 }
 {% endhighlight %}
 
-Now upon executing “bower-installer,” a much more lightweight set of files will be copied to an “assets” directory.  We will use these files on the production install of our application.
+<p>Now upon running <em>bower-installer</em> on the command line, only files marked as "main" in a components bower.json file will be copied to the respective asset folder. A jquery component would copy jquery.js inside /assets/js. For some packages (including jQuery), an additional folder is created. The final destination for jquery will be /assets/js/jquery/jquery.js.</p>
 
-As a UI geek, Bower has made client-side asset management absolutely dreamy for me!  In addition to file management automation, my upgrade lifecycles are more streamlined as well.  Additionally, I can further automate these processes by using them within <a href="http://gruntjs.com/">Grunt</a> or <a href="http://gulpjs.com/">Gulp</a>.
+<p>If we need different file(s), we can be more explicit and place needed file in an array.</p>
+
+{% highlight js %}
+"install" : {
+    "path" : "some/path",
+    "sources" : {
+        "jquery" : [
+            "bower_components/jquery/dist/jquery.js",
+            "bower_components/jquery/dist/jquery.min.css"
+        ]
+    }
+}
+{% endhighlight %}
+
+<p>Now upon executing “bower-installer,” a much more lightweight set of files will be copied to an “assets” directory.  We will use these files on the production install of our application.</p>
+
+<p>As a UI geek, Bower has made client-side asset management absolutely dreamy for me!  In addition to file management automation, my upgrade lifecycles are more streamlined as well.  Additionally, I can further automate these processes by using them within <a href="http://gruntjs.com/">Grunt</a> or <a href="http://gulpjs.com/">Gulp</a>.
 
 <p>Keep up the great work, <a href="http://bower.io/">Bower</a>!</p>
