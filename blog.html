@@ -1,31 +1,29 @@
 ---
 layout: default
-title: Blog - Eric Carlisle - UI / UX Architect
+title: Blog - Eric Carlisle - UI / UX Geek
 ---
-<div class="container">
-	<div class="row">
-		<div class="col-xs-12 col-md-8">
-			<ul id="blogroll">
-			  {% for post in site.posts %}
-			    <li>
-			      <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
-			      {{ post.excerpt }}
-			    </li>
-			  {% endfor %}
-			</ul>
-		</div>
-		<div class="col-xs-12 col-md-4">
-			<h4>Recent Posts</h4>
-      <table class="listing-table">
-        {% for post in site.posts %}
-        <tr>
-          <td>{{post.date | date: "%m/%d/%Y" }}</td>
-          <td>
-            <a href="{{post.url}}">{{ post.title }}</a>
-          </td>
-        </tr>
-        {% endfor %}
-      </table>
-		</div>
-	</div>
+
+<div style="padding-right: 20px">
+	<ul id="blogroll">
+	  {% for post in site.posts %}
+	    <li>
+	      <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+	      {{ post.excerpt }}
+	    </li>
+	  {% endfor %}
+	</ul>
+</div>
+
+<div style="min-width: 360px; border-left: solid 1px #ddd; padding-left: 20px">
+	<h3>Recent Posts</h3>
+  <table class="listing-table">
+    {% for post in site.posts %}
+    <tr>
+      <td>{{post.date | date: "%m/%d/%Y" }}</td>
+      <td>
+        <a href="{{post.url}}">{{ post.title }}</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
 </div>

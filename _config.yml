@@ -1,6 +1,6 @@
 # Site settings
 title: Eric Carlisle
-email: your-email@domain.com
+email: eric@ericcarlisle.com
 description: > # this means to ignore newlines until "baseurl:"
   Eric has 20 years of experience in full-stack website development, with a passion for user interface development and user experience design.
 baseurl: "" # the subpath of your site, e.g. /blog/
@@ -16,4 +16,4 @@ permalink: pretty
 highlighter: pygments
 sass:
     sass_dir: _sass
-    style: :compressed
+    style: :expanded

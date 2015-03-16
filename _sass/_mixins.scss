@@ -3,14 +3,6 @@
   font-size: calculateRem($size);
 }
 
-@mixin flexbox {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 @mixin bp($point) {
   // Small devices (tablets, 768px and up)
   @if $point == sm {
@@ -25,3 +17,4 @@
     @media all and (min-width: 1200px)  { @content; }
   }
 }
+
