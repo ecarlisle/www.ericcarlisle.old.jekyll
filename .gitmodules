@@ -1,0 +1,3 @@
+[submodule "presentations/flexbox"]
+	path = presentations/flexbox
+	url = https://github.com/ecarlisle/Easy-Layouts-with-Flexbox.git
