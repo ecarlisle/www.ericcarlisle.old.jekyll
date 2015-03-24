@@ -245,7 +245,8 @@ h4 {
   @include justify-content(space-between);
 }
 
-@media screen and (min-width: 768px) {
+@include bp(sm) {
+
   header {
     @include justify-content(flex-start)
   }
@@ -282,7 +283,11 @@ h4 {
   }
 }
 
-@media screen and (min-width: 992px) {
+@include bp(md) {
+
+  header {
+    margin-bottom: -40px;
+  }
 
   main {
     @include flex-direction(row);
