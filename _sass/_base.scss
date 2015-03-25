@@ -296,12 +296,18 @@ h4 {
   }
 
   figure {
-    @include flexbox;
     margin: 0;
+    @include flexbox;
+    @include flex-direction(column);
+    @include bp(sm) {
+      @include flex-direction(row);
+    }
   }
 
   figcaption {
-    padding-left: 2rem;
+    @include bp(sm) {
+      padding-left: 2rem;
+    }
   }
 
 }

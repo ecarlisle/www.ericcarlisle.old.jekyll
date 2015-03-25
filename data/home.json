@@ -50,5 +50,47 @@
   			"date":"September 30th, 2013"
   		}
   	}
-	]
+	],
+  "social": [
+    {
+      "name": "Twitter Profile",
+      "url": "https://www.twitter.com/eric_carlisle",
+      "image": "/assets/img/social-icons/twitter-icon.png"
+    },
+    {
+      "name": "Github Profile",
+      "url": "https://github.com/ecarlisle",
+      "image": "/assets/img/social-icons/github-icon.png"
+    },
+    {
+      "name": "LinkedIn Profile",
+      "url": "https://www.linkedin.com/profile/view?id=9282479",
+      "image": "/assets/img/social-icons/linkedin-icon.png"
+    },
+    {
+      "name": "Slideshare Profile",
+      "url": "http://www.slideshare.net/ericcarlisle",
+      "image": "/assets/img/social-icons/slideshare-icon.png"
+    },
+    {
+      "name": "Facebook Profile",
+      "url": "https://www.facebook.com/eric.carlisle",
+      "image": "/assets/img/social-icons/facebook-icon.png"
+    },
+    {
+      "name": "Tumblr Site",
+      "url": "http://tumblr.ericcarlisle.com/",
+      "image": "/assets/img/social-icons/tumblr-icon.png"
+    },
+    {
+      "name": "Stack Overflow Profile",
+      "url": "http://stackoverflow.com/users/1165150/eric-carlisle/",
+      "image": "/assets/img/social-icons/stack-overflow-icon.png"
+    },
+    {
+      "name": "RSS Feed",
+      "url": "/feed.xml",
+      "image": "/assets/img/social-icons/rss-icon.png"
+    }
+  ]
 }
