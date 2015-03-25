@@ -8,8 +8,8 @@ $(document).ready(function(){
 	  $('#presentation-list').html(presentations);
 
 		// Populate social content.
-	  var social = Mustache.render($('#social-icons').html(), data);
-	  $('#social-icon').html(social);
+	  var social = Mustache.render($('#social-icon').html(), data);
+	  $('#social-icons').html(social);
 
 	});
 
