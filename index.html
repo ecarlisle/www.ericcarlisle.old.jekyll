@@ -113,7 +113,6 @@ title: Eric Carlisle - UI &amp; UX Geek
   $(document).ready(function(){
     $.get( "/data/presentations.json", function(data) {
       var output = Mustache.render($('#presentation-list-item').html(), data);
-      console.log(data);
       $('#presentation-list').html(output);
     });
   });
