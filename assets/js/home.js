@@ -1,7 +1,3 @@
-
-
-
-
 $(document).ready(function(){
 
 	// Grab content for homepage.
@@ -12,8 +8,8 @@ $(document).ready(function(){
 	  $('#presentation-list').html(presentations);
 
 		// Populate social content.
-	  //var social = Mustache.render($('#social-icons').html(), data);
-	  //$('#social-icon').html(social);
+	  var social = Mustache.render($('#social-icons').html(), data);
+	  $('#social-icon').html(social);
 
 	});
 
