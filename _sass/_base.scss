@@ -190,10 +190,17 @@ h4 {
   padding: 0.1rem 1rem;
 }
 
-
 .listing-table {
 
   margin: 1rem 0 0 0;
+
+  tr {
+    @include flexbox;
+    @include flex-direction(column);
+    @include bp(sm) {
+      display: table-row;
+    }
+  }
 
   tr td {
       padding: 1rem;
