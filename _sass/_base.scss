@@ -283,6 +283,29 @@ h4 {
   }
 }
 
+
+#presentation-list {
+
+  list-style-type: none;
+  margin: 0;
+  margin-top: 2rem;
+  padding: 0;
+
+  li {
+    margin-top: 2rem;
+  }
+
+  figure {
+    @include flexbox;
+    margin: 0;
+  }
+
+  figcaption {
+    padding-left: 2rem;
+  }
+
+}
+
 @include bp(md) {
 
   header {
