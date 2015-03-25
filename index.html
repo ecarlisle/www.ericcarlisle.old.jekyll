@@ -11,6 +11,7 @@ title: Eric Carlisle - UI &amp; UX Geek
 
     <p>I’ve been working with the web for the past 20 years, wearing several hats on many projects.  Over that time I’ve become experienced with just about every aspect of web production.  I’ve also worked with several business verticals including automotive, e-commerce, marketing, nonprofit, sports, energy, and medical.</p>
   </article>
+
   <section>
     <a name="social"></a>
     <h2 class="tmar2">Social</h2>
@@ -62,47 +63,12 @@ title: Eric Carlisle - UI &amp; UX Geek
     <a name="speaking" class="tmar3 block"></a>
     <h2>Speaking</h2>
 
-    <p>This is a listing of my most recent and upcoming presentations. If you'd like me to speak at your conference, feel free to contact me at eric at eric carlisle dot com.</p>
-    <table class="listing-table-banded">
-      <tr>
-        <td><a href="http://devnexus.com/">DEVNEXUS</td>
-        <td><em>March 11th, 2015</em></td>
-        <td>
-          <a href="http://www.slideshare.net/ericcarlisle/responsive-designplanningexecutionmanagementwithbootstrap3">Responsive Design - Planning, Execution, Management with Bootstrap 3</a>
-          <iframe class="tmar1 slideshare-preso" src="//www.slideshare.net/slideshow/embed_code/45758438" width="425" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="max-width: 100%;" allowfullscreen> </iframe></div>
-          <br/>
-          <a class="tmar2 block" href="http://www.slideshare.net/ericcarlisle/flex-box">Ridiculously Easy Layouts with Flexbox</a>
-          <iframe class="tmar1 slideshare-preso" src="//www.slideshare.net/slideshow/embed_code/45771404" width="425" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="max-width: 100%;" allowfullscreen> </iframe>
-        </td>
-      </tr>
-      <tr>
-        <td><a href="http://www.nationjs.com/">NationJS</td>
-        <td>November 7th, 2014</td>
-        <td>
-          <a href="http://www.slideshare.net/ericcarlisle/dazzing-data-depiction-with-d3js-41315495">Dazzling Data Depiction with D3.JS</a>
-          <iframe class="tmar1 slideshare-preso" src="//www.slideshare.net/slideshow/embed_code/41315495" width="425" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="max-width: 100%;" allowfullscreen> </iframe>
-        </td>
-      </tr>
-      <tr>
-        <td><a href="http://www.ncdevcon.com/">NCDevCon</td>
-        <td>September 13th 2014</td>
-        <td>
-          <a href="http://www.slideshare.net/ericcarlisle/the-new-ui-staying-strong-with-flexbox-sass-and-mustachejs">The New UI - Staying Strong with Flexbox, SASS, and Mustache.JS</a>
-          <iframe class="tmar1 slideshare-preso" src="//www.slideshare.net/slideshow/embed_code/39050159" width="425" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="max-width: 100%;" allowfullscreen> </iframe>
-        </td>
-      </tr>
-      <tr>
-        <td><a href="http://www.d2wc.com/">D2W Muracon</td>
-        <td>September 30th, 2013</td>
-        <td>
-          <a href="http://www.slideshare.net/ericcarlisle/yin-and-yangofresponsivewebdesign">The Yin and Yang of Responsive Design Workflow</a>
-          <iframe class="tmar1 slideshare-preso" src="//www.slideshare.net/slideshow/embed_code/26744734" width="425" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="max-width: 100%;" allowfullscreen></iframe> 
-        </td>
-      </tr>
-    </table>
+    <p>Below is a listing of recent presentations I've given for conferences and meetups. Feel free to reach out with requests to request.</p>
+
+    <ul id="presentation-list"></ul>
+
   </section>
 </section>
-
 
 <section style="min-width: 360px">
   <img src="/assets/img/eric-carlisle.jpg" id="headshot" title="Eric Carlisle" alt="Eric Carlisle" />
@@ -119,3 +85,36 @@ title: Eric Carlisle - UI &amp; UX Geek
   </table>
 </section>
 
+<script type="text/html" id="presentation-list-item">
+{% raw %}
+{{#presentations}}
+  <li>
+    <figure>
+      <a href="{{url}}">
+        <img src="{{image}}" alt="{{title}}">
+      </a>
+      <figcaption>
+        <strong>
+          <a href="{{url}}">{{title}}</a>
+        </strong>
+          <div class="tmar1">
+            Presented at <a href="{{conference.url}}">{{conference.name}}</a>
+          <br/>
+          <em>{{conference.date}}</em>
+        </div>
+      </figcaption>
+    </figure>
+  </li>
+{{/presentations}}
+{% endraw %}
+</script>
+
+<script>
+  $(document).ready(function(){
+    $.get( "/data/presentations.json", function(data) {
+      var output = Mustache.render($('#presentation-list-item').html(), data);
+      console.log(data);
+      $('#presentation-list').html(output);
+    });
+  });
+</script>
