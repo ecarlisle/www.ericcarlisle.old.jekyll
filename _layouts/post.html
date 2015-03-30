@@ -1,9 +1,30 @@
 ---
-layout: default
+layout: post-layout
 ---
 <div>
   <h2 class="tmar2">{{ page.title }}</h2>
-   <p><strong>{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</strong></p>
+  <p>
+    <strong>
+      {{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}
+    </strong>
+  </p>
+  
+  <div id="share-buttons">
+    <div class="twitter">
+      <a class="twitter-share-button" href="https://twitter.com/share">Tweet</a>
+    </div>
+    <div class="facebook">
+      <div class="fb-share-button" data-href="{{ page.url }}" data-layout="button_count"></div>
+    </div>
+    <div class="google-plus">
+      <div class="g-plus" data-action="share" data-annotation="bubble"></div>
+    </div>
+    <div class="linkedin">
+      <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+      <script type="IN/Share" data-counter="right"></script>
+    </div>
+  </div>
+
    <article>{{ content }}</article>
 
     <div id="disqus_thread"></div>
@@ -19,5 +40,11 @@ layout: default
         })();
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+  <script>
+  window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+  </script>
+
+
 </div>
 

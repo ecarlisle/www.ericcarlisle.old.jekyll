@@ -14,3 +14,16 @@
 	}
 }
 
+
+#share-buttons {
+	@include inline-flex();
+
+	div { min-width: 10rem; }
+
+	.twitter-share-button { width: 10rem !important; }
+
+	.twitter, .linkedin, .google-plus { 
+		padding-top: 2px;
+	}
+
+}
