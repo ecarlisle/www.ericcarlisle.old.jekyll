@@ -1,5 +1,9 @@
+/* jshint strict: true */
+/* jslint vars: true */
 
 $(document).ready(function(){
+
+	"use strict";
 
 	$('#nav-menu').on('click',function(){
 		if (!$('nav').is(':visible')) {

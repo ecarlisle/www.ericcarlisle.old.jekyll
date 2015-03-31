@@ -1,4 +1,9 @@
+/* jshint strict: true */
+/* jslint vars: true */
+
 $(document).ready(function(){
+
+	"use strict";
 
 	// Grab content for homepage.
 	$.get( "/data/home.json", function(data) {
@@ -10,6 +15,11 @@ $(document).ready(function(){
 		// Populate social content.
 	  var social = Mustache.render($('#social-icon').html(), data);
 	  $('#social-icons').html(social);
+
+	  for (var i=0; i<5; i++)
+	  {
+	  	console.log('ok');
+	  }
 
 	});
 
