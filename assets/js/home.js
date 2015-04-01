@@ -16,11 +16,6 @@ $(document).ready(function(){
 	  var social = Mustache.render($('#social-icon').html(), data);
 	  $('#social-icons').html(social);
 
-	  for (var i=0; i<5; i++)
-	  {
-	  	console.log('ok');
-	  }
-
 	});
 
 });

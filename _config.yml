@@ -17,3 +17,7 @@ highlighter: pygments
 sass:
     sass_dir: _sass
     style: :expanded
+
+exclude:
+  - bower_components
+  - node_modules
