@@ -9,6 +9,12 @@
   border-radius: $radius;
 }
 
+@mixin box-shadow($value) {
+  -webkit-box-shadow: $value;
+  -moz-box-shadow: $value;
+  box-shadow: $value;
+}
+
 @mixin bp($point) {
   // Small devices (tablets, 768px and up)
   @if $point == sm {

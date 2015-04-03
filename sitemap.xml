@@ -1,11 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+				xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url> 
-
     <loc>http://www.ericcarlisle.com/</loc> 
+	  <lastmod>2015-04-01T21:14:11+00:00</lastmod>
     <image:image>
        <image:loc>http://www.ericcarlisle.com/img/eric-carlisle.jpg</image:loc> 
     </image:image>
   </url>
+
+	<url>
+	  <loc>http://www.ericcarlisle.com/index.html</loc>
+	  <lastmod>2015-04-01T21:14:11+00:00</lastmod>
+	  <changefreq>always</changefreq>
+	</url>
+	<url>
+	  <loc>http://www.ericcarlisle.com/blog/</loc>
+	  <lastmod>2015-04-01T21:14:11+00:00</lastmod>
+	  <changefreq>always</changefreq>
+	</url>
+	<url>
+	  <loc>http://www.ericcarlisle.com/resume/</loc>
+	  <lastmod>2015-04-01T21:14:11+00:00</lastmod>
+	  <changefreq>always</changefreq>
+	</url>
+	<url>
+	  <loc>http://www.ericcarlisle.com/portfolio/</loc>
+	  <lastmod>2015-04-01T21:14:11+00:00</lastmod>
+	  <changefreq>always</changefreq>
+	</url>
+	<url>
+	  <loc>http://www.ericcarlisle.com/ui/automation/bower/2015/01/06/Bower_How_I_Learned_to_Stop_Worrying_and_Love_Asset_Management/</loc>
+	  <image:image>
+			<image:loc>http://www.ericcarlisle.com/assets/img/bower-logo.png</image:loc>	  	
+	  </image:image>
+	  <lastmod>2015-04-01T21:14:11+00:00</lastmod>
+	  <changefreq>always</changefreq>
+	</url>
 </urlset>

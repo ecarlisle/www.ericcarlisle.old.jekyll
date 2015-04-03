@@ -16,6 +16,7 @@
 
 
 #share-buttons {
+
 	@include inline-flex();
 
 	div { min-width: 10rem; }
@@ -27,3 +28,8 @@
 	}
 
 }
+
+#disqus_thread {
+  margin: 3rem 0 0 0;
+}
+
