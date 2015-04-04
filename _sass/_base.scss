@@ -142,9 +142,7 @@ h1 {
   @include font-size(24px);
   font-weight: 500;
   @include bp(sm) {
-    h1 {
-      @include font-size(48px);
-    }
+    @include font-size(48px);
   }
   a {
     color: $periwinkle;
