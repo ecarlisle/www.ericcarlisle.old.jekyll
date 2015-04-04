@@ -37,7 +37,6 @@
 
 .border-gray { border: solid 1px $gray; }
 
-/*
 .side-column-360 {
 	@include flex(0 0 36rem);  
 }
@@ -45,7 +44,6 @@
 .side-column-330 {
   @include flex(0 0 33rem);
 }
-*/
 
 .flex-row { 
 	@include flex-direction(column); 
