@@ -36,6 +36,9 @@ p {
 header, main, nav, footer {
   margin: 0 auto;
   @include font-size(16px);
+  @include bp(lg) {
+    max-width: 1170px;
+  }
 }
 
 header, main, footer {
@@ -51,6 +54,14 @@ header, footer {
 
 header {
   @include justify-content(space-between);
+
+  @include bp(sm) {
+    @include justify-content(flex-start);
+  }
+
+  @include bp(md) {
+    margin-bottom: -40px;
+  }
 }
 
 main {
@@ -61,6 +72,10 @@ main {
 nav {
 
   display: none;
+  @include bp(sm) {
+    display: block;
+  }
+
   a, a:hover {
     color: $periwinkle;
   }
@@ -72,10 +87,38 @@ nav {
     text-align: center;
     width: 100%;
 
-    li {
+    @include bp(sm) {
+      @include flexbox;
+      @include justify-content(space-around);
+    }
+
+    @include bp(md) {
+      // HACK: Using the Flexbox display mode, switching this element's
+      // "justify-content" to "flex-end" hould align all list items to 
+      // the right side of the list (being that the list should have a 
+      // 100% width). This renders incorrectly in Chrome. Therefore the 
+      // following three lines accomplishes the same style.
+      display: block; 
+      text-align: right;
+      width: auto;
+    }
+  }
+
+  li {
+    background: rgba(255,255,255,0.15);
+    border-top: 1px solid rgba(255,255,255,0.3); 
+    padding: 0.5rem 1rem 1rem;
+
+    @include bp(sm) {
+      display: inline-block;
+      background: none;
+      border-top: none; 
+    }
+
+    @include bp(md) {
+      margin: 0 0 0 0.6rem;
       background: rgba(255,255,255,0.15);
-      border-top: 1px solid rgba(255,255,255,0.3); 
-      padding: 0.5rem 1rem 1rem;
+      border-top: 1px solid rgba(255,255,255,0.3);
     }
   }
 }
@@ -98,6 +141,11 @@ h1, h2, h3, h4, h5 {
 h1 {
   @include font-size(24px);
   font-weight: 500;
+  @include bp(sm) {
+    h1 {
+      @include font-size(48px);
+    }
+  }
   a {
     color: $periwinkle;
     text-decoration: none;
@@ -110,10 +158,11 @@ h1 {
     @include font-size(24px);
     color: $white;
     font-weight: normal;
+    @include bp(sm) {
+      @include font-size(20px);
+    }
   }
 }
-
-
 
 h2, h3, h4, h5 {
   font-family: $oswald;
@@ -148,6 +197,9 @@ figure {
   cursor: pointer;
   height: 20px;
   width: 18px;
+  @include bp(sm) {
+    display: none;
+  }
 }
 
 .wrapper, .nav-wrapper {
@@ -155,6 +207,17 @@ figure {
   color: $periwinkle;
 }
 
+.nav-wrapper {
+  @include bp(sm) {
+    background: rgba(255,255,255,0.15);
+    border-top: 1px solid rgba(255,255,255,0.3); 
+  }
+
+  @include bp(md) {
+    background: none;
+    border-top: none; 
+  }
+}
 
 #title {
   margin-bottom: 2rem;
@@ -164,24 +227,12 @@ figure {
   }
 }
 
-#social-icons {
-
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-
-  li {
-    display: inline;
-    padding: 0 1rem 0 0;
-  }
-
-}
-
 .highlight {
   background: $black;
   margin: 2rem 0;
   padding: 0.1rem 1rem;
+  @include rounded()
+
 }
 
 .listing-table {
@@ -219,132 +270,14 @@ figure {
   }
 }
 
-.space-between {
-  @include justify-content(space-between);
-}
-
-.space-around {
-  @include justify-content(space-around);
-}
-
-@include bp(sm) {
-
-  header {
-    @include justify-content(flex-start)
-  }
-
-  h1 {
-    @include font-size(48px);
-    span {
-    @include font-size(20px);
-    }
-  }
-
-  nav {
-    display: block;
-
-    ul {
-      @include flexbox;
-      @include justify-content(space-around);
-    
-      li {
-        display: inline-block;
-        background: none;
-        border-top: none; 
-      }
-    }
-  }
-
-  .nav-wrapper {
-    background: rgba(255,255,255,0.15);
-    border-top: 1px solid rgba(255,255,255,0.3); 
-  }
-
-  #nav-menu {
-    display: none;
-  }
-}
-
-
-#presentation-list {
-
-  list-style-type: none;
-  margin: 0;
-  margin-top: 2rem;
-  padding: 0;
-
-  li {
-    margin-top: 2rem;
-  }
-
-  figure {
-    margin: 0;
-    @include flexbox;
-    @include flex-direction(column);
-    @include bp(sm) {
-      @include flex-direction(row);
-    }
-  }
-
-  figcaption {
-    @include bp(sm) {
-      padding-left: 2rem;
-    }
-  }
-
-}
-
-@include bp(md) {
-
-  header {
-    margin-bottom: -40px;
-  }
-
-  main {
-//    @include flex-direction(row);
-  }
-
-  #blogroll-title {
-    @include font-size(24px);
-  }
-
-  .slideshare-preso {
+.slideshare-preso {
+  @include bp(md) {
     display: table-cell;
   }
-
-
-  nav {
-    display: block; 
-
-    ul {
-      // HACK: Using the Flexbox display mode, switching this element's
-      // "justify-content" to "flex-end" hould align all list items to 
-      // the right side of the list (being that the list should have a 
-      // 100% width). This renders incorrectly in Chrome. Therefore the 
-      // following three lines accomplishes the same style.
-      display: block; 
-      text-align: right;
-      width: auto;
-    
-      li {
-        margin: 0 0 0 0.6rem;
-        background: rgba(255,255,255,0.15);
-        border-top: 1px solid rgba(255,255,255,0.3);
-      }
-    }
-  }
-
-  .nav-wrapper {
-    background: none;
-    border-top: none; 
-  }
-
 }
 
-@media screen and (min-width: 1200px) {
-  
-  header, nav, main, footer {
-    max-width: 1170px;
+#blogroll-title {
+  @include bp(md) {
+    @include font-size(24px);
   }
-
 }

@@ -1,3 +1,5 @@
+// --- margin & padding ---
+
 .tmar1 { margin-top: 1rem; }
 .tmar2 { margin-top: 2rem; }
 .tmar3 { margin-top: 3rem; }
@@ -24,47 +26,55 @@
 .rpad2 { padding-right: 2rem; }
 .rpad3 { padding-right: 3rem; }
 
+// --- text alignment ---
+
 .left { text-align: left; }
 .right { text-align: right; }
 .center { text-align: center; }
 
+// --- Display Modes ---
 .block { display: block; }
 
+// --- Background and Foreground Color Classes
+.bg-white { background: $white; }
+.bg-black { background: $black; }
+.bg-blue { background: $blue; }
 .bg-periwinkle { background: $periwinkle; }
-.bg-rose { background: $rose; }
 .bg-sunflower { background: $sunflower; }
+.bg-rose { background: $rose; }
 .bg-light-gray { background: $light-gray; }
+.bg-gray { background: $gray; }
+.bg-dark-gray { background: $dark-gray; }
+.bg-red { background: $red; }
 
+.fg-white { color: $white; }
+.fg-black { color: $black; }
+.fg-blue { color: $blue; }
+.fg-periwinkle { color: $periwinkle; }
+.fg-sunflower { color: $sunflower; }
+.fg-rose { color: $rose; }
+.fg-light-gray { color: $light-gray; }
+.fg-gray { color: $gray; }
+.fg-dark-gray { color: $dark-gray; }
+.fg-red { color: $red; }
+
+// --- Borders ---
 .border-gray { border: solid 1px $gray; }
 
-.side-column-360 {
-	@include flex(0 0 36rem);  
-}
+// --- Side Columns 
+.side-column-360 { @include flex(0 0 36rem); }
+.side-column-330 { @include flex(0 0 33rem); }
 
-.side-column-330 {
-  @include flex(0 0 33rem);
-}
-
+// -- Flexbox Utility Classes
+.flex { @include flexbox; }
+.flex-inline { @include inline-flex; }
+.flex-column { @include flex-direction(column); }
 .flex-row { 
 	@include flex-direction(column); 
 	@include bp(sm) {
 		@include flex-direction(row); 
 	}
 }
-
-.row {
-  @include flexbox;
-  @include flex-direction(row);
-}
-
-.column {
-  @include flexbox;
-  @include flex-direction(column);
-}
-
-.flex { @include flexbox; }
-.flex-inline { @include inline-flex; }
-.flex-column { @include flex-direction(column); }
 .flex-image {
   width:auto;
   height:auto;
@@ -73,6 +83,9 @@
   align-self: center;
   display: block;
 }
+.space-between { @include justify-content(space-between); }
+.space-around { @include justify-content(space-around); }
 
+// --- Text formatting ---
 .bold { font-weight: bold; }
 
