@@ -11,7 +11,18 @@
 .lmar2 { margin-left: 2rem; }
 .lmar3 { margin-left: 3rem; }
 
-.pad1 { padding: 1rem; }
+.tpad1 { padding-top: 1rem; }
+.tpad2 { padding-top: 2rem; }
+.tpad3 { padding-top: 3rem; }
+.bpad1 { padding-bottom: 1rem; }
+.bpad2 { padding-bottom: 2rem; }
+.bpad3 { padding-bottom: 3rem; }
+.lpad1 { padding-left: 1rem; }
+.lpad2 { padding-left: 2rem; }
+.lpad3 { padding-left: 3rem; }
+.rpad1 { padding-right: 1rem; }
+.rpad2 { padding-right: 2rem; }
+.rpad3 { padding-right: 3rem; }
 
 .left { text-align: left; }
 .right { text-align: right; }
@@ -24,12 +35,38 @@
 .bg-sunflower { background: $sunflower; }
 .bg-light-gray { background: $light-gray; }
 
-.border-gray { border: solid 1px $gray;}
+.border-gray { border: solid 1px $gray; }
+
+/*
+.side-column-360 {
+	@include flex(0 0 36rem);  
+}
+
+.side-column-330 {
+  @include flex(0 0 33rem);
+}
+*/
+
+.flex-row { 
+	@include flex-direction(column); 
+	@include bp(sm) {
+		@include flex-direction(row); 
+	}
+}
+
+.row {
+  @include flexbox;
+  @include flex-direction(row);
+}
+
+.column {
+  @include flexbox;
+  @include flex-direction(column);
+}
 
 .flex { @include flexbox; }
 .flex-inline { @include inline-flex; }
 .flex-column { @include flex-direction(column); }
-.flex-row { @include flex-direction(row); }
 .flex-image {
   width:auto;
   height:auto;
@@ -40,3 +77,4 @@
 }
 
 .bold { font-weight: bold; }
+

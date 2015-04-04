@@ -1,0 +1,29 @@
+#headshot {
+  display: none;
+
+  @include bp(sm) {
+    display: block;
+
+	  figcaption {
+			font-size: 12px;
+			color: $dark-gray;
+			margin-top: 5px;
+	  }
+
+  }
+}
+
+.side-column-home {
+
+	@include bp(sm) {
+    @include flex(0 0 28rem);  
+  }
+  @include bp(md) {
+    @include flex(0 0 32rem);  
+  }
+  @include bp(lg) {
+    @include flex(0 0 36rem);  
+  }
+
+}
+

@@ -2,56 +2,76 @@
 layout: default
 title: Eric Carlisle - UI &amp; UX Consultant, Strategist
 ---
-<section class="column">
-  <article style="padding-right: 20px">
+<article class="flex flex-row" itemscope itemtype="http://schema.org/Person">
+  <section class="rpad2">
     <a name="about-me"></a>
     <h2>About Me</h2>
+    <span itemprop="description">
+      <p>As a UI &amp; UX Consultant and Strategist, Eric Carlisle's passion is for building the user-facing web and the experiences that make it engaging, compelling, and useful. His core approach is to Keep It Stunning Simple, a practice encouraging creativity and innovation while maintaining pragmatic focus. Via this careful balance, outstanding solutions can be created while maintaining the highest probability of project success.</p>
 
-    <p>As a UI &amp; UX Consultant and Strategist, Eric Carlisle's passion is for building the user-facing web and the experiences that make it engaging, compelling, and useful. His core approach is to Keep It Stunning Simple, a practice encouraging creativity and innovation while maintaining pragmatic focus. Via this careful balance, outstanding solutions can be created while maintaining the highest probability of project success.</p>
-
-    <p>Eric has over 19 years experience, working in almost every aspect of web production. Much of his career has been focused on consulting, working in such market verticals as ecommerce, cybersecurity, automotive, sports entertainment, higher education, healthcare, real estate, financial, and nonprofit. Eric has worked with such companies as Under Armour, Toyota, World Wildlife Fund, The Johns Hopkins University, and Duke Energy.</p>
-  </article>
-
-  <section class="tmar2">
-    <a name="social"></a>
-    <h2>Social</h2>
-    <ul id="social-icons"></ul>
+      <p>Eric has over 19 years experience, working in almost every aspect of web production. Much of his career has been focused on consulting, working in such market verticals as ecommerce, cybersecurity, automotive, sports entertainment, higher education, healthcare, real estate, financial, and nonprofit. Eric has worked with such companies as Under Armour, Toyota, World Wildlife Fund, The Johns Hopkins University, and Duke Energy.</p>
+    </span>
   </section>
 
-  <section class="tmar3">
-    <a name="speaking"></a>
-    <h2>Speaking</h2>
-
-    <p>Below is a listing of recent presentations I've given for conferences and meetups. Feel free to reach out with presentation requests.</p>
-
-    <ul id="presentation-list"></ul>
-
+  <section class="side-column-home">
+    <figure id="headshot" class="center">
+      <img itemprop="image" src="/assets/img/eric-carlisle.jpg" id="headshot" class="side-column-home flex-image" title="Eric Carlisle" alt="Eric Carlisle" />
+      <figcaption class="center">
+        <span itemprop="name">
+          Eric Carlisle
+        </span>
+        -
+        <span itemprop="jobTitle">
+          UI &amp; UX Consultant, Strategist</figcaption>
+        </span>
+    </figure>
   </section>
-</section>
+</article>
 
-<section class="side-column-360">
-  <img src="/assets/img/eric-carlisle.jpg" id="headshot" title="Eric Carlisle" alt="Eric Carlisle" />
-  <h2 class="tmar3" id="blogroll-title">Recent Blog Posts</h2>
-  <table class="listing-table">
-    {% for post in site.posts %}
-    <tr>
-      <td>{{post.date | date: "%m/%d/%Y" }}</td>
-      <td>
-        <a href="{{post.url}}">{{ post.title }}</a>
-      </td>
-    </tr>
-    {% endfor %}
-  </table>
 
-  <h2 class="tmar3" id="blogroll-title">Tweets</h2>
-  <a class="twitter-timeline" 
-      href="https://twitter.com/eric_carlisle" 
-      data-link-color="#CC0033"
-      data-chrome="noheader noborders"
-      height="900"
-      data-widget-id="582589612687769600">Tweets by @eric_carlisle</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<section class="flex flex-row">
+  <div class="flex-column">
+  
+    <section class="tmar2">
+      <a name="social"></a>
+      <h2>Social</h2>
+      <ul id="social-icons"></ul>
+    </section>
 
+    <section class="tmar3">
+      <a name="speaking"></a>
+      <h2>Speaking</h2>
+
+      <p>Below is a listing of recent presentations I've given for conferences and meetups. Feel free to reach out with presentation requests.</p>
+
+      <ul id="presentation-list"></ul>
+
+    </section>
+  </div>
+
+  <aside class="side-column-home">
+    <h2 class="tmar3" id="blogroll-title">Recent Blog Posts</h2>
+    <table class="listing-table">
+      {% for post in site.posts %}
+      <tr>
+        <td>{{post.date | date: "%m/%d/%Y" }}</td>
+        <td>
+          <a href="{{post.url}}">{{ post.title }}</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <h2 class="tmar3" id="blogroll-title">Tweets</h2>
+    <a class="twitter-timeline" 
+        href="https://twitter.com/eric_carlisle" 
+        data-link-color="#CC0033"
+        data-chrome="noheader noborders"
+        height="900"
+        data-widget-id="582589612687769600">Tweets by @eric_carlisle</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+  </aside>
 </section>
 
 <script type="text/html" id="presentation-list-item">
@@ -60,7 +80,7 @@ title: Eric Carlisle - UI &amp; UX Consultant, Strategist
   <li>
     <figure>
       <a href="{{url}}">
-        <img src="{{image}}" alt="{{title}}">
+        <img class="flex-image" src="{{image}}" alt="{{title}}">
       </a>
       <figcaption>
         <strong>
