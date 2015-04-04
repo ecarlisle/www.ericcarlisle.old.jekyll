@@ -49,10 +49,6 @@ header, footer {
   }
 }
 
-footer {
-  @include justify-content(flex-end);
-}
-
 header {
   @include justify-content(space-between);
 }
