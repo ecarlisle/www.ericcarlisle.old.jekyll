@@ -49,10 +49,6 @@ header, footer {
   }
 }
 
-footer {
-  @include justify-content(flex-end);
-}
-
 header {
   @include justify-content(space-between);
 }
@@ -159,9 +155,6 @@ figure {
   color: $periwinkle;
 }
 
-#headshot {
-  display: none;
-}
 
 #title {
   margin-bottom: 2rem;
@@ -224,23 +217,6 @@ figure {
       vertical-align: top;
     }
   }
-}
-.row {
-  @include flexbox;
-  @include flex-direction(row);
-}
-
-.column {
-  @include flexbox;
-  @include flex-direction(column);
-}
-
-.side-column-330 {
-  @include flex(0 0 33rem);
-}
-
-.side-column-360 {
-  @include flex(0 0 36rem);
 }
 
 .space-between {
@@ -325,13 +301,7 @@ figure {
   }
 
   main {
-    @include flex-direction(row);
-  }
-
-  #headshot {
-    display: block;
-    min-width: 360px;
-    width: 100%;
+//    @include flex-direction(row);
   }
 
   #blogroll-title {
