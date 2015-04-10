@@ -33,16 +33,16 @@
   <!-- Twitter Card data -->
   <meta name="twitter:card" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
   <meta name="twitter:site" content="@eric_carlisle">
-  <meta name="twitter:title" content="Eric Carlisle, UI &amp; UX Consultant, Strategist">
-  <meta name="twitter:description" content="{{ site.description }}">
+  <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+  <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
   <meta name="twitter:creator" content="@eric_carlisle">
-  <meta name="twitter:image" content="http://www.ericcarlisle.com/img/eric-carlisle.jpg">
+  <meta name="twitter:image" content="{% if page.image %}{{ page.image }}{% else %}{{ site.image }}{% endif %}">
 
   <!-- Open Graph data -->
   <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="http://www.ericcarlisle.com/" />
-  <meta property="og:image" content="http://www.ericcarlisle.com/img/eric-carlisle.jpg" />
+  <meta property="og:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" />
+  <meta property="og:image" content="{% if page.image %}{{ page.image }}{% else %}{{ site.image }}{% endif %}" />
   <meta property="og:description" content="{{ site.description }}" /> 
   <meta property="og:site_name" content="Eric Carlisle, UI &amp; UX Consultant, Strategist" />
   <meta property="fb:admins" content="5412120" />
