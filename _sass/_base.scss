@@ -33,6 +33,28 @@ p {
   margin: 0 0 2rem;
 }
 
+dl {
+  margin-bottom: 3rem;
+}
+
+dt {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+dd {
+  margin: 0.3rem 0 0.5rem 2rem;
+  display: list-item;
+  list-style-type: square;
+}
+
+hr { display: block; 
+    height: 1px;
+    border: 0; 
+    border-top: 1px solid #ccc;
+    margin: 1rem 3rem 0; 
+    padding: 0; 
+}
+
 header, main, nav, footer {
   margin: 0 auto;
   @include font-size(16px);
@@ -181,8 +203,7 @@ h3 {
 }
 
 h4 {
-  @include font-size(14px);
-  text-transform: uppercase;
+  @include font-size(20px);
 }
 
 figure {

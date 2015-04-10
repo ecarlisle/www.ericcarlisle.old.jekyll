@@ -1,0 +1,115 @@
+---
+layout: post
+title: FlexBox - Using Grow, Shrink, and the Flex Basis
+author: Eric Carlisle
+date: 2020-03-25 12:00:00
+categories: css flexbox
+excerpt: 
+---
+
+<style>
+	.example div {
+		align-items: center; 
+		justify-content: center;
+	}
+
+	table {
+		border-collapse: collapse;
+	}
+
+	table td, table th {
+		border: solid 1px #ccc;
+		padding: 0.6rem 1.2rem;
+	}
+
+	table th {
+		background: #e7e7e7;
+	}
+</style>
+
+<p>If you've seen one of my FlexBox presentations, you know I'm a huge fan and probably heard the word "awesome" several times in my description. Flexbox is, after all, an extremely powerful, flexible, lightweight display more for creating UI layouts. It can also greatly simplify the creation of responsive design layouts.</p>
+
+<p>One of Flexbox's biggest challenges, however, is that it takes a bit to grok as usage departs from other layout methodologies.  Within its functionality is the ability to proportionally shrink and grow child elements as a function of available space. While that explanation is fair, the subtleties of this functionality are often misunderstood. Oh, and they are also awesome!</p>
+
+<p>Consider the following example in which <em>flex-grow</em> is used for three empty child elements. The widths for the children are 1x, 2x, and 3x as set by the following CSS.</p>
+
+{% highlight css %}
+.parent { display: flex; }
+.child1 { flex-grow: 1; }
+.child2 { flex-grow: 2; }
+.child3 { flex-grow: 3; }
+{% endhighlight css %}
+
+The ratio of 
+
+<div class="border-gray pad1 tmar2 bmar3">
+	<div class="example flex" id="e1" style="width: 54.15%; min-height: 50px">
+		<div id="e1c1" class="bg-periwinkle center flex flex-column" style="flex-grow: 1"></div>
+		<div id="e1c2" class="bg-rose center flex flex-column" style="flex-grow: 2"></div>
+		<div id="e1c3" class="bg-sunflower center flex flex-column" style="flex-grow: 3"></div>
+	</div>
+
+	<form class="tmar1">
+		<input id="grow1" type="button" value="grow" />
+		<input id="reset1" type="button" value="reset" />
+	</form>
+
+	<table class="tmar2">
+		<tr>
+			<th>Element</th>
+			<th>Width</th>
+		</tr>
+		<tr>
+			<td class="right">.child1</td>
+			<td id="e1c1-width"></td>
+		</tr>
+		<tr>
+			<td class="right">.child2</td>
+			<td id="e1c2-width"></td>
+		</tr>
+		<tr>
+			<td class="right">.child3</td>
+			<td id="e1c3-width"></td>
+		</tr>
+	</table>
+
+</div>
+
+<script>
+	function displayWidths(exampleNumber) {
+		var n = exampleNumber;
+		for (var i = 1; i < 4; i++) {
+			$('#e'+n+'c'+i+'-width').text($('#e'+n+'c'+i).width() + "px");
+			
+//			var ratio = $('#e'+n+'c'+i).width()/$('#e'+n+'c1').width();
+//			ratio = Math.round(ratio*100)/100;
+//			$('#e'+n+'c'+i+'-ratio').text(ratio);
+		}
+	}
+
+	$(document).ready(function(){
+		displayWidths(1);
+
+		$('#e1').on('resize',function(){
+			displayWidths(1);
+		});
+
+		$('#grow1').on('click',function(){
+			$('#e1').animate({'width':'100%'},500,function(){
+				displayWidths(1);
+				$('reset1').prop('disabled','false')
+				$('grow1').prop('disabled','true')
+			});
+		});
+
+		$('#reset1').on('click',function(){
+			$('#e1').animate({'width':'54.15%'},500,function(){
+				displayWidths(1);
+				$('reset1').prop('disabled','true')
+				$('grow1').prop('disabled','false')
+			});
+		});
+
+	});
+
+</script>
