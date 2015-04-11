@@ -1,31 +1,21 @@
 ---
-layout: default
+layout: blog
 title: Blog - Eric Carlisle - UI / UX Geek
 ---
+<h2>Blog</h2>
 
 <div class="flex flex-row">
-  <section class="rpad2">
+  <section>
   	<ul id="blogroll">
   	  {% for post in site.posts %}
-  	    <li>
-  	      <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+  	    <li class="tmar3">
+  	      <h3><a class="link" href="{{ post.url }}">{{ post.title }}</a></h3>
   	      {{ post.excerpt }}
   	    </li>
   	  {% endfor %}
   	</ul>
   </section>
-
-  <aside class="side-column-330 lpad2" style="border-left: solid 1px #ddd">
-  	<h3>Recent Posts</h3>
-    <table class="listing-table">
-      {% for post in site.posts %}
-      <tr>
-        <td>{{post.date | date: "%m/%d/%Y" }}</td>
-        <td>
-          <a href="{{post.url}}">{{ post.title }}</a>
-        </td>
-      </tr>
-      {% endfor %}
-    </table>
-  </aside>
+  <section class="lpad2 side-column-330">
+    {% include blog-aside.html %}
+  </section>
 </div>

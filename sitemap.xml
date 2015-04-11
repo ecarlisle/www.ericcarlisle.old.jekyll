@@ -11,7 +11,6 @@
        <image:loc>http://www.ericcarlisle.com/img/eric-carlisle.jpg</image:loc> 
     </image:image>
   </url>
-
 	<url>
 	  <loc>http://www.ericcarlisle.com/index.html</loc>
 	  <lastmod>2015-04-01T21:14:11+00:00</lastmod>
@@ -37,6 +36,11 @@
 	  <image:image>
 			<image:loc>http://www.ericcarlisle.com/assets/img/bower-logo.png</image:loc>	  	
 	  </image:image>
+	  <lastmod>2015-04-01T21:14:11+00:00</lastmod>
+	  <changefreq>always</changefreq>
+	</url>
+	<url>
+	  <loc>http://www.ericcarlisle.com/ui/ux/2015/04/10/UI-Instead-of-UX-Lets-Trash-The-Slash/</loc>
 	  <lastmod>2015-04-01T21:14:11+00:00</lastmod>
 	  <changefreq>always</changefreq>
 	</url>

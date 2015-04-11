@@ -42,8 +42,8 @@
   <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" />
-  <meta property="og:image" content="{% if page.image %}{{ page.image }}{% else %}{{ site.image }}{% endif %}" />
-  <meta property="og:description" content="{{ site.description }}" /> 
+  <meta property="og:image" content="{% if page.image %}{{ page.image }}{% else %}http://www.ericcarlisle.com/assets/img/eric-carlisle.jpg{% endif %}" />
+  <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" /> 
   <meta property="og:site_name" content="Eric Carlisle, UI &amp; UX Consultant, Strategist" />
   <meta property="fb:admins" content="5412120" />
 </head>
