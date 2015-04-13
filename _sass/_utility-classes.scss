@@ -67,6 +67,15 @@
 .side-column-360 { @include flex(0 0 36rem); }
 .side-column-330 { @include flex(0 0 33rem); }
 
+
+figure.side-column-330 {
+  margin: 3rem 0 1rem 0;
+  @include flex(0 0 auto); 
+  @include bp(sm) {
+    @include flex(0 0 33rem); 
+  }
+}
+
 // -- Flexbox Utility Classes
 .flex { @include flexbox; }
 .flex-inline { @include inline-flex; }
