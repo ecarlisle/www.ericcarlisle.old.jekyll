@@ -5,9 +5,9 @@ title: Eric Carlisle - UI &amp; UX Consultant, Strategist
 <article class="flex flex-row" itemscope itemtype="http://schema.org/Person">
   <section class="rpad2">
     <a name="about-me"></a>
-    <h2>About Me</h2>
+    <h1>About Me</h1>
     <span itemprop="description">
-      <p>As a UI &amp; UX Consultant and Strategist, Eric Carlisle's passion is for building the user-facing web and the experiences that make it engaging, compelling, and useful. His core approach is to Keep It Stunning Simple, a practice encouraging creativity and innovation while maintaining pragmatic focus. Via this careful balance, outstanding solutions can be created while maintaining the highest probability of project success.</p>
+      <p>As a <span itemprop="jobTitle">UI Developer and UX Designer</span>, <span itemprop="name">Eric Carlisle</span>'s passion is for building the user-facing web and the experiences that make it engaging, compelling, and useful. His core approach is to Keep It Stunning Simple, a practice encouraging creativity and innovation while maintaining pragmatic focus. Via this careful balance, outstanding solutions can be created while maintaining the highest probability of project success.</p>
 
       <p>Eric has over 19 years experience, working in almost every aspect of web production. Much of his career has been focused on consulting, working in such market verticals as ecommerce, cybersecurity, automotive, sports entertainment, higher education, healthcare, real estate, financial, and nonprofit. Eric has worked with such companies as Under Armour, Toyota, World Wildlife Fund, The Johns Hopkins University, and Duke Energy.</p>
     </span>
@@ -16,21 +16,13 @@ title: Eric Carlisle - UI &amp; UX Consultant, Strategist
   <section class="side-column-home">
     <figure id="headshot" class="center">
       <img itemprop="image" src="/assets/img/eric-carlisle.jpg" id="headshot" class="side-column-home flex-image" title="Eric Carlisle" alt="Eric Carlisle" />
-      <figcaption class="center">
-        <span itemprop="name">
-          Eric Carlisle
-        </span>
-        -
-        <span itemprop="jobTitle">
-          UI &amp; UX Consultant, Strategist</figcaption>
-        </span>
     </figure>
   </section>
 </article>
 
 
 <section class="flex flex-row">
-  <div class="flex-column">
+  <div class="flex-column rpad2">
   
     <section class="tmar2">
       <a name="social"></a>
@@ -54,7 +46,7 @@ title: Eric Carlisle - UI &amp; UX Consultant, Strategist
       Want to see this site's source code? Check out the <a href="https://github.com/ecarlisle/ecarlisle.github.io">GitHub Repo</a> to learn more about <a href="http://jekyllrb.com/" target="_blank">Jekyll RB</a>, <a href="http://sass-lang.com/">Sass CSS</a>, <a href="http://gulpjs.com/">Gulp JS</a>, the <a href="http://www.w3.org/TR/css-flexbox-1/" target="_blank">flexbox display mode</a>, and mobile-first development.
     </p>
 
-    <div class="flex flex-row space-around">
+    <div class="flex space-around">
 
       <a class="github-button" href="https://github.com/ecarlisle" data-count-href="/ecarlisle/followers" data-count-api="/users/ecarlisle#followers" data-count-aria-label="# followers on GitHub" aria-label="Follow @ecarlisle on GitHub">Follow @ecarlisle</a>      
       
@@ -64,7 +56,7 @@ title: Eric Carlisle - UI &amp; UX Consultant, Strategist
 
     </div>
 
-    <h2 class="tmar3" id="blogroll-title">Recent Blog Posts</h2>
+    <h2 class="tmar3">Recent Blog Posts</h2>
     <table class="listing-table">
       {% for post in site.posts %}
       <tr>
@@ -76,15 +68,16 @@ title: Eric Carlisle - UI &amp; UX Consultant, Strategist
       {% endfor %}
     </table>
 
-    <h2 class="tmar3" id="blogroll-title">Tweets</h2>
-    <a class="twitter-timeline" 
-        href="https://twitter.com/eric_carlisle" 
-        data-link-color="#CC0033"
-        data-chrome="noheader noborders"
-        height="900"
-        data-widget-id="582589612687769600">Tweets by @eric_carlisle</a>
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
+    <div class="tweets-timeline">
+      <h2 class="tmar3">Tweets</h2>
+      <a class="twitter-timeline" 
+          href="https://twitter.com/eric_carlisle" 
+          data-link-color="#CC0033"
+          data-chrome="noheader noborders"
+          height="900"
+          data-widget-id="582589612687769600">Tweets by @eric_carlisle</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    </div>
   </aside>
 </section>
 

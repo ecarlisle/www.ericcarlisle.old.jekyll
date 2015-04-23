@@ -31,6 +31,10 @@ p {
   font-size: 1.5rem;
   line-height: 2.4rem;
   margin: 0 0 2rem;
+  @include font-size(14px);
+  @include bp(sm) {
+    @include font-size(16px);
+  }
 }
 
 dl {
@@ -55,94 +59,46 @@ hr { display: block;
     padding: 0; 
 }
 
-header, main, nav, footer {
+header, main, footer {
+  @include flexbox;
   margin: 0 auto;
-  @include font-size(16px);
   @include bp(lg) {
     max-width: 1170px;
   }
 }
 
-header, main, footer {
-  @include flexbox;
-  padding: 2rem;
+main {
+  @include font-size(12px);
+  @include bp(sm) {
+    @include font-size(16px);
+  }
 }
 
 header, footer {
   a, a:hover {
     color: $periwinkle;
   }
+  padding: 1rem 2rem;
 }
 
 header {
   @include justify-content(space-between);
-
   @include bp(sm) {
     @include justify-content(flex-start);
   }
+}
 
-  @include bp(md) {
-    margin-bottom: -40px;
+footer {
+  @include font-size(14px);
+  @include bp(sm) {
+    @include font-size(16px);
   }
 }
 
 main {
   @include flex(1);
   @include flex-direction(column);
-}
-
-nav {
-
-  display: none;
-  @include bp(sm) {
-    display: block;
-  }
-
-  a, a:hover {
-    color: $periwinkle;
-  }
-
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    width: 100%;
-
-    @include bp(sm) {
-      @include flexbox;
-      @include justify-content(space-around);
-    }
-
-    @include bp(md) {
-      // HACK: Using the Flexbox display mode, switching this element's
-      // "justify-content" to "flex-end" hould align all list items to 
-      // the right side of the list (being that the list should have a 
-      // 100% width). This renders incorrectly in Chrome. Therefore the 
-      // following three lines accomplishes the same style.
-      display: block; 
-      text-align: right;
-      width: auto;
-    }
-  }
-
-  li {
-    background: rgba(255,255,255,0.15);
-    border-top: 1px solid rgba(255,255,255,0.3); 
-    padding: 0.5rem 1rem 1rem;
-
-    @include bp(sm) {
-      display: inline-block;
-      background: none;
-      border-top: none; 
-    }
-
-    @include bp(md) {
-      margin: 0 0 0 0.6rem;
-      background: rgba(255,255,255,0.15);
-      border-top: 1px solid rgba(255,255,255,0.3);
-    }
-  }
+  padding: 2rem;
 }
 
 main ul {
@@ -160,50 +116,19 @@ h1, h2, h3, h4, h5 {
   line-height: 1;
 }
 
-h1 {
-  @include font-size(24px);
-  font-weight: 500;
-  @include bp(sm) {
-    @include font-size(48px);
-  }
-  a {
-    color: $periwinkle;
-    text-decoration: none;
-    &:hover {
-      color: $periwinkle;
-      text-decoration: none;
-    }
-  }
-  span {
-    @include font-size(24px);
-    color: $white;
-    font-weight: normal;
-    @include bp(sm) {
-      @include font-size(20px);
-    }
-  }
-}
+h1, h2, h3, h4, h5 {
 
-h2, h3, h4, h5 {
-  font-family: $oswald;
-  font-weight: normal;
-  margin-bottom: 1rem;
+  @include font-size(18px);
+  margin-bottom: 0.2rem;
+  text-transform: uppercase;
+
+  @include bp(sm) {
+    @include font-size(22px);
+    margin-bottom: 0.4rem;
+  }
   a {
     color: $black;
-    text-decoration: none;
   }
-}
-
-h2 {
-  @include font-size(32px);
-}
-
-h3 {
-  @include font-size(24px);
-}
-
-h4 {
-  @include font-size(20px);
 }
 
 figure {
@@ -211,7 +136,89 @@ figure {
   padding: 0;
 }
 
-#nav-menu {
+#site-header {
+  @include flex();
+  @include flex-direction(row);
+  @include justify-content(space-between);
+  @include align-items(center);
+  border-bottom: solid 1px #000;
+}
+
+#site-title {
+  @include font-size(16px);
+  @include bp(md) {
+    @include font-size(20px);
+  }
+  @include bp(md) {
+    @include font-size(24px);
+  }
+  font-weight: normal;
+  color: $periwinkle;
+  text-decoration: none;
+  &:hover {
+    color: $periwinkle;
+    text-decoration: none;
+  }
+  span {
+    @include font-size(16px);
+    @include bp(md) {
+      @include font-size(18px);
+    }
+    @include bp(md) {
+      @include font-size(20px);
+    }
+    color: $white;
+    font-weight: normal;
+  }
+}
+
+#site-nav {
+  @include font-size(15px);
+  display: none;
+  @include bp(sm) {
+    display: block;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: inline-block;
+      padding: 0 0 0 1.8rem;
+      @include bp(md) {
+        @include font-size(16px);
+        padding: 0 0 0 2.6rem;
+      }
+    }
+  }
+}
+
+#site-nav-mobile {
+
+  display: none;
+  @include font-size(14px);
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      background: rgba(255,255,255,0.1);
+      border-bottom: solid 1px $black;
+      padding: 1rem 0;
+      text-align: center;
+      
+      a {
+        color: $periwinkle;
+      }
+    }
+  }
+}
+
+#site-nav-icon {
   background: url('/assets/img/nav-menu.png');
   cursor: pointer;
   height: 20px;
@@ -221,8 +228,15 @@ figure {
   }
 }
 
-.wrapper, .nav-wrapper {
-  background: url('/assets/img/bg.png');
+.tweets-timeline {
+  display: none;
+  @include bp(sm) {
+    display: block;
+  }
+}
+
+.wrapper {
+  background: $black;
   color: $periwinkle;
 }
 
@@ -240,7 +254,7 @@ figure {
 
 #title {
   margin-bottom: 2rem;
-  align-self: flex-start;
+  @include align-self(flex-start);
   @include bp(sm) {
     margin-bottom: 0;
   }
@@ -256,7 +270,7 @@ figure {
 
 .listing-table {
 
-  margin: 1rem 0 0 0;
+  margin: 0.5rem 0 0 0;
 
   tr {
     @include flexbox;
@@ -274,7 +288,7 @@ figure {
 
 .listing-table-banded {
 
-  margin: 1rem 0 0 0;
+  margin: 0.5rem 0 0 0;
 
   tr {
 
@@ -292,11 +306,5 @@ figure {
 .slideshare-preso {
   @include bp(md) {
     display: table-cell;
-  }
-}
-
-#blogroll-title {
-  @include bp(md) {
-    @include font-size(24px);
   }
 }

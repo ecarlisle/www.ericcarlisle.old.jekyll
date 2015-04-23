@@ -1,12 +1,10 @@
-<div class="wrapper">
-  <header>
-    <h1><a href="{{ site.baseurl }}/">{{ site.title }}</a>
-      <span>ui &amp; ux consultant, strategist</span>
-    </h1>
-    <div id="nav-menu"></div>
-  </header>
-  <div class="nav-wrapper">
-    <nav>
+<div id="site-header-wrapper" class="wrapper">
+  <header id="site-header">
+    <a id="site-title" href="{{ site.baseurl }}/">
+      {{ site.title }}
+      <span>: ui developer, ux designer</span>
+    </a>
+    <nav id="site-nav">
       <ul>
         <li>
           <a href="/index.html#about-me">about me</a>
@@ -25,6 +23,26 @@
         </li>
       </ul>
     </nav>
-  </div>
+    <div id="site-nav-icon"></div>
+  </header>
+  <nav id="site-nav-mobile">
+    <ul>
+      <li>
+        <a href="/index.html#about-me">about me</a>
+      </li>
+      <li>
+        <a href="/index.html#social">social</a>
+      </li>
+      <li>
+        <a href="/index.html#speaking">speaking</a>
+      </li>
+      <li>
+        <a href="/blog">blog</a>
+      </li>
+      <li>
+        <a href="/portfolio">portfolio</a>
+      </li>
+    </ul>
+  </nav>
 </div>
 <main>

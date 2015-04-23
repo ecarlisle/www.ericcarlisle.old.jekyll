@@ -79,7 +79,9 @@ figure.side-column-330 {
 // -- Flexbox Utility Classes
 .flex { @include flexbox; }
 .flex-inline { @include inline-flex; }
-.flex-column { @include flex-direction(column); }
+.flex-column { 
+  @include flex-direction(column); 
+}
 .flex-row { 
 	@include flex-direction(column); 
 	@include bp(sm) {
