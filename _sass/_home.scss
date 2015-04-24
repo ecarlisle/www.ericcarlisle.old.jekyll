@@ -3,14 +3,19 @@
 
   @include bp(sm) {
     display: block;
-
-	  figcaption {
-			font-size: 12px;
-			color: $dark-gray;
-			margin-top: 5px;
-	  }
   }
 }
+
+#headshot-mobile {
+  display: inline-block;
+  padding: 0 0 1rem 1rem;
+
+  @include bp(sm) {
+    display: none;
+  }
+}
+
+
 
 #presentation-list {
 
