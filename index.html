@@ -24,25 +24,18 @@ title: Eric Carlisle - UI &amp; UX Consultant, Strategist
 <section class="flex flex-row">
   <div class="flex-column rpad2">
     
-  <section class="">
-    <h2 class="tmar3">Recent Blog Posts</h2>
-    <table class="listing-table">
-      {% for post in site.posts %}
-      <tr>
-        <td>{{post.date | date: "%m/%d/%Y" }}</td>
-        <td>
-          <a href="{{post.url}}">{{ post.title }}</a>
-        </td>
-      </tr>
-      {% endfor %}
-    </table>
-  </section>
-
-
-    <section class="tmar2">
-      <a name="social"></a>
-      <h2>Social</h2>
-      <ul id="social-icons"></ul>
+    <section class="">
+      <h2 class="tmar3">Recent Blog Posts</h2>
+      <table class="listing-table">
+        {% for post in site.posts %}
+        <tr>
+          <td>{{post.date | date: "%m/%d/%Y" }}</td>
+          <td>
+            <a href="{{post.url}}">{{ post.title }}</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
     </section>
 
     <section class="tmar3">
@@ -57,6 +50,11 @@ title: Eric Carlisle - UI &amp; UX Consultant, Strategist
   </div>
 
   <aside class="side-column-home">
+    
+    <ul id="social-icons"></ul>
+
+
+
     <p class="tmar1">
       Want to see this site's source code? Check out the <a href="https://github.com/ecarlisle/ecarlisle.github.io">GitHub Repo</a> to learn more about <a href="http://jekyllrb.com/" target="_blank">Jekyll RB</a>, <a href="http://sass-lang.com/">Sass CSS</a>, <a href="http://gulpjs.com/">Gulp JS</a>, the <a href="http://www.w3.org/TR/css-flexbox-1/" target="_blank">flexbox display mode</a>, and mobile-first development.
     </p>

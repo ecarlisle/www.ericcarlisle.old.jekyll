@@ -88,9 +88,9 @@
       "image": "/assets/img/social-icons/stack-overflow-icon.png"
     },
     {
-      "name": "RSS Feed",
-      "url": "/feed.xml",
-      "image": "/assets/img/social-icons/rss-icon.png"
+      "name": "Lanyrd",
+      "url": "/http://lanyrd.com/profile/eric_carlisle/",
+      "image": "/assets/img/social-icons/lanyrd-icon.png"
     }
   ]
 }
