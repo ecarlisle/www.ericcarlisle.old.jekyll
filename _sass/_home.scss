@@ -47,15 +47,21 @@
 }
 
 #social-icons {
-
+  @include flexbox;
+  @include justify-content(space-between);
   list-style-type: none;
   margin: 0.6rem 0 0 0;
   padding: 0;
   width: 100%;
-
   li {
-    display: inline;
-    padding: 0 1rem 0 0;
+    padding: 0 0.5rem 0 0.5rem;
+
+  }
+  a {
+    color: $black;  
+    &:hover {
+      color: $red;  
+    }    
   }
 }
 

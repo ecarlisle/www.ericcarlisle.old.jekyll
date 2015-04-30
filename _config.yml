@@ -17,7 +17,7 @@ permalink: pretty
 highlighter: pygments
 sass:
     sass_dir: _sass
-    style: :expanded
+    style: :compressed
 
 exclude:
   - bower_components
@@ -26,3 +26,12 @@ exclude:
   - CNAME
   - gulpfile.js
   - README.md
+
+asset_pipeline:
+  bundle: true            # Default = true
+  compress: true          # Default = true
+  output_path: assets     # Default = assets
+  display_path: nil       # Default = nil
+  gzip: false             # Default = false
+
+safe: false

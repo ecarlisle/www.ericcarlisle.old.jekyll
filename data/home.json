@@ -55,42 +55,37 @@
     {
       "name": "Twitter Profile",
       "url": "https://www.twitter.com/eric_carlisle",
-      "image": "/assets/img/social-icons/twitter-icon.png"
+      "css-class": "twitter"
     },
     {
       "name": "Github Profile",
       "url": "https://github.com/ecarlisle",
-      "image": "/assets/img/social-icons/github-icon.png"
+      "css-class": "github"
     },
     {
       "name": "LinkedIn Profile",
       "url": "https://www.linkedin.com/profile/view?id=9282479",
-      "image": "/assets/img/social-icons/linkedin-icon.png"
+      "css-class": "linkedin"
     },
     {
       "name": "Slideshare Profile",
       "url": "http://www.slideshare.net/ericcarlisle",
-      "image": "/assets/img/social-icons/slideshare-icon.png"
+      "css-class": "slideshare"
     },
     {
       "name": "Facebook Profile",
       "url": "https://www.facebook.com/eric.carlisle",
-      "image": "/assets/img/social-icons/facebook-icon.png"
+      "css-class": "facebook"
     },
     {
       "name": "Tumblr Site",
       "url": "http://tumblr.ericcarlisle.com/",
-      "image": "/assets/img/social-icons/tumblr-icon.png"
+      "css-class": "tumblr"
     },
     {
       "name": "Stack Overflow Profile",
       "url": "http://stackoverflow.com/users/1165150/eric-carlisle/",
-      "image": "/assets/img/social-icons/stack-overflow-icon.png"
-    },
-    {
-      "name": "Lanyrd",
-      "url": "/http://lanyrd.com/profile/eric_carlisle/",
-      "image": "/assets/img/social-icons/lanyrd-icon.png"
+      "css-class": "stack-overflow"
     }
   ]
 }
