@@ -11,7 +11,7 @@ html {
 }
 
 body {
-  font-family: $open-sans;
+  font-family: $roboto;
   @include flexbox;
   min-height: 100vh;
   @include flex-direction(column);
@@ -27,7 +27,6 @@ a {
 }
 
 p {
-  font-family: $open-sans;
   line-height: 2.4rem;
   margin: 0 0 2rem;
   @include font-size(15px);
@@ -111,17 +110,16 @@ main ul {
 }
 
 h1, h2, h3, h4, h5 {
+  font-family: $exo;
   display: inline-block;
-  font-family: $lato;
   margin: 0;
   line-height: 1;
 
-  @include font-size(18px);
+  @include font-size(16px);
   margin-bottom: 0.2rem;
-  text-transform: uppercase;
 
   @include bp(sm) {
-    @include font-size(20px);
+    @include font-size(24px);
     margin-bottom: 0.4rem;
   }
   a {
@@ -143,12 +141,13 @@ figure {
 }
 
 #site-title {
+  font-family: $exo;
   @include font-size(16px);
-  @include bp(md) {
-    @include font-size(20px);
+  @include bp(sm) {
+    @include font-size(26px);
   }
   @include bp(md) {
-    @include font-size(24px);
+    @include font-size(30px);
   }
   font-weight: normal;
   color: $periwinkle;
@@ -158,12 +157,11 @@ figure {
     text-decoration: none;
   }
   span {
-    @include font-size(16px);
-    @include bp(md) {
-      @include font-size(18px);
+    @include bp(sm) {
+      @include font-size(22px);
     }
     @include bp(md) {
-      @include font-size(20px);
+      @include font-size(26px);
     }
     color: $white;
     font-weight: normal;
@@ -172,6 +170,7 @@ figure {
 
 #site-nav {
   @include font-size(15px);
+  font-family: $exo;
   display: none;
   @include bp(sm) {
     display: block;
@@ -186,7 +185,7 @@ figure {
       display: inline-block;
       padding: 0 0 0 1.8rem;
       @include bp(md) {
-        @include font-size(16px);
+        @include font-size(17px);
         padding: 0 0 0 2.6rem;
       }
     }
