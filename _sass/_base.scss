@@ -12,6 +12,10 @@ html {
 
 body {
   font-family: $roboto;
+  padding-top: 34px;
+  @include bp(sm) {
+    padding-top: 60px;
+  }
   @include flexbox;
   min-height: 100vh;
   @include flex-direction(column);
@@ -132,12 +136,19 @@ figure {
   padding: 0;
 }
 
+#site-header-wrapper {
+  opacity: 0.87;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+}
+
 #site-header {
   @include flex();
   @include flex-direction(row);
   @include justify-content(space-between);
   @include align-items(center);
-  border-bottom: solid 1px #000;
 }
 
 #site-title {
@@ -233,7 +244,7 @@ figure {
 }
 
 .wrapper {
-  background: $black;
+  background: $blackblack;
   color: $periwinkle;
 }
 
