@@ -1,11 +1,11 @@
 ---
 layout: post-layout
 ---
-<div>
-  <h2 class="tmar2">{{ page.title }}</h2>
+<article itemscope itemtype="http://schema.org/BlogPosting">
+  <h2 class="tmar2" itemprop="name headline">{{ page.title }}</h2>
   <p>
     <strong>
-      {{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}
+      {{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • <span itemprop="author">{{ page.author }}</span>{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}
     </strong>
   </p>
   
@@ -25,7 +25,7 @@ layout: post-layout
     </div>
   </div>
 
-   <article>{{ content }}</article>
+   <div itemprop="articleBody">{{ content }}<div/>
 
     <div id="disqus_thread"></div>
     <script type="text/javascript">
@@ -46,5 +46,5 @@ layout: post-layout
   </script>
 
 
-</div>
+</article>
 
