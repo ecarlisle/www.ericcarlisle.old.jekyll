@@ -5,7 +5,7 @@ layout: post-layout
   <h2 class="tmar2" itemprop="name headline">{{ page.title }}</h2>
   <p>
     <strong>
-      {{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • <span itemprop="author">{{ page.author }}</span>{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}
+      <time itemprop="datePublished" datetime="{{ page.date | date: "%Y-%m-%d" }}">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author">{{ page.author }}</span>{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}
     </strong>
   </p>
   
