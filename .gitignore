@@ -4,5 +4,5 @@ _site
 npm-debug.log
 .DS_Store
 bower_modules
-npm_modules
+node_modules
 
