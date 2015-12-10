@@ -1,4 +1,0 @@
-// TODO - replace 10px with base font size.
-@function calculateRem($size) {
-  @return ($size / 10px) * 1rem;
-}

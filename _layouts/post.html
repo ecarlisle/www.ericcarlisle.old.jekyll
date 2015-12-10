@@ -1,50 +1,18 @@
 ---
-layout: post-layout
+layout: default
 ---
-<article itemscope itemtype="http://schema.org/BlogPosting">
-  <h2 class="tmar2" itemprop="name headline">{{ page.title }}</h2>
-  <p>
-    <strong>
-      <time itemprop="datePublished" datetime="{{ page.date | date: "%Y-%m-%d" }}">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author">{{ page.author }}</span>{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}
-    </strong>
-  </p>
-  
-  <div id="share-buttons">
-    <div class="twitter">
-      <a class="twitter-share-button" href="https://twitter.com/share">Tweet</a>
+<main>
+  <article itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 itemprop="name headline">{{ page.title }}</h1>
+      <strong>
+        <em>
+          <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} &middot; <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}
+        </em>
+      </strong>
+    </header>
+    <div class="post-content" itemprop="articleBody">
+      {{ content }}
     </div>
-    <div class="facebook">
-      <div class="fb-share-button" data-href="{{ page.url }}" data-layout="button_count"></div>
-    </div>
-    <div class="google-plus">
-      <div class="g-plus" data-action="share" data-annotation="bubble"></div>
-    </div>
-    <div class="linkedin">
-      <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
-      <script type="IN/Share" data-counter="right"></script>
-    </div>
-  </div>
-
-   <div itemprop="articleBody">{{ content }}<div/>
-
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        /* * * CONFIGURATION VARIABLES * * */
-        var disqus_shortname = 'ericcarlislecom';
-        
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-
-  <script>
-  window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
-  </script>
-
-
-</article>
-
+  </article>
+</main>

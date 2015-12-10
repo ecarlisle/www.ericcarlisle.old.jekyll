@@ -1,13 +1,17 @@
 {
   "name": "ecarlisle.github.io",
-  "version": "1.0.0",
-  "homepage": "https://github.com/ecarlisle/ecarlisle.github.io",
+  "description": "Web site for Eric Carlisle",
+  "main": "",
   "authors": [
     "Eric Carlisle <eric@ericcarlisle.com>"
   ],
-  "description": "Website for Eric Carlisle, UI & UX Solutions Consultant",
-  "main": "index.html",
-  "license": "MIT",
+  "license": "SEE LICENSE IN license.md",
+  "keywords": [
+    "Eric",
+    "Carlisle"
+  ],
+  "moduleType": [],
+  "homepage": "http://www.ericcarlisle.com",
   "private": true,
   "ignore": [
     "**/.*",
@@ -16,44 +20,11 @@
     "test",
     "tests"
   ],
-  "dependencies": {
-    "normalize.css": "3.0.2",
-    "sass-flex-mixin": "1.0.0",
-    "mustache.js": "1.2.0",
-    "jquery": "2.1.3",
-    "font-awesome": "~4.3.0"
+  "devDependencies": {
+    "normalize-css": "~3.0.3",
+    "fancybox": "~2.1.5"
   },
-  "install": {
-    "base": "build",
-    "path": {
-      "js": "assets/vendor/js",
-      "otf": "assets/fonts",
-      "eot": "assets/fonts",
-      "svg": "assets/fonts",
-      "ttf": "assets/fonts",
-      "woff": "assets/fonts",
-      "woff2": "assets/fonts",
-      "css": "_sass/vendor",
-      "scss": "_sass/vendor"
-    },
-    "sources": {
-      "normalize.css": {
-        "mapping": [
-          {
-            "bower_components/normalize.css/normalize.css": "normalize.scss"
-          }
-        ]
-      },
-      "font-awesome":
-      [
-        { "bower_components/font-awesome/css/font-awesome.min.css" : "font-awesome.min.scss"},
-        { "bower_components/font-awesome/fonts/fontawesome-webfont.eot" : "../fontawesome-webfont.eot" },
-        { "bower_components/font-awesome/fonts/fontawesome-webfont.svg" : "../fontawesome-webfont.svg" },
-        { "bower_components/font-awesome/fonts/fontawesome-webfont.ttf" : "../fontawesome-webfont.ttf" },
-        { "bower_components/font-awesome/fonts/fontawesome-webfont.woff" : "../fontawesome-webfont.woff" },
-        { "bower_components/font-awesome/fonts/fontawesome-webfont.woff2" : "../fontawesome-webfont.woff2" },
-        { "bower_components/font-awesome/fonts/FontAwesome.otf" : "../FontAwesome.otf" }
-      ]
-    }
+  "dependencies": {
+    "font-awesome": "~4.5.0"
   }
 }

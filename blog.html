@@ -1,21 +1,22 @@
 ---
-layout: blog
-title: Blog - Eric Carlisle - UI / UX Geek
+layout: default
+title: Blog
 ---
-<h2>Blog</h2>
-
-<div class="flex flex-row">
-  <section>
-  	<ul id="blogroll">
-  	  {% for post in site.posts %}
-  	    <li class="tmar3">
-  	      <h3><a class="link" href="{{ post.url }}">{{ post.title }}</a></h3>
-  	      {{ post.excerpt }}
-  	    </li>
-  	  {% endfor %}
-  	</ul>
-  </section>
-  <section class="lpad2 side-column-330">
-    {% include blog-aside.html %}
-  </section>
-</div>
+<main class="blog">
+  <h1>{{ page.title }}</h1>
+  <article>
+  <ul>
+      {% for post in site.posts %}
+        <li>
+          <section>
+            <h2>
+              <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+            </h2>
+            <strong class="post-meta"><em>{{ post.date | date: "%b %-d, %Y" }}</em></strong>
+            {{ post.excerpt }}
+          </section>
+        </li>
+      {% endfor %}
+    </ul>
+  </article>
+</main>

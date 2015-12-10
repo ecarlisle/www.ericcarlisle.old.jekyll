@@ -1,37 +1,22 @@
 # Site settings
 title: Eric Carlisle
 email: eric@ericcarlisle.com
-description: > # this means to ignore newlines until "baseurl:"
-  Eric has 20 years of experience in full-stack website development, with a passion for user interface development and user experience design.
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://www.ericcarlisle.com" # the base hostname & protocol for your site
-twitter_username: eric_carlisle
+description: "Eric has 20 years of experience in full-stack website development, with a passion for user interface development and user experience design."
+baseurl: ""
+url: "http://www.ericcarlisle.com"
+twitter_username: "@eric_carlisle"
 github_username:  ecarlisle
-image: "http://www.ericcarlisle.com/assets/img/eric-carlisle.jpg"
+image: "http://www.ericcarlisle.com/assets/img/ericcarlisle_800x800.png"
 
-# Build settings
 markdown: kramdown
-
-# Outputting
-permalink: pretty
-highlighter: pygments
-sass:
-    sass_dir: _sass
-    style: :compressed
-
+excerpt_separator: "<!--more-->"
 exclude:
   - bower_components
-  - node_modules
   - bower.json
   - CNAME
   - gulpfile.js
+  - node_modules
+  - license.md
+  - package.json
   - README.md
-
-asset_pipeline:
-  bundle: true            # Default = true
-  compress: true          # Default = true
-  output_path: assets     # Default = assets
-  display_path: nil       # Default = nil
-  gzip: false             # Default = false
-
-safe: false
+  - npm-debug.log

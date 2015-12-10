@@ -1,0 +1,42 @@
+@mixin font-face($family, $filename, $weight, $style) {
+  @font-face {
+      font-family: "$family";
+    src: url('$filename + ".eot"');
+    src: url('$filename + ".eot?#iefix"') format('embedded-opentype'),
+         url('$filename + ".woff2"') format('woff2'),
+         url('$filename + ".woff"') format('woff'),
+         url('$filename + ".ttf"') format('truetype'),
+         url('$filename + ".svg#" + $family') format('svg');
+    font-weight: $weight;
+    font-style: $style;
+  }
+}
+
+@mixin bp($width) {
+  @if $width == xs {
+    @media all and (min-width: $xs) { 
+      @content; 
+    }
+  }
+  @else if $width == sm {
+    @media all and (min-width: $sm) { 
+      @content; 
+    }
+  }
+  @else if $width == md {
+    @media all and (min-width: $md) { 
+      @content; 
+    }
+  }
+  @else if $width == lg {
+    @media all and (min-width: $lg)  { 
+      @content; 
+    }
+  }
+  @else if $width == xl {
+    @media all and (min-width: $xl)  { 
+      @content; 
+    }
+  }
+}
+

@@ -1,41 +1,137 @@
-var gulp = require('gulp');
-var jshint = require('gulp-jshint');
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
-var react = require('gulp-react');
-var htmlreplace = require('gulp-html-replace');
-var browserify = require('gulp-browserify');
+/* jshint node: true */
+'use strict';
 
-var paths = {
-  JS: 'assets/js',
-  JSX: 'assets/jsx',
-  JS_SCRIPTS: 'assets/js/**/*.js',
-  JSX_SCRIPTS: 'assets/jsx/**/*.jsx',
-};
+var gulp = require('gulp'),
+  addsrc = require('gulp-add-src'),
+  batch = require('gulp-batch'),
+  combinemq = require('gulp-combine-mq'),
+  concat = require('gulp-concat'),
+  debug = require('gulp-debug'),
+  gutil = require('gulp-util'),
+  jshint = require('gulp-jshint'),
+  livereload = require('gulp-livereload'),
+  minifycss = require('gulp-cssmin'),
+  order = require('gulp-order'),
+  plumber = require('gulp-plumber'),
+  rimraf = require('gulp-rimraf'),
+  sass = require('gulp-sass'),
+  sequence = require('run-sequence'),
+  server = ('gulp-express'),
+  sourcemaps = require('gulp-sourcemaps'),
+  cp = require('child_process'),
+  stylish = require('jshint-stylish'),
+  uglify = require('gulp-uglify'),
+  filter = require('gulp-filter');
 
-var scripts = [
-	paths.JS + 'modernizr.2.8.3.js'
-]
-
-gulp.task('combine', function() {
-  return gulp.src(scripts)
-    .pipe(gulp.dest(paths.JS));
+gulp.task('clean', function() {
+  return gulp.src('_site/*')
+    .pipe(plumber())
+    .pipe(rimraf());
+});
+ 
+gulp.task('notify', function() {
+  server.notify();
 });
 
-gulp.task('lint', function() {
-  return gulp.src(paths.JS_SCRIPTS)
-	.pipe(jshint('.jshintrc'))
-	.pipe(jshint.reporter('jshint-stylish'));
+gulp.task('styles', function() {
+  return gulp.src(
+      [
+        '_src/css/bootstrap-grid.css',
+        '_src/scss/**/*.scss'
+      ])
+    .pipe(plumber({
+      errorHandler: onError
+    }))
+    .pipe(sourcemaps.init())
+    .pipe(order([
+      '_src/css/bootstrap-grid.css',
+      '_src/scss/**/*.scss'
+    ]))
+    .pipe(concat('main.scss'))
+    .pipe(sass()).on('error', onError)
+    .pipe(combinemq({beautify: false}))
+    .pipe(sourcemaps.write())
+    .pipe(minifycss())
+    .pipe(gulp.dest('assets/css'));
 });
 
-gulp.task('react', function() {
-  return gulp.src(paths.JSX_SCRIPTS)
-	.pipe(react())
-  .pipe(concat('components.js'))
-  .pipe(uglify())
-	.pipe(gulp.dest(paths.JS));
+gulp.task('scripts', function() {
+  return gulp.src('_src/js/main.js')
+    .pipe(jshint())
+    .pipe(jshint.reporter(stylish))
+    .pipe(addsrc('bower_components/jquery/dist/jquery.js'))
+    .pipe(sourcemaps.init())
+    .pipe(order([
+      'bower_components/jquery/dist/jquery.js',
+      '_src/js/main.js'
+    ]))
+    .pipe(concat('main.js'))
+    .pipe(uglify())
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('assets/js'));
+});
+
+gulp.task('fonts', function() {
+  return gulp.src(['src/fonts/**/*','bower_components/font-awesome/fonts/**'])
+    .pipe(gulp.dest('assets/fonts'));
+});
+
+gulp.task('images', function() {
+  return gulp.src('_src/img/**/*')
+    .pipe(gulp.dest('assets/img'));
+});
+
+gulp.task('svg', function() {
+  return gulp.src('_src/svg/**/*')
+    .pipe(gulp.dest('assets/svg'));
+});
+
+gulp.task('jekyll', function() {
+  return cp.execSync(['jekyll build --quiet'], {
+    stdio: 'inherit'
+  });
+});
+
+gulp.task('jekyll-incremental', function() {
+  cp.execSync(['jekyll build --incremental --quiet'], {stdio: 'inherit'});
+  livereload.reload();
 });
 
 gulp.task('default', function() {
-	
+  var server = livereload({start:true});
+  sequence('clean', ['styles', 'fonts', 'images', 'svg'], 'jekyll', 'watch');
 });
+
+
+gulp.task('watch', function() {
+
+  gulp.watch(['_src/scss/**/*.scss','_src/css/**/*.css'], function(file) {
+    sequence('styles', 'jekyll-incremental');
+  });
+
+  gulp.watch('_src/svg/**/*.svg', function(file) {
+    sequence('svg', 'jekyll-incremental');
+  });
+
+  gulp.watch('_src/js/**/*.js', function(file) {
+    sequence('scripts', 'jekyll-incremental');
+  });
+
+  gulp.watch('_src/img/**/*.*', function(file) {
+    sequence('images', 'jekyll-incremental');
+  });
+
+  gulp.watch('_src/fonts/**/*.*', function(file) {
+    sequence('fonts', 'jekyll-incremental');
+  });
+
+  gulp.watch(['*.html', '_layouts/*.html', '_posts/*.*', '_includes/*.html'], function(file) {
+    sequence('jekyll-incremental');
+  });
+
+});
+
+function onError(err) {
+  gutil.beep();
+  return gutil.log(gutil.colors.green(err));
+}

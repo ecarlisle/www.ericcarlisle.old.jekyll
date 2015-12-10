@@ -1,28 +1,52 @@
 {
   "name": "ecarlisle.github.io",
-  "version": "1.0.0",
-  "description": "Eric Carlisle - UI & UX Consultant, Strategist",
-  "main": "index.html",
-  "devDependencies": {
-    "gulp": "^3.8.11",
-    "gulp-browserify": "^0.5.1",
-    "gulp-concat": "^2.5.2",
-    "gulp-html-replace": "^1.4.4",
-    "gulp-jshint": "^1.9.4",
-    "gulp-react": "^3.0.1",
-    "gulp-uglify": "^1.1.0"
-  },
+  "version": "2.0.0",
+  "description": "Web site for Eric Carlisle",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "bower install"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ecarlisle/ecarlisle.github.io.git"
+    "url": "git+https://github.com/ecarlisle/ecarlisle.github.io.git"
   },
-  "author": "Eric Carlisle",
-  "license": "MIT",
+  "keywords": [
+    "Eric",
+    "Carlisle"
+  ],
+  "author": "Eric Carlisle <eric@ericcarlisle.com>",
+  "license": "SEE LICENSE IN license.md",
   "bugs": {
     "url": "https://github.com/ecarlisle/ecarlisle.github.io/issues"
   },
-  "homepage": "https://github.com/ecarlisle/ecarlisle.github.io"
+  "homepage": "https://github.com/ecarlisle/ecarlisle.github.io#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-add-src": "^0.2.0",
+    "gulp-batch": "^1.0.5",
+    "gulp-combine-mq": "^0.4.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^2.2.0",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-debug": "^2.1.2",
+    "gulp-express": "^0.3.5",
+    "gulp-filter": "^3.0.1",
+    "gulp-jshint": "^1.12.0",
+    "gulp-live-server": "0.0.29",
+    "gulp-livereload": "^3.8.1",
+    "gulp-minify-css": "^1.2.1",
+    "gulp-notify": "^2.2.0",
+    "gulp-order": "^1.1.1",
+    "gulp-plumber": "^1.0.1",
+    "gulp-rimraf": "^0.2.0",
+    "gulp-sass": "^2.1.0",
+    "gulp-sequence": "^0.4.1",
+    "gulp-shell": "^0.5.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.4.2",
+    "gulp-util": "^3.0.7",
+    "gulp-watch": "^4.3.5",
+    "jshint-stylish": "^2.0.1",
+    "run-sequence": "^1.1.4"
+  }
 }
