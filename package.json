@@ -31,6 +31,7 @@
     "gulp-debug": "^2.1.2",
     "gulp-express": "^0.3.5",
     "gulp-filter": "^3.0.1",
+    "gulp-if": "^2.0.0",
     "gulp-jshint": "^1.12.0",
     "gulp-live-server": "0.0.29",
     "gulp-livereload": "^3.8.1",
@@ -39,6 +40,7 @@
     "gulp-order": "^1.1.1",
     "gulp-plumber": "^1.0.1",
     "gulp-rimraf": "^0.2.0",
+    "gulp-ruby-sass": "^2.0.6",
     "gulp-sass": "^2.1.0",
     "gulp-sequence": "^0.4.1",
     "gulp-shell": "^0.5.1",
@@ -47,6 +49,7 @@
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.5",
     "jshint-stylish": "^2.0.1",
-    "run-sequence": "^1.1.4"
+    "run-sequence": "^1.1.4",
+    "yargs": "^3.31.0"
   }
 }

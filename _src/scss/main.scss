@@ -1,13 +1,12 @@
 @import 'variables';
 @import 'mixins';
-@import 'pygments';
 
 @include font-face('exo','../fonts/exo/exo-regular','normal','normal');
-@include font-face('roboto','../fonts/roboto/roboto-regular','normal','normal')
-@include font-face('roboto','../fonts/roboto/roboto-italic','normal','italic')
-@include font-face('roboto','../fonts/roboto/roboto-bold','bold','normal')
-@include font-face('roboto','../fonts/roboto/roboto-bold-italic','bold','italic')
-@include font-face('fontawesome','../fonts/font-awesome/fontawesome-webfont','normal','normal');
+//@include font-face('exo','../fonts/exo/exo-bold','bold','normal');
+@include font-face('roboto','../fonts/roboto/roboto-regular','normal','normal');
+//@include font-face('roboto','../fonts/roboto/roboto-italic','normal','italic');
+//@include font-face('roboto','../fonts/roboto/roboto-bold','bold','normal');
+//@include font-face('roboto','../fonts/roboto/roboto-bolditalic','bold','italic');
 
 html, body {
   margin: 0;
@@ -129,8 +128,9 @@ pre {
 }
 
 .brand-title {
-  font-size: 2.2rem;
+  font-size: 3.2rem;
   color: $black;
+  font-weight: normal;
 
   @include bp(sm) {
     font-size: 3rem;
@@ -142,7 +142,7 @@ pre {
 
 .brand-delimiter, .brand-subtitle {
   color: $gray;
-  font: 1.6rem 'exo', serif;
+  font: bold 1.6rem 'exo', serif;
   text-transform: lowercase;
 
   @include bp(sm) {
@@ -156,7 +156,7 @@ pre {
 nav.top-nav {
 //  display: none;
   display: block;
-  font: 1.6rem/1 'exo', serif;
+  font: bold 1.6rem/1 'exo', serif;
   margin: 0;
   text-align: right;
 
@@ -215,19 +215,18 @@ main {
   font: 1.6rem/1.8 'roboto', serif;
 
   padding: 1rem;
-/*
-  @include bp(md) {
-    padding: 1.5rem;
-  }
 
-  @include bp(md) {
-    padding: 2rem;
-  }
+//  @include bp(md) {
+//    padding: 1.5rem;
+//  }
 
-  @include bp(lg) {
-    padding: 3rem;
-  }
-*/
+//  @include bp(md) {
+//    padding: 2rem;
+//  }
+
+//  @include bp(lg) {
+//    padding: 3rem;
+//  }
 }
 
 footer {
@@ -428,4 +427,5 @@ footer {
 
 }
 
+@import 'pygments';
 

@@ -1,12 +1,12 @@
 @mixin font-face($family, $filename, $weight, $style) {
   @font-face {
-      font-family: "$family";
-    src: url('$filename + ".eot"');
-    src: url('$filename + ".eot?#iefix"') format('embedded-opentype'),
-         url('$filename + ".woff2"') format('woff2'),
-         url('$filename + ".woff"') format('woff'),
-         url('$filename + ".ttf"') format('truetype'),
-         url('$filename + ".svg#" + $family') format('svg');
+      font-family: quote($family);
+    src: url('#{$filename}.eot');
+    src: url('#{$filename}.eot?#iefix') format('embedded-opentype'),
+         url('#{$filename}.woff2') format('woff2'),
+         url('#{$filename}.woff') format('woff'),
+         url('#{$filename}.ttf') format('truetype'),
+         url('#{$filename}.svg##{$family}') format('svg');
     font-weight: $weight;
     font-style: $style;
   }

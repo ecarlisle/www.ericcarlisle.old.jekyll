@@ -3,7 +3,6 @@
 
 var gulp = require('gulp'),
   addsrc = require('gulp-add-src'),
-  batch = require('gulp-batch'),
   combinemq = require('gulp-combine-mq'),
   concat = require('gulp-concat'),
   debug = require('gulp-debug'),
@@ -14,17 +13,18 @@ var gulp = require('gulp'),
   order = require('gulp-order'),
   plumber = require('gulp-plumber'),
   rimraf = require('gulp-rimraf'),
-  sass = require('gulp-sass'),
+  sass = require('gulp-ruby-sass'),
   sequence = require('run-sequence'),
-  server = ('gulp-express'),
   sourcemaps = require('gulp-sourcemaps'),
   cp = require('child_process'),
   stylish = require('jshint-stylish'),
   uglify = require('gulp-uglify'),
-  filter = require('gulp-filter');
+  filter = require('gulp-filter'),
+  argv = require('yargs').argv,
+  gulpif = require('gulp-if');
 
 gulp.task('clean', function() {
-  return gulp.src('_site/*')
+  return gulp.src(['_site/*','assets/*'])
     .pipe(plumber())
     .pipe(rimraf());
 });
@@ -34,33 +34,23 @@ gulp.task('notify', function() {
 });
 
 gulp.task('styles', function() {
-  return gulp.src(
-      [
-        '_src/css/bootstrap-grid.css',
-        '_src/scss/**/*.scss'
-      ])
-    .pipe(plumber({
-      errorHandler: onError
-    }))
-    .pipe(sourcemaps.init())
-    .pipe(order([
-      '_src/css/bootstrap-grid.css',
-      '_src/scss/**/*.scss'
+  return sass('_src/scss/main.scss',{ sourcemap: true, style: 'expanded' })//.on('error', onError)
+    .pipe(addsrc('_src/css/bootstrap-grid.css'))
+    .pipe(order(['_src/css/bootstrap-grid.css','_src/scss/main.scss'
     ]))
-    .pipe(concat('main.scss'))
-    .pipe(sass()).on('error', onError)
-    .pipe(combinemq({beautify: false}))
-    .pipe(sourcemaps.write())
-    .pipe(minifycss())
-    .pipe(gulp.dest('assets/css'));
+    .pipe(concat('main.css'))
+    //.pipe(combinemq({beautify: true}))
+    .pipe(gulpif(argv.production,sourcemaps.write()))
+//  .pipe(minifycss())
+  .pipe(gulp.dest('assets/css/'));
 });
 
 gulp.task('scripts', function() {
   return gulp.src('_src/js/main.js')
+    .pipe(sourcemaps.init())
     .pipe(jshint())
     .pipe(jshint.reporter(stylish))
     .pipe(addsrc('bower_components/jquery/dist/jquery.js'))
-    .pipe(sourcemaps.init())
     .pipe(order([
       'bower_components/jquery/dist/jquery.js',
       '_src/js/main.js'
@@ -72,7 +62,9 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('fonts', function() {
-  return gulp.src(['src/fonts/**/*','bower_components/font-awesome/fonts/**'])
+  
+
+  return gulp.src(['_src/fonts/**/*'])
     .pipe(gulp.dest('assets/fonts'));
 });
 
@@ -93,13 +85,13 @@ gulp.task('jekyll', function() {
 });
 
 gulp.task('jekyll-incremental', function() {
-  cp.execSync(['jekyll build --incremental --quiet'], {stdio: 'inherit'});
+  cp.execSync(['jekyll build --quiet'], {stdio: 'inherit'});
   livereload.reload();
 });
 
 gulp.task('default', function() {
   var server = livereload({start:true});
-  sequence('clean', ['styles', 'fonts', 'images', 'svg'], 'jekyll', 'watch');
+  sequence('clean', ['scripts', 'styles', 'fonts', 'images', 'svg'], 'jekyll', 'watch');
 });
 
 
