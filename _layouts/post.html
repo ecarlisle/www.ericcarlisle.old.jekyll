@@ -7,7 +7,17 @@ layout: default
       <h1 itemprop="name headline">{{ page.title }}</h1>
       <strong>
         <em>
-          <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} &middot; <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name publisher">{{ page.author }}</span></span>{% endif %}
+          <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished dateModified">
+            {{ page.date | date: "%b %-d, %Y" }}
+          </time>
+          {% if page.author %} &middot; 
+          <span itemprop="author publisher">
+            <span itemscope itemtype="http://schema.org/Person">
+              <span itemprop="name">
+                {{ page.author }}
+              </span>
+            </span>{% endif %}
+          </span>
         </em>
       </strong>
     </header>
@@ -22,7 +32,7 @@ layout: default
            style="display:block"
            data-ad-client="ca-pub-1380430605264409"
            data-ad-slot="1628929778"
-           data-ad-format="auto"></ins>
+           data-ad-format="auto"></ins> 
       <script>
       (adsbygoogle = window.adsbygoogle || []).push({});
       </script>
