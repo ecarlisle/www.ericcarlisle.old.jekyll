@@ -1,4 +1,4 @@
----
+1---
 layout: default
 ---
 <main>
@@ -7,7 +7,7 @@ layout: default
       <h1 itemprop="name headline">{{ page.title }}</h1>
       <strong>
         <em>
-          <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} &middot; <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}
+          <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} &middot; <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name publisher">{{ page.author }}</span></span>{% endif %}
         </em>
       </strong>
     </header>

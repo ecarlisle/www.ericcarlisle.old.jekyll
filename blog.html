@@ -20,7 +20,7 @@ default: Eric Carlisle's blog is a playground for UI Development, UX Design, and
               <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">
                 {{ post.date | date: "%b %-d, %Y" }}
               </time>
-              {% if post.author %} &middot; <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ post.author }}</span></span>{% endif %}
+              {% if post.author %} &middot; <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name publisher">{{ post.author }}</span></span>{% endif %}
             </em>
           </strong>
           {{ post.excerpt }}
