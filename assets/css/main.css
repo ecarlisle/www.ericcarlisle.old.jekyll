@@ -1459,12 +1459,16 @@ footer {
   font-family: 'exo', serif;
   margin: 0 auto;
   margin-top: 2rem;
-  padding: 2rem 3rem 2rem;
+  padding: 2rem 3rem 4rem;
   text-align: right;
 }
 
 .container-fluid {
   max-width: 1170px;
+}
+
+.intro-copy {
+  margin-bottom: 2rem;
 }
 
 .cf:before,
@@ -1562,6 +1566,10 @@ footer {
 .blog ul li {
   margin: 0;
   padding: 0;
+}
+
+#disqus_thread {
+  margin-bottom: 3rem;
 }
 
 .portfolio article {

@@ -1,7 +1,3 @@
-/* jshint 
-  globalstrict: true, 
-  jquery: true 
-*/
 "use strict";    
 
 (function () {

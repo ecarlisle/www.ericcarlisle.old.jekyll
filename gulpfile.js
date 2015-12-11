@@ -85,7 +85,9 @@ gulp.task('jekyll', function() {
 });
 
 gulp.task('jekyll-incremental', function() {
-  cp.execSync(['jekyll build --quiet'], {stdio: 'inherit'});
+  return cp.execSync(['jekyll build --quiet'], {
+    stdio: 'inherit'
+  });
   livereload.reload();
 });
 
@@ -125,5 +127,5 @@ gulp.task('watch', function() {
 
 function onError(err) {
   gutil.beep();
-  return gutil.log(gutil.colors.green(err));
+  return gutil.log(gutil.colors.red(err));
 }

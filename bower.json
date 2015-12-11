@@ -22,7 +22,8 @@
   ],
   "devDependencies": {
     "normalize-css": "~3.0.3",
-    "fancybox": "~2.1.5"
+    "fancybox": "~2.1.5",
+    "jquery": "~2.1.4"
   },
   "dependencies": {
     "font-awesome": "~4.5.0"
