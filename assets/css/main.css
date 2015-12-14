@@ -1280,18 +1280,19 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-size: 2rem;
-  margin: 0 0 2.4rem;
+  font-size: 2.5rem;
+  margin: 0 0 1rem;
 }
 @media all and (min-width: 768px) {
   h1 {
-    font-size: 2.4rem;
+    font-size: 3.5rem;
+    margin: 0 0 1.5rem;
   }
 }
 @media all and (min-width: 992px) {
   h1 {
-    font-size: 3rem;
-    margin: 2rem 0 2.4rem;
+    font-size: 4rem;
+    margin: 0 0 2rem;
   }
 }
 
@@ -1317,25 +1318,11 @@ p {
 header.top-header {
   border-bottom: solid 1px #3A3a3c;
   font-family: 'exo', serif;
-  margin: 0;
-  padding: 0 0 1rem;
-}
-@media all and (min-width: 768px) {
-  header.top-header {
-    margin: 1.4rem 0 0 0;
-    padding: 1rem;
-  }
-}
-@media all and (min-width: 992px) {
-  header.top-header {
-    margin: 1.8rem 0 0 0;
-    padding: 1rem;
-  }
+  padding: 1rem 0;
 }
 @media all and (min-width: 1200px) {
   header.top-header {
-    margin: 2rem 0 0 0;
-    padding: 1rem;
+    padding: 2.5rem 0 0;
   }
 }
 
@@ -1345,7 +1332,9 @@ pre {
 
 .mobile-menu {
   cursor: pointer;
+  display: inline-block;
   font-size: 2rem;
+  padding-top: -0.5rem;
 }
 @media all and (min-width: 768px) {
   .mobile-menu {
@@ -1353,16 +1342,13 @@ pre {
   }
 }
 
-.brand {
-  margin: 0;
-}
-
 .brand a:hover {
+  display: inline-block;
   text-decoration: none;
 }
 
 .brand-title {
-  font-size: 3.2rem;
+  font-size: 2.4rem;
   color: #3A3a3c;
   font-weight: normal;
 }
@@ -1379,7 +1365,7 @@ pre {
 
 .brand-delimiter, .brand-subtitle {
   color: #666;
-  font: bold 1.6rem 'exo', serif;
+  font: bold 1.8rem 'exo', serif;
   text-transform: lowercase;
 }
 @media all and (min-width: 768px) {
@@ -1394,7 +1380,7 @@ pre {
 }
 
 nav.top-nav {
-  display: block;
+  display: none;
   font: bold 1.6rem/1 'exo', serif;
   margin: 0;
   text-align: right;
@@ -1410,10 +1396,15 @@ nav.top-nav {
   }
 }
 nav.top-nav ul {
-  margin: 0;
+  margin: 1rem 0 0;
   padding: 0;
   list-style-type: none;
   text-align: center;
+}
+@media all and (min-width: 768px) {
+  nav.top-nav ul {
+    margin: 0;
+  }
 }
 @media all and (min-width: 1200px) {
   nav.top-nav ul {
@@ -1421,17 +1412,16 @@ nav.top-nav ul {
   }
 }
 nav.top-nav ul li {
-  border-bottom: solid 1px #eee;
+  border-top: solid 1px #ddd;
   display: block;
-  margin: 1rem 0 0;
-  padding: 0;
+  padding: 1rem 0;
   text-align: left;
 }
 @media all and (min-width: 768px) {
   nav.top-nav ul li {
+    border: 0;
     display: inline-block;
     font-size: 1.8rem;
-    margin: 1rem 0;
     text-align: center;
     width: 25%;
   }
@@ -1451,14 +1441,28 @@ nav.top-nav ul li {
 
 main {
   font: 1.6rem/1.8 'roboto', serif;
-  padding: 1rem;
+  padding: 2rem 1rem;
+}
+@media all and (min-width: 768px) {
+  main {
+    padding: 3rem 1.5rem;
+  }
+}
+@media all and (min-width: 992px) {
+  main {
+    padding: 4rem 2rem 6rem;
+  }
+}
+@media all and (min-width: 1200px) {
+  main {
+    padding: 4rem 2rem 6rem;
+  }
 }
 
 footer {
   border-top: solid 1px #3A3a3c;
   font-family: 'exo', serif;
   margin: 0 auto;
-  margin-top: 2rem;
   padding: 2rem 3rem 4rem;
   text-align: right;
 }
@@ -1507,6 +1511,10 @@ footer {
 
 .small {
   font-size: 1.2rem;
+}
+
+.hidden {
+  display: none;
 }
 
 .headshot-inline-100 {

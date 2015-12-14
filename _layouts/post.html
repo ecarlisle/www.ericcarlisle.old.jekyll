@@ -11,13 +11,14 @@ layout: default
             {{ page.date | date: "%b %-d, %Y" }}
           </time>
           {% if page.author %} &middot; 
-          <span itemprop="author publisher">
-            <span itemscope itemtype="http://schema.org/Person">
+          <span>
+            <span itemprop="author publisher">
               <span itemprop="name">
                 {{ page.author }}
               </span>
-            </span>{% endif %}
+            </span>
           </span>
+          {% endif %}
         </em>
       </strong>
     </header>
