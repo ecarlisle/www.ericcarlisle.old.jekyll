@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html prefix="og: http://ogp.me/ns#">
   {% include head.html %}
   <body>
     <div class="container-fluid">
       {% include header.html %}
       {{ content }}
   
-      {% if page.type and page.type == 'blog' %}
+      {% if page.type and (page.type == 'blog' or page.type == 'article' %}
       <div id="disqus_thread"></div>
       <script>
         var disqus_config = function () {

@@ -1579,6 +1579,19 @@ footer {
   margin-bottom: 3rem;
 }
 
+.social-buttons {
+  padding: 0.5rem 0 1rem;
+}
+.social-buttons .social-button {
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+.fb-share-button {
+  position: relative;
+  top: -0.8rem;
+}
+
 .portfolio article {
   border-bottom: solid 1px #bbb;
   margin: 0 0 3rem;

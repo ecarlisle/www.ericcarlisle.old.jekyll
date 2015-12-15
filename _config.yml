@@ -1,11 +1,12 @@
 # Site settings
-title: Eric Carlisle
+title: ! "Eric Carlisle : UI Developer, UX Designer"
 email: eric@ericcarlisle.com
 description: "Eric has 20 years of experience in full-stack website development, with a passion for user interface development and user experience design."
 baseurl: ""
 url: "http://www.ericcarlisle.com"
 twitter_username: "@eric_carlisle"
-github_username:  ecarlisle
+github_username:  "ecarlisle"
+facebook_username: "eric.carlisle"
 image: "http://www.ericcarlisle.com/assets/img/ericcarlisle_800x800.png"
 
 markdown: kramdown

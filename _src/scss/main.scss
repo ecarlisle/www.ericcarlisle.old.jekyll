@@ -353,6 +353,20 @@ footer {
   margin-bottom: 3rem;
 }
 
+.social-buttons {
+  padding: 0.5rem 0 1rem;
+
+  .social-button {
+    display: inline-block;
+    margin-right: 1rem;
+  }
+}
+
+.fb-share-button {
+  position: relative;
+  top: -0.8rem;
+}
+
 // ---------- Portfolio ----------
 
 .portfolio {

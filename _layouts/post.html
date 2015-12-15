@@ -1,6 +1,18 @@
 ---
 layout: default
 ---
+<div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, 
+        fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=616445445121972";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
 <main>
   <article class="row" itemscope itemtype="http://schema.org/BlogPosting">
     <header class="col-xs-12">
@@ -21,21 +33,54 @@ layout: default
           {% endif %}
         </em>
       </strong>
-    </header>
-    <section class="col-xs-12">
-        <a href="https://twitter.com/share" class="twitter-share-button"{count} data-url="http://www.ericcarlisle.com" data-via="a" data-related="b" data-hashtags="c">
-          Tweet
-        </a>
-    <script>
-      !function(d,s,id) {
-        var js,fjs=d.getElementsByTagName(s)[0],
-        p=/^http:/.test(d.location)?'http':'https';
-        if(!d.getElementById(id)) {
-          js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-    </script>
-    </section>
-    <section itemprop="articleBody" class="col-sm-10">
+      
+      <div class="social-buttons">
+        
+        <span class="social-button">
+  
+          <a href="https://twitter.com/share" class="twitter-share-button"{count} data-url="http://www.ericcarlisle.com{{page.url}}" data-text="{{ page.title }}" data-via="eric_carlisle">Tweet</a>
 
+          <script>
+            !function(d,s,id) {
+              var js,
+                  fjs=d.getElementsByTagName(s)[0],
+                  p=/^http:/.test(d.location)?'http':'https';
+              if(!d.getElementById(id)){
+                js=d.createElement(s);
+                js.id=id;js.src=p+'://platform.twitter.com/widgets.js';
+                fjs.parentNode.insertBefore(js,fjs);
+              }
+            }(document, 'script', 'twitter-wjs');
+          </script>
+
+        </span>
+        <span class="social-button">
+
+          <script type="text/javascript" src="http://platform.linkedin.com/in.js"></script>
+          <script type="in/share" data-counter="right"></script>
+          <script>
+            !function(d,s,id) {
+              var js,
+                  fjs=d.getElementsByTagName(s)[0],
+                  p=/^http:/.test(d.location)?'http':'https';
+              if(!d.getElementById(id)) {
+                js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';
+                wewewwwwwfjs.parentNode.insertBefore(js,fjs);
+              }
+            }(document, 'script', 'twitter-wjs');
+          </script>
+
+        </span>
+        <span class="social-button">
+
+          <div class="fb-share-button" data-href="http://www.ericcarlisle.com{{page.url}}" data-layout="button_count"></div>
+
+        </span>
+
+      </div>
+    
+    </header>
+    <section itemprop="articleBody" class="col-sm-10">
       {{ content }}
     </section>
     <section class="col-sm-2">

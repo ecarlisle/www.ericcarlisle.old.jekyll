@@ -1,30 +1,49 @@
+{% assign full_url = site.baseurl | prepend: site.url %}
+
+{% capture page_title %}{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}{% endcapture %}
+
+{% capture page_type %}{% if page.type %}{{ page.type }}{% else %}article{% endif %}{% endcapture %}
+
+{% capture canonical_url %}{{ page.url | replace:'index.html','' | prepend: full_url }}{% endcapture %}
+
+{% capture rss_feed %}{{ "/feed.xml" | prepend: full_url }}{% endcapture %}
+
+{% capture page_image %}{% if page.image %}{{ page.image | prepend: full_url }}{% else %}{{ site.image | prepend: full_url }}{% endif %}{% endcapture %}
+
+{% capture page_description %}{% if page.description %}{{ page.description | strip | strip_newlines | truncate: 160 }}{% else if page.excerpt %}{{ page.excerpt | strip | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}{% endcapture %}
+
+
 <head>
+  <!-- General Metadata -->
+  <title>{{ page_title }}</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>Eric Carlisle : {% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
-  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
-  
+  <meta name="description" content="{{ page_description }}">
   <link rel="stylesheet" href="{{ "/assets/css/main.css" | prepend: site.baseurl }}">
-  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
-  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
+  <link rel="canonical" href="{{canonical_url}}">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ full_url }}">
 
   <!-- Open Graph -->
+  <meta property="og:title" content="{{ page_title }}" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
-  <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}" />
-  <meta property="og:url" content="http://www.ericcarlisle.com/" />
-  <meta property="og:site_name" content="Eric Carlisle : UI Developer, UX Designer" />
-  <meta property="og:image" content="{% if page.image %}{{ page.image }}{% else %}{{ site.image }}{% endif %}" />
+  <meta property="og:url" content="{{ site_url }}" />
+  <meta property="og:image" content="{{ page_image }}" />
+  <meta property="article:publisher" content="https://www.facebook.com/{{ facebook_username }}">
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="{{ page_description }}" />
+  <meta property="og:site_name" content="{{ site.name }}" />
   <meta property="og:locale" content="en_US" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="{{site.twitter_username}}" />
-  <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
-  <meta name="twitter:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}" />
-  <meta name="twitter:image" content="{% if page.image %}{{ page.image }}{% else %}{{ site.image }}{% endif %}" />
+  <meta name="twitter:creator" content="{{site.twitter_username}}" />
+
+  <meta name="twitter:title" content="{{ page_title }}" />
+  <meta name="twitter:description" content="{{ page_description }}" />
+  <meta name="twitter:image" content="{{ page_image }}" />
+  <meta name="twitter:url" content="{{ page_url }}" />
 
   <!-- Icons -->
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
