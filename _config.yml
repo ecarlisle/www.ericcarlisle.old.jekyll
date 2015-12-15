@@ -7,7 +7,7 @@ url: "http://www.ericcarlisle.com"
 twitter_username: "@eric_carlisle"
 github_username:  "ecarlisle"
 facebook_username: "eric.carlisle"
-image: "http://www.ericcarlisle.com/assets/img/ericcarlisle_800x800.png"
+image: "/assets/img/ericcarlisle_800x800.png"
 
 markdown: kramdown
 excerpt_separator: "<!--more-->"
