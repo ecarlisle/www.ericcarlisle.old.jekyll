@@ -79,7 +79,7 @@ gulp.task('svg', function() {
 });
 
 gulp.task('jekyll', function() {
-  return cp.execSync(['jekyll build --quiet'], {
+  return cp.execSync(['jekyll build'], {
     stdio: 'inherit'
   });
 });

@@ -1,14 +1,14 @@
-{% assign full_url = site.baseurl | prepend: site.url %}
+{% assign site_url = site.baseurl | prepend: site.url %}
 
 {% capture page_title %}{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}{% endcapture %}
 
 {% capture page_type %}{% if page.type %}{{ page.type }}{% else %}article{% endif %}{% endcapture %}
 
-{% capture canonical_url %}{{ page.url | replace:'index.html','' | prepend: full_url }}{% endcapture %}
+{% capture page_url %}{{ page.url | replace:'index.html','' | prepend: site_url }}{% endcapture %}
 
-{% capture rss_feed %}{{ "/feed.xml" | prepend: full_url }}{% endcapture %}
+{% capture rss_feed %}{{ "/feed.xml" | prepend: site_url }}{% endcapture %}
 
-{% capture page_image %}{% if page.image %}{{ page.image | prepend: full_url }}{% else %}{{ site.image | prepend: full_url }}{% endif %}{% endcapture %}
+{% capture page_image %}{% if page.image %}{{ page.image | prepend: site_url }}{% else %}{{ site.image | prepend: site_url }}{% endif %}{% endcapture %}
 
 {% capture page_description %}{% if page.description %}{{ page.description | strip | strip_newlines | truncate: 160 }}{% else if page.excerpt %}{{ page.excerpt | strip | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}{% endcapture %}
 
@@ -21,19 +21,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="{{ page_description }}">
   <link rel="stylesheet" href="{{ "/assets/css/main.css" | prepend: site.baseurl }}">
-  <link rel="canonical" href="{{canonical_url}}">
+  <link rel="canonical" href="{{page_url}}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ rss_feed }}">
 
   <!-- Open Graph -->
   <meta property="og:title" content="{{ page_title }}" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="{{ full_url }}" />
   <meta property="og:image" content="{{ page_image }}" />
-  <meta property="article:author" content="https://www.facebook.com/{{ facebook_username }}">
-  <meta property="article:publisher" content="https://www.facebook.com/{{ facebook_username }}">
+  <meta property="og:url" content="{{page_url}}" />
+  <meta property="article:author" content="https://www.facebook.com/{{ site.facebook_username }}">
+  <meta property="article:publisher" content="https://www.facebook.com/{{ site.facebook_username }}">
   <meta property="og:type" content="{{ page_type }}" />
   <meta property="og:description" content="{{ page_description }}" />
-  <meta property="og:site_name" content="{{ site.name }}" />
+  <meta property="og:site_name" content="{{ site.title }}" />
   <meta property="og:locale" content="en_US" />
   <meta property="og:fb:app_id" content="616445445121972" />
   <meta property="fb:admins" content="5412120" />
@@ -46,7 +45,6 @@
   <meta name="twitter:title" content="{{ page_title }}" />
   <meta name="twitter:description" content="{{ page_description }}" />
   <meta name="twitter:image" content="{{ page_image }}" />
-  <meta name="twitter:url" content="{{ page_url }}" />
 
   <!-- Icons -->
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
@@ -62,3 +60,20 @@
 
 </head>
 <body>
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '616445445121972',
+        xfbml      : true,
+        version    : 'v2.5'
+      });
+    };
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "//connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+  </script>
