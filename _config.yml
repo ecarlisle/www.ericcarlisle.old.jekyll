@@ -7,6 +7,9 @@ url: ! "http://www.ericcarlisle.com"
 twitter_username: "@eric_carlisle"
 github_username: "ecarlisle"
 facebook_username: "eric.carlisle"
+facebook_app_id: "616445445121972"
+facebook_admins_id: "5412120"
+
 image: "/assets/img/ericcarlisle_800x800.png"
 
 markdown: kramdown

@@ -34,13 +34,13 @@ gulp.task('notify', function() {
 });
 
 gulp.task('styles', function() {
-  return sass('_src/scss/main.scss',{ sourcemap: true, style: 'expanded' })//.on('error', onError)
+  return sass('_src/scss/main.scss',{ sourcemap: false, style: 'expanded' })//.on('error', onError)
     .pipe(addsrc('_src/css/bootstrap-grid.css'))
     .pipe(order(['_src/css/bootstrap-grid.css','_src/scss/main.scss'
     ]))
     .pipe(concat('main.css'))
     //.pipe(combinemq({beautify: true}))
-    .pipe(gulpif(argv.production,sourcemaps.write()))
+    //.pipe(gulpif(argv.production,sourcemaps.write()))
 //  .pipe(minifycss())
   .pipe(gulp.dest('assets/css/'));
 });

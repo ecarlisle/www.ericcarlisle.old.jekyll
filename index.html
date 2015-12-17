@@ -7,47 +7,47 @@ description: Eric Carlisle is a UI Developer and UX Designer.
 <main>
   <article class="row">
     <section class="col-sm-10 col-md-9">
-      <span>
       <h1>Hi!</h1>
-      <img class="headshot-inline-100" src="/assets/img/eric-carlisle-100.png" align="right" alt="Eric Carlisle" />
+      <img class="headshot-inline-100 img-responsive" src="/assets/img/eric-carlisle-100.png" align="right" alt="Eric Carlisle" />
       <p>
         As a UI Developer and UX Designer, my passion is for building the user-facing web and the experiences that make it engaging, compelling, and useful. My core approach is to <em>Keep It Stunningly Simple</em>, a practice encouraging creative innovation while maintaining pragmatic focus. Via this careful balance, outstanding solutions can be created with highest probability of project success.
       </p>
-
       <p>
-        Over the past 20 years I've worked in almost every aspect of web production. Much of his time has been focused on consulting, working in such market verticals as ecommerce, cybersecurity, automotive, sports entertainment, higher education, healthcare, real estate, financial, and nonprofit. I've worked with such companies as:
-      </p>
-      <ul>
-        <li>Universal Mind</li>
-        <li>Under Armour</li>
-        <li>Toyota</li> 
-        <li>World Wildlife Fund</li>
-        <li>The Johns Hopkins University</li>
-        <li>Duke Energy</li>
+        Over the past 20 years I've worked in almost every aspect of web production. Much of his time has been focused on consulting, working in such market verticals as ecommerce, cybersecurity, automotive, sports entertainment, higher education, healthcare, real estate, financial, and nonprofit. I've worked with such companies as Universal Mind, Under Armour, Toyota, World Wildlife Fund, The Johns Hopkins University, and Duke Energy.
       </ul>
     </section>
     <figure class="col-sm-2 col-md-3 center" role="complementary">
-      <img class="headshot-aside-100" src="/assets/img/eric-carlisle-100.png" alt="Eric Carlisle" />
-      <img class="headshot-aside-200" src="/assets/img/eric-carlisle-200.png" alt="Eric Carlisle" />
+      <img class="headshot-aside-100 img-responsive" src="/assets/img/eric-carlisle-100.png" alt="Eric Carlisle" />
+      <img class="headshot-aside-200 img-responsive" src="/assets/img/eric-carlisle-200.png" alt="Eric Carlisle" />
     </figure>
   </article>
 
-  <article class="recent-posts">
+  <article class="recent-posts row">
+    <div class="col-xs-12">
     <h1>Recent Posts</h1>
-    <ul>
+    <table>
       {% for post in site.posts %}
-      <li>
-        <section>
+      <tr>
+        <td>
+          <strong>
+            &#8226;
+          </strong>
+        </td>
+        <td>
           <strong>
             <em>
               <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%b %-d, %Y" }}</time>
-            </em> - 
+            </em>
+        </td>
+        <td>
+          </strong> 
             <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
           </strong>
-        </section>
-      </li>
+        </td>
+      </tr>
       {% endfor %}
-    </ul>
+    </table>
+    </div>
   </article>
 </main>
 <!--

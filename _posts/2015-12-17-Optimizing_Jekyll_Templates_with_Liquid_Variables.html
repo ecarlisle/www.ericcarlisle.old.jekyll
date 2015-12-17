@@ -1,0 +1,127 @@
+---
+layout: post
+type: article
+title: Optimizing Jekyll's head.html Partial for DRY, readable markup.
+author: Eric Carlisle
+date: 2015-12-17 12:00:00
+categories: Jekyll Liquid Ruby
+description: "This article giveas an example of how Liquid may be optimized to keep Jekyll templates DRY and intuitive."  
+image: /assets/img/blog/bower-logo.png
+---
+      
+<img class="img-responsive blog-image" itemprop="thumbnailUrl" src="/assets/img/blog/jekyll.png" alt="Jekyll Logo" title="Jekyll Logo" align="right" />
+
+<p>
+  If you've yet to check out <a href="https://jekyllrb.com/">Jekyll</a>, I'd strongly suggest doing so. It's a very powerful static site generator and a compelling tool for re-discovering strengths of a static website. I use it for <a href="">this website</a>. It's a huge time saver for me, allowing me to devote more time to content creation. Its integraton with <a hrf="https://help.github.com/articles/using-jekyll-with-pages/">Github Pages</a> also makes content publication a snap.
+</p>
+
+<p>
+  For those already already working with Jekyll, you've probably been working with the <a href="http://liquidmarkup.org/">Liquid Ruby library</a> for optimizing templates. Liquid is a quick learn and great tool for Jekyll templating. I recently used with Liquid to customize Jekyll's <a href="https://github.com/jekyll/jekyll/blob/master/lib/site_template/_includes/head.html">head.html include</a> to optimize social channel metatags.
+</p>
+<!--more-->
+<p>Here is a <a href="https://gist.github.com/ecarlisle/6a92bffc12b1a8b07961">Gist</a> showing my approach. To use that Gist as-is, you'll need to add the following mappings to Jekyll's site configuration file, <a href="https://github.com/jekyll/jekyll/blob/master/lib/site_template/_config.yml">_config.yaml</a>.
+</p>
+
+{% highlight yaml %}
+facebook_username: "flash.gordon"
+facebook_app_id: "12345"
+facebook_admins_id: "67890"
+{% endhighlight %}
+
+<p>
+  Im optimizting this partial, I found that Liquid templating can quickly become verbose and less readable when all logic is placed directly in the markup. To mitigate this issue and make the include DRY, I created a handful of Liquid variables at the top of the include.
+</p>
+
+<p>
+  The following example shows the Jekyll default means of making a link tag for a canonical URL.
+</p>
+
+{% highlight html %}
+<link rel="alternate"
+      type="application/rss+xml" 
+      title="{% raw %}{{ site.title }}{% endraw %}" 
+      href="{% raw %}{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}{% endraw %}">
+{% endhighlight %}
+
+<p>
+  The verbosity here is that the two prepends are necessary.  Instead, let's use Liquid's "capture" function to create a variable that will shorten the expression.
+</p>
+
+{% highlight html %}
+{% raw %}{% assign full_url = site.baseurl | prepend: site.url %}{% endraw %}
+
+<link rel="alternate"
+      type="application/rss+xml" 
+      title="{% raw %}{{ site.title }}{% endraw %}" 
+      href="{% raw %}{{ "/feed.xml" | prepend: full_url }}{% endraw %}">
+{% endhighlight %}
+
+While the difference in that example is trivial, Liquid logic can easily add up for other types of content. With Jekyll it's not unusual to have logic checking for very specific content while having more general content as a fallback. Let's say that we're adding a page to a Jekyll site and need content for the meta description. For that content, we've decided to take the following content fallback approach:
+
+<ol>
+  <li>A description mapping placed in the page's front matter YAML</li>
+  <li>A page excerpt, using the page content until a &lt;!--more--&gt; comment is found</li>
+  <li>The site description as set in the site's _config.yaml file</li>
+</ol>
+
+<p>
+  If placed within the markup, the logic for the meta tag would probably look somethis like this.
+</p>
+
+{% highlight html %}
+<meta name="description" 
+      content="{% raw %}{% if page.description %}
+                 {{ page.description | strip | strip_newlines | truncate: 160}}
+               {% else if page.excerpt %}
+                 {{ page.excerpt | strip | strip_newlines | truncate: 160}}
+               {% else %}
+                 {{ site.description | strip | strip_newlines | truncate: 160 }}
+               {% endif %}{% endraw %}">
+{% endhighlight %}
+
+<p>That's not something we don't want in the markup. Let's abstract that out!</p>
+
+{% highlight html %}{% raw %}
+{% capture page_description %}
+{% if page.description %}
+    {{ page.description }}
+  {% else if page.excerpt %}
+    {{ page.excerpt}}
+  {% else %}
+    {{ site.description }}
+  {% endif %}
+{% endcapture %}
+{% assign page_description = page_description | strip | strip_newlines | truncate: 160 %}{% endraw %}
+
+<meta name="description" content="{% raw %}{{ page_description }}{% endraw %}">
+{% endhighlight %}
+
+<p>
+  Now, our markup is much more readable and is reusable for social channel meta tags that need the same content.
+</p>
+
+{% highlight html %}
+<meta name="description" content="{% raw %}{{ page_description }}{% endraw %}">
+<meta property="og:description" content="{% raw %}{{ page_description }}{% endraw %}" />
+<meta name="twitter:description" content="{% raw %}{{ page_description }}{% endraw %}" />
+{% endhighlight %}
+
+<p>
+  <strong>PLEASE NOTE:</strong> When using "capture" to create a Liquid variable, indention causes troublesome whitespace. While the "strip_newlines" function will take some of this out but the "strip" function will not eliminate all whitespace.  When {% raw %}{{ page_description }}{% endraw %} in placed in the markup as the meta description, we'll see something like this:
+</p>
+
+{% highlight html %}
+<meta name="description" content="   This is my page description   ">
+{% endhighlight %}
+
+<p>
+  As of yet, I've not found a way to eliminate all whitespace caused by indention without using a Ruby <a href="https://github.com/aucor/jekyll-plugins">plugin</a>. Such plugins, however, aren't compatible with Jekyll's integration with Github Pages. I'm a big fan of that integration, so you'll in Gist <a href="https://gist.github.com/ecarlisle/6a92bffc12b1a8b07961">Gist</a> that I'm not using indention with "capture" variables.
+</p>
+
+{% highlight liquid %}{% raw %}
+{% capture page_description %}{% if page.description %}{{ page.description }}{% else if page.excerpt %}{{ page.excerpt}}{% else %}{{ site.description }}{% endif %}{% endcapture %}{% assign page_description = page_description | strip | strip_newlines | truncate: 160 %}{% endraw %}
+{% endhighlight %}
+
+<p>
+  That admittedly makes Liquid a bit more of an eyesore, but I prefer that over having dirty markup. :-)
+</p>

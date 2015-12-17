@@ -283,8 +283,17 @@ footer {
   display: none;
 }
 
-// ---------- Index Page ----------
+// Rouge Highlight overrides
+.highlight {
+  .l-Scalar-Plain, .p-Indicator { 
+    color: #F92772; 
+  }
+  color: #ccc;
+  margin-bottom: 2rem;
+}
 
+
+// ---------- Index Page ----------
 .headshot-inline-100 {
   
   @include bp(sm) {
@@ -294,7 +303,6 @@ footer {
   padding-left: 1rem;
   width: 10rem;
 }
-
 
 .headshot-aside-100 {
   display: none;
@@ -327,16 +335,26 @@ footer {
 .recent-posts {
   margin-top: 2rem;
 
-  ul {
-    list-style-type: none;
-    margin: 0 0 0 3rem;
-    padding: 0;
+  table {
+    border-collapse: collapse;
+    padding: 0rem 0 1rem;
+
+    td {
+      padding: 1rem;
+    }
+
   }
 
 }
 
 // ---------- Blog ----------
 .blog {
+
+  .date_author {
+    display: inline-block;
+    margin-bottom: 2rem;
+  }
+
   ul {
     list-style-type: none;
     margin: 0;

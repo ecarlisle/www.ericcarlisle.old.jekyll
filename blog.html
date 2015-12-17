@@ -15,7 +15,7 @@ default: Eric Carlisle's blog is a playground for UI Development, UX Design, and
           <h2 itemprop="name headline">
             <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
           </h2>
-          <strong>
+          <strong class="date_author">
             <em>
               <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">
                 {{ post.date | date: "%b %-d, %Y" }}
