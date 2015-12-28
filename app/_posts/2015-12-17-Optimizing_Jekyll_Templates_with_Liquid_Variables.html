@@ -1,7 +1,7 @@
 ---
 layout: post
 type: article
-title: Optimizing Jekyll Templates with Liquid variables for DRY, Readable Markup.
+title: Optimizing Jekyll Templates with Liquid variables for DRY, Readable Markup
 author: Eric Carlisle
 date: 2015-12-17 12:00:00
 categories: Jekyll Liquid Ruby
@@ -12,7 +12,7 @@ image: /assets/img/blog/jekyll.png
 <img class="img-responsive blog-image" itemprop="thumbnailUrl" src="/assets/img/blog/jekyll.png" alt="Jekyll Logo" title="Jekyll Logo" align="right" />
 
 <p>
-  If you've yet to check out <a href="https://jekyllrb.com/">Jekyll</a>, I'd strongly suggest doing so. It's a very powerful static site generator and a compelling tool for re-discovering strengths of a static website. I use it for <a href="">this website</a>. It's a huge time saver for me, allowing me to devote more time to content creation. Its integraton with <a hrf="https://help.github.com/articles/using-jekyll-with-pages/">Github Pages</a> also makes content publication a snap.
+  If you've yet to check out <a href="https://jekyllrb.com/">Jekyll</a>, I'd strongly suggest doing so. It's a very powerful static site generator and a compelling tool for re-discovering strengths of a static website. I use it for <a href="https://github.com/ecarlisle/ecarlisle.github.io">this website</a>. It's a huge time saver for me, allowing me to devote more time to content creation. Its integraton with <a hrf="https://help.github.com/articles/using-jekyll-with-pages/">Github Pages</a> also makes content publication a snap.
 </p>
 
 <p>
@@ -44,28 +44,34 @@ facebook_admins_id: "67890"
 {% endhighlight %}
 
 <p>
-  The verbosity here is that the two prepends are necessary.  Instead, let's use Liquid's "capture" function to create a variable to shorten the expression.
+  While this approach works, it is optimizable. We can shorten the logic by:
+  <ul>
+    <li>making a variable for the full URL (site.url + base.url).</li>
+    <li>perhaps use the <em>prepend</em> function in variable creation, but not within the markup.</li>
+  </ul>
 </p>
 
 {% highlight html %}
-{% raw %}{% assign full_url = site.baseurl | prepend: site.url %}{% endraw %}
+{% raw %}{% capture full_url %}{{ site.url | prepend: site.baseurl }}{% endcapture %}{% endraw %}
 
 <link rel="alternate"
       type="application/rss+xml" 
       title="{% raw %}{{ site.title }}{% endraw %}" 
-      href="{% raw %}{{ "/feed.xml" | prepend: full_url }}{% endraw %}">
+      href="{% raw %}{{ full_url }}/feed.xml{% endraw %}">
 {% endhighlight %}
 
-While the difference in that example is trivial, Liquid logic can easily add up for other types of content. With Jekyll it's not unusual to have logic checking for very specific content while having more general content as a fallback. Let's say that we're adding a page to a Jekyll site and need content for the meta description. For that content, we've decided to take the following content fallback approach:
+<p>
+  While the gain in this example may be trivial, Liquid logic can easily add up in other cases. With Jekyll it's not unusual to look for the same content in multiple places and select a certain one. Let's say we need content for page meta description and have decided to take the folowing fallback approach:
+</p>
 
 <ol>
-  <li>A description mapping placed in the page's front matter YAML</li>
-  <li>A page excerpt, using the page content until a &lt;!--more--&gt; comment is found</li>
-  <li>The site description as set in the site's _config.yaml file</li>
+  <li>Use a description mapping placed in the page's front matter YAML</li>
+  <li>Use a page excerpt, using all page content until a &lt;!--more--&gt; comment is found</li>
+  <li>Use the site description mapping as set in the site's _config.yaml file</li>
 </ol>
 
 <p>
-  If placed within the markup, the logic for the meta tag would probably look somethis like this.
+  If placed within the markup, the logic for the meta tag would probably look somethis like this:
 </p>
 
 {% highlight html %}
@@ -97,7 +103,7 @@ While the difference in that example is trivial, Liquid logic can easily add up 
 {% endhighlight %}
 
 <p>
-  Now, our markup is much more readable and is reusable for social channel meta tags that need the same content.
+  Now, our markup is much more readable and the variable is page_description is reusable.
 </p>
 
 {% highlight html %}
@@ -107,21 +113,39 @@ While the difference in that example is trivial, Liquid logic can easily add up 
 {% endhighlight %}
 
 <p>
-  <strong>PLEASE NOTE:</strong> When using "capture" to create a Liquid variable, indention causes troublesome whitespace. While the "strip_newlines" function will take some of this out but the "strip" function will not eliminate all whitespace.  When {% raw %}{{ page_description }}{% endraw %} in placed in the markup as the meta description, we'll see something like this:
+  Also notice that we're using two different Liquid tags for variable assignment. The <em>capture</em> tag allows conditional logic to be used when setting a variable. The <em>assign</em> tag is then used to clean up the variable's initial assignment.
+</p>
+
+<p>
+  <strong>PLEASE NOTE:</strong> When using the <em>capture</em> tag to create a Liquid variable, any indention whitespace is placed in that variable. While the <em>strip_newlines</em> function will take out linebreaks, we're left with surrounding whitespace that cannot even be removed by other string functions such as <em>strip</em>, <em>lstrip</em>, and <em>rstrip</em>. When the {% raw %}{{ page_description }}{% endraw %} variable is placed in the markup, we'll see something like this:
 </p>
 
 {% highlight html %}
 <meta name="description" content="   This is my page description   ">
 {% endhighlight %}
 
-<p>
-  As of yet, I've not found a way to eliminate all whitespace caused by indention without using a Ruby <a href="https://github.com/aucor/jekyll-plugins">plugin</a>. Such plugins, however, aren't compatible with Jekyll's integration with Github Pages. I'm a big fan of that integration, so you'll in Gist <a href="https://gist.github.com/ecarlisle/6a92bffc12b1a8b07961">Gist</a> that I'm not using indention with "capture" variables.
-</p>
+<p>This is definitely not acceptable, but we have some options. We could just not use indentation when creating the <em>page_description</em> variable.</p>
 
 {% highlight liquid %}{% raw %}
 {% capture page_description %}{% if page.description %}{{ page.description }}{% else if page.excerpt %}{{ page.excerpt}}{% else %}{{ site.description }}{% endif %}{% endcapture %}{% assign page_description = page_description | strip | strip_newlines | truncate: 160 %}{% endraw %}
 {% endhighlight %}
 
 <p>
-  That admittedly makes Liquid a bit more of an eyesore, but I prefer that over having dirty markup. :-)
+  This prevents the indentation whitespace but is no fun to read.  There's also a Ruby <a href="https://github.com/aucor/jekyll-plugins">plugin</a> that can remove indentation whitespace, but such plugins aren't compatible with Jekyll's integration with Github Pages. I want to maintain readability and integration with Github Pages.</p>
 </p>
+
+<p>
+  The best solution I've found thus far is not intuitive but gets the job done. You can use Liquid's array functions to split and rejoin a string using " " as a delimiter. So we'll include this with other string manipulation happening in the <em>assign</em> tag.
+</p>
+
+{% highlight liquid %}{% raw %}
+{% assign page_description = page_description | strip_newlines | split: ' ' | join: ' ' | truncate: 160 %}
+{% endraw %}{% endhighlight %}
+
+<p>Now get the set of characters that we're looking for!</p>
+
+{% highlight html %}
+<meta name="description" content="This is my page description">
+{% endhighlight %}
+
+

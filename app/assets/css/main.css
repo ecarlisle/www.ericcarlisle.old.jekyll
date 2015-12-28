@@ -1572,7 +1572,7 @@ footer {
   padding: 0rem 0 1rem;
 }
 .recent-posts table td {
-  padding: 1rem;
+  padding: 0 1rem 10rem;
 }
 
 .blog .date_author {
@@ -1587,6 +1587,10 @@ footer {
 .blog ul li {
   margin: 0;
   padding: 0;
+}
+
+.blogroll ul li {
+  margin-bottom: 5rem;
 }
 
 #disqus_thread {

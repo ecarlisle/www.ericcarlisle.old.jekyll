@@ -24,7 +24,7 @@ var gulp = require('gulp'),
   gulpif = require('gulp-if');
 
 gulp.task('clean', function() {
-  return gulp.src(['_site/*','assets/*'])
+  return gulp.src(['_site/*','app/assets/*'])
     .pipe(plumber())
     .pipe(rimraf());
 });
@@ -34,7 +34,7 @@ gulp.task('notify', function() {
 });
 
 gulp.task('styles', function() {
-  return sass('_src/scss/main.scss',{ sourcemap: false, style: 'expanded' })//.on('error', onError)
+  return sass('_src/scss/main.scss',{ sourcemap: false, style: 'expanded' }).on('error', onError)
     .pipe(addsrc('_src/css/bootstrap-grid.css'))
     .pipe(order(['_src/css/bootstrap-grid.css','_src/scss/main.scss'
     ]))
@@ -42,7 +42,7 @@ gulp.task('styles', function() {
     //.pipe(combinemq({beautify: true}))
     //.pipe(gulpif(argv.production,sourcemaps.write()))
 //  .pipe(minifycss())
-  .pipe(gulp.dest('assets/css/'));
+  .pipe(gulp.dest('app/assets/css/'));
 });
 
 gulp.task('scripts', function() {
@@ -58,37 +58,28 @@ gulp.task('scripts', function() {
     .pipe(concat('main.js'))
     .pipe(uglify())
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('assets/js'));
+    .pipe(gulp.dest('app/assets/js'));
 });
 
 gulp.task('fonts', function() {
-  
-
   return gulp.src(['_src/fonts/**/*'])
-    .pipe(gulp.dest('assets/fonts'));
+    .pipe(gulp.dest('app/assets/fonts'));
 });
 
 gulp.task('images', function() {
   return gulp.src('_src/img/**/*')
-    .pipe(gulp.dest('assets/img'));
+    .pipe(gulp.dest('app/assets/img'));
 });
 
 gulp.task('svg', function() {
   return gulp.src('_src/svg/**/*')
-    .pipe(gulp.dest('assets/svg'));
+    .pipe(gulp.dest('app/assets/svg'));
 });
 
 gulp.task('jekyll', function() {
   return cp.execSync(['jekyll build'], {
     stdio: 'inherit'
   });
-});
-
-gulp.task('jekyll-incremental', function() {
-  return cp.execSync(['jekyll build --quiet'], {
-    stdio: 'inherit'
-  });
-  livereload.reload();
 });
 
 gulp.task('default', function() {
@@ -98,31 +89,14 @@ gulp.task('default', function() {
 
 
 gulp.task('watch', function() {
-
-  gulp.watch(['_src/scss/**/*.scss','_src/css/**/*.css'], function(file) {
-    sequence('styles', 'jekyll-incremental');
-  });
-
-  gulp.watch('_src/svg/**/*.svg', function(file) {
-    sequence('svg', 'jekyll-incremental');
-  });
-
-  gulp.watch('_src/js/**/*.js', function(file) {
-    sequence('scripts', 'jekyll-incremental');
-  });
-
-  gulp.watch('_src/img/**/*.*', function(file) {
-    sequence('images', 'jekyll-incremental');
-  });
-
-  gulp.watch('_src/fonts/**/*.*', function(file) {
-    sequence('fonts', 'jekyll-incremental');
-  });
-
+  gulp.watch(['_src/scss/**/*.scss','_src/css/**/*.css'], ['styles']);
+  gulp.watch('_src/svg/**/*.svg', ['svg']);
+  gulp.watch('_src/js/**/*.js', ['scripts']);
+  gulp.watch('_src/img/**/*.*', ['images']);
+  gulp.watch('_src/fonts/**/*.*', ['fonts']);
   gulp.watch(['*.html', '_layouts/*.html', '_posts/*.*', '_includes/*.html'], function(file) {
-    sequence('jekyll-incremental');
+    sequence('jekyll');
   });
-
 });
 
 function onError(err) {

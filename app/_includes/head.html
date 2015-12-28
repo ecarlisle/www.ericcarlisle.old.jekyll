@@ -1,11 +1,45 @@
-{% assign full_url = site.baseurl | prepend: site.url %}
-{% capture page_title %}{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}{% endcapture %}
-{% assign page_title = page_title | escape | strip_newlines | strip %}
-{% capture page_type %}{% if page.type %}{{ page.type }}{% else %}article{% endif %}{% endcapture %}
+{% capture full_url %}{{ site.baseurl | prepend: site.url }}{% endcapture %}
+
+{% capture page_title %}
+  {% if page.title %}
+    {{ page.title }}
+  {% else %}
+    {{ site.title }}
+  {% endif %}
+{% endcapture %}
+{% assign page_title = page_title | strip_newlines | split: ' ' | join: ' ' %}
+
+{% capture page_type %}
+  {% if page.type %}
+    {{ page.type }}
+  {% else %}
+    article
+  {% endif %}
+{% endcapture %}
+{% assign page_type = page_type | strip_newlines | split: ' ' | join: ' ' %}
+
 {% capture page_url %}{{ page.url | replace:'index.html','' | prepend: full_url }}{% endcapture %}
-{% capture rss_feed %}{{ "/feed.xml" | prepend: full_url }}{% endcapture %}
-{% capture page_image %}{% if page.image %}{{ page.image | prepend: full_url }}{% else %}{{ site.image | prepend: full_url }}{% endif %}{% endcapture %}
-{% capture page_description %}{% if page.description %}{{ page.description }}{% else if page.excerpt %}{{ page.excerpt}}{% else %}{{ site.description }}{% endif %}{% endcapture %}{% assign page_description = page_description | strip | strip_newlines | truncate: 160 %}
+
+{% capture page_image %}
+  {% if page.image %}
+    {{ page.image | prepend: full_url }}
+  {% else %}
+    {{ site.image | prepend: full_url }}
+  {% endif %}
+{% endcapture %}
+{% assign page_image = page_image | strip_newlines | split: ' ' | join: ' ' %}
+
+{% capture page_description %}
+  {% if page.description %}
+    {{ page.description }}
+  {% else if page.excerpt %}
+    {{ page.excerpt}}
+  {% else %}
+    {{ site.description }}
+  {% endif %}
+{% endcapture %}
+{% assign page_description = page_description | strip_newlines | split: ' ' | join: ' ' | truncate: 160 %}
+
 {% assign apple_icon_sizes = "57,72,76,114,120,144,152,180" | split: "," %}
 <head>
   <!-- General Metadata -->
@@ -16,7 +50,7 @@
   <meta name="description" content="{{ page_description }}">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="{{page_url}}">
-  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ rss_feed }}">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ feed_url }}/feed.xml">
 
   <!-- Front-End Resources -->
   <link rel="stylesheet" href="{{ "/assets/css/main.css" | prepend: site.baseurl }}">
