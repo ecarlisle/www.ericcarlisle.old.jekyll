@@ -3,9 +3,6 @@ title: ! "Eric Carlisle : UI Developer, UX Designer"
 email: eric@ericcarlisle.com
 description: "Eric has 20 years of experience in full-stack website development, with a passion for user interface development and user experience design."
 baseurl: ""
-
-source: "./app"
-
 url: ! "http://www.ericcarlisle.com"
 twitter_username: "@eric_carlisle"
 github_username: "ecarlisle"
