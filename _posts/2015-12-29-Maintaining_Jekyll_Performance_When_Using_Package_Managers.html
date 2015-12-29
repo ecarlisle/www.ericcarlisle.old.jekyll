@@ -1,0 +1,126 @@
+---
+layout: post
+type: article
+title: Maintaining Jekyll Performance When Using Package Managers
+author: Eric Carlisle
+date: 2015-12-29 13:21:00
+categories: Jekyll Ruby Underscore
+description: "Jekyll uses a preceding underscore to exclude resources from a site build. This article explains how to prevent performance drops by files added by package managers."  
+image: /assets/img/blog/jekyll.png
+---
+      
+<img class="img-responsive blog-image" itemprop="thumbnailUrl" src="/assets/img/blog/jekyll.png" alt="Jekyll Logo" title="Jekyll Logo" align="right" />
+
+<p>
+  When getting started with a <a href="http://jekyllrb.com/docs/structure/">Jekyll</a> site, it's very important to learn about its <a href="http://jekyllrb.com/docs/structure/">directory structure</a> and how that works with the Jekyll generator. Most of this is very intuitative and you'll be quickly learning where to place templates, partials, posts, and general content pages. 
+</p>
+
+<p>
+  You'll notice all the initial folders and the site configuration file begin with an underscore.
+</p>
+
+{% highlight bash %}
+.
+├── _config.yml
+├── _drafts
+├── _includes
+├── _layouts
+├── _posts
+├── _data
+├── _site
+└── index.html
+{% endhighlight %}
+
+<p>
+  These folders are essentially plumbing that Jekyll needs to generate the site. When adding new files and folders, however, the underscore convention is very important. By naming a resource with a preceding underscore, you're telling Jekyll to exclude that file or folder from the site's build process.
+</p>
+
+<p>
+  Let's add a few new resources to this site: 
+</p>
+
+{% highlight bash %}
+.
+├── _projects.html
+├── contact.html
+├── _images
+└── scripts
+{% endhighlight %}
+
+<p>
+  On the next Jekyll build, the generator will ignore the <em>projects.html</em> file and <em>images</em> directory. The remaining items will be processed and placed into the <em>_site</em>, the default Jekyll destination directory.  
+</p>
+
+{% highlight bash %}
+.
+├── _projects.html
+├── contact.html
+├── _images
+├── _site
+|   ├── scripts
+|   └── contact.html
+└── scripts
+{% endhighlight %}
+
+<p>
+  Pretty straight forward, right? A straight-forward convention that's easy to remember. What could possibly go wrong?
+</p>
+
+<p>
+  One day I started noticing that my Jekyll builds were taking upwards of 2-3 minutes.  This is a tremendous lag compared to the subsecond build time I'd become accustomed to. After much Googling and some hair-pulling, I found the culprits.
+</p>
+
+{% highlight bash %}
+.
+├── bower_components
+└── node_modules
+{% endhighlight %}
+
+<p>
+  I'd recently started using NPM and Bower for that site. By not having the underscore on the package download folders, I was asking Jekyll to include an unneeded 12,000+ files in each build. Ouch!
+</p>
+
+<p>
+  The workaround for this is very easy and there were a couple of choices. If you're using Bower, you can customize it's download directory by making a <em>.bowerrc</em> file. 
+</p>
+
+{% highlight json %}
+{
+  "directory": "_bower_components/"
+}
+{% endhighlight %}
+
+<p>
+  Node doesn't allow customization of the <em>node_modules</em> directory but we can alternately exclude via <a href="http://jekyllrb.com/docs/configuration/">_config.yml</a>, Jekyll's site configuration file.
+</p>
+
+{% highlight yaml %}
+exclude:
+  - bower_components
+  - node_modules
+{% endhighlight %}
+
+<p>
+  The exclude option is very handy, especially when you can't or don't want to deal with underscores.
+</p>
+
+{% highlight yaml %}
+exclude:
+  - bower_components
+  - bower.json
+  - CNAME
+  - gulpfile.js
+  - node_modules
+  - license.md
+  - package.json
+  - README.md
+  - npm-debug.log
+{% endhighlight %}
+
+<p>
+  After making those changes, I was back to seeing the heart-warming subsecond build times again. Yay!
+</p>
+
+{% highlight bash %}
+Regenerating: 1 file(s) changed at 2015-12-29 13:01:22 ...done in 0.243629 seconds.
+{% endhighlight %}
