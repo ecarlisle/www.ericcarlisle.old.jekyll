@@ -8,19 +8,9 @@
     </a>
   </div>
   <div class="col-lg-6">
-    <nav class="top-nav" role="Navigation">
+    <nav class="top-nav" role="navigation">
       <ul>
-        <li>
-          <a href="/" alt="About" title="About">About</a>
-        </li><li>
-          <a href="/blog" alt="Blog" title="Blog">Blog</a>
-        </li><li>
-          <a href="/speaking" alt="Speaking" title="Speaking">Speaking</a>
-        </li><li>
-          <a href="/portfolio" alt="Portfolio" title="Portfolio">Portfolio</a>
-        </li><!--<li>
-          <a href="/contact" alt="Contact" title="Contact">Contact</a>
-        </li>-->
+        {% for nav in site.top_navigation %}<li><a href="{{ nav.url }}" title=" {{ nav.label }}">{{ nav[0].label }}</a></li>{% endfor %}
       </ul>
     </nav>
   </div>
