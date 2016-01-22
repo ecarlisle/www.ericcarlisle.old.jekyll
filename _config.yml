@@ -9,8 +9,21 @@ github_username: "ecarlisle"
 facebook_username: "eric.carlisle"
 facebook_app_id: "616445445121972"
 facebook_admins_id: "5412120"
+locale: "en_US"
 
 image: "/assets/img/ericcarlisle_800x800.png"
+
+top_navigation: 
+  - label: "About"
+    url: "/about"
+  - label: "Blog"
+    url: "/blog"
+  - label: "Speaking"
+    url: "/speaking"
+  - label: "Portfolio"
+    url: "/portfolio"
+  - label: "Contact"
+    url: "/contact"
 
 markdown: kramdown
 excerpt_separator: "<!--more-->"
