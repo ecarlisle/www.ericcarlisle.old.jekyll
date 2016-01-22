@@ -1,18 +1,16 @@
 <header class="row top-header" itemscope itemtype="http://schema.org/Person">
   <div class="brand col-lg-6">
     <span class="mobile-menu">&#9776;&nbsp;</span>
-    <h1>
-      <a href="/" title="About">
-        <span class="brand-title" itemprop="name">Eric Carlisle</span>
-        <span class="brand-delimiter">:</span>
-        <span class="brand-subtitle" itemprop="jobTitle">UI Developer, UX Designer</span>
-      </a>
-    </h1>
+    <a href="/" title="About">
+      <span class="brand-title" itemprop="name">Eric Carlisle</span>
+      <span class="brand-delimiter">:</span>
+      <span class="brand-subtitle" itemprop="jobTitle">UI Developer, UX Designer</span>
+    </a>
   </div>
   <div class="col-lg-6">
-    <nav class="top-nav" role="navigation">
+    <nav class="top-nav">
       <ul>
-        {% for nav in site.top_navigation %}<li><a href="{{ nav.url }}" title=" {{ nav.label }}">{{ nav[0].label }}</a></li>{% endfor %}
+        {% for nav in site.top_navigation %}<li><a href="{{ nav.url }}" title=" {{ nav.label }}">{{ nav.label }}</a></li>{% endfor %}
       </ul>
     </nav>
   </div>
