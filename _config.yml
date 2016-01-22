@@ -22,8 +22,6 @@ top_navigation:
     url: "/speaking"
   - label: "Portfolio"
     url: "/portfolio"
-  - label: "Contact"
-    url: "/contact"
 
 markdown: kramdown
 excerpt_separator: "<!--more-->"
