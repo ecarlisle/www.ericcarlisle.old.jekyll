@@ -15,7 +15,7 @@ image: "/assets/img/ericcarlisle_800x800.png"
 
 top_navigation: 
   - label: "About"
-    url: "/about"
+    url: "/"
   - label: "Blog"
     url: "/blog"
   - label: "Speaking"
