@@ -1,28 +1,20 @@
----
-layout: default
-title: 404
-permalink: /404.html
----
-
+--- layout: default title: 404 permalink: /404.html ---
 <main class="error">
   <h1>Yikes, Page not Found! 404 and Stuff!</h1>
-  <p>
-    Teleporting you to actual content in <span id="countdown">5</span>
-  </p>
-  <figure>
-    <img class="img-responsive center-block" src="/assets/img/eric-carlisle-404-not-found.png" alt="Not Found" class="center" />
-  </figure>
+  <p>Teleporting you to actual content in <span id="countdown">5</span></p>
+  <figure><img class="img-responsive center-block" src="/assets/img/eric-carlisle-404-not-found.png" alt="Not Found" class="center"></figure>
 </main>
-
 <script>
-(function(){
-  setInterval(function(){
-    var count = parseInt(document.querySelector('#countdown').innerText);
-    if (count === 1) {
-      window.location.href = "/";
-    }
-    document.querySelector('#countdown').innerText = count - 1
-
-  },1000)
-})()
+  (function()
+  {
+    setInterval(function()
+    {
+      var count = parseInt(document.querySelector('#countdown').innerText);
+      if (count === 1)
+      {
+        window.location.href = "/";
+      }
+      document.querySelector('#countdown').innerText = count - 1
+    }, 1000)
+  })()
 </script>

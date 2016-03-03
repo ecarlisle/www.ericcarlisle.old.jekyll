@@ -1,43 +1,18 @@
----
-layout: default
-title: Blog
-type: blogroll
-default: Eric Carlisle's blog is a playground for UI Development, UX Design, and similar geekery.
----
+--- layout: default title: blog type: blogroll default: Eric Carlisle's blog is a playground for UI Development, UX Design, and similar geekery. ---
 <main class="blog">
   <h1>{{ page.title }}</h1>
-
   <article class="row">
     <section class="col-sm-10">
-      <ul>
-      {% for post in site.posts %}
+      <ul>{% for post in site.posts %}
         <li itemscope itemtype="http://schema.org/BlogPosting">
-          <h2 itemprop="name headline">
-            <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-          </h2>
-          <strong class="date_author">
-            <em>
-              <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">
-                {{ post.date | date: "%b %-d, %Y" }}
-              </time>
-              {% if post.author %} &middot; <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name publisher">{{ post.author }}</span></span>{% endif %}
-            </em>
-          </strong>
-          {{ post.excerpt }}
-        </li>
-      {% endfor %}
-      </ul>
+          <h2 itemprop="name headline"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h2><strong class="date_author"><em><time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%b %-d, %Y" }}</time> {% if post.author %} &middot; <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name publisher">{{ post.author }}</span></span>{% endif %}</em></strong>          {{ post.excerpt }}</li>{% endfor %}</ul>
     </section>
     <section class="col-sm-2">
       <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      <!-- Blog Pages -->
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-1380430605264409"
-           data-ad-slot="1628929778"
-           data-ad-format="auto"></ins>
+      <!-- Blog Pages --><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1380430605264409" data-ad-slot="1628929778" data-ad-format="auto"></ins>
       <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
+        (adsbygoogle = window.adsbygoogle || []).push(
+        {});
       </script>
     </section>
   </article>

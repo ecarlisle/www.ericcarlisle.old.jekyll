@@ -1,12 +1,12 @@
 @import 'variables';
 @import 'mixins';
 
-@include font-face('exo','../fonts/exo/exo-regular','normal','normal');
-//@include font-face('exo','../fonts/exo/exo-bold','bold','normal');
-@include font-face('roboto','../fonts/roboto/roboto-regular','normal','normal');
-//@include font-face('roboto','../fonts/roboto/roboto-italic','normal','italic');
-//@include font-face('roboto','../fonts/roboto/roboto-bold','bold','normal');
-//@include font-face('roboto','../fonts/roboto/roboto-bolditalic','bold','italic');
+@include font-face('exo','../fonts/exo/exo-regular',normal,normal);
+@include font-face('exo','../fonts/exo/exo-bold',bold,normal);
+@include font-face('roboto','../fonts/roboto/roboto-regular',normal,normal);
+@include font-face('roboto','../fonts/roboto/roboto-italic',normal,italic);
+@include font-face('roboto','../fonts/roboto/roboto-bold',bold,normal);
+@include font-face('roboto','../fonts/roboto/roboto-bolditalic',bold,italic);
 
 html, body {
   margin: 0;
@@ -53,34 +53,35 @@ h1 {
   font-size: 2.5rem;
   margin: 0 0 1rem;
 
+  @include bp(md) {
+    margin: 0 0 2rem;
+  }
+
   @include bp(sm) {
     font-size: 3.5rem;
     margin: 0 0 1.5rem;
   }
-  @include bp(md) {
-    margin: 0 0 2rem;
-  }
 }
 
 h2 {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   margin: 0 0 0.8rem;
 
   @include bp(sm) {
-    font-size: 1.8rem;
-  }
-  @include bp(md) {
     font-size: 2.0rem;
   }
 
+  @include bp(md) {
+    font-size: 3rem;
+  }
 }
 
 p {
   margin: 0 0 2rem;
 }
 
-header.top-header {
 
+header.top-header {
   border-bottom: solid 1px $black;
   font-family: 'exo', serif;
   padding: 1rem 0;
@@ -137,7 +138,7 @@ pre {
 
 .brand-delimiter, .brand-subtitle {
   color: $gray;
-  font: bold 1.8rem 'exo', serif;
+  font: 1.8rem 'exo', serif;
   text-transform: lowercase;
 
   @include bp(sm) {
@@ -150,7 +151,7 @@ pre {
 
 nav.top-nav {
   display: none;
-  font: bold 1.6rem/1 'exo', serif;
+  font: 1.6rem/1 'exo', serif;
   margin: 0;
   text-align: right;
 
@@ -303,6 +304,7 @@ footer {
   @include bp(sm) {
     display: none;
   }
+  float: right;
   height: 10rem;
   padding-left: 1rem;
   width: 10rem;
@@ -365,7 +367,7 @@ footer {
     padding: 0;
 
     li {
-      margin: 0;
+      margin: 0 0 2rem;
       padding: 0;
     }
   }

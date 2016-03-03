@@ -14,6 +14,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -1230,16 +1231,56 @@ hr {
 @font-face {
   font-family: "exo";
   src: url("../fonts/exo/exo-regular.eot");
+  /* IE9 Compatibility Modes */
   src: url("../fonts/exo/exo-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/exo/exo-regular.woff2") format("woff2"), url("../fonts/exo/exo-regular.woff") format("woff"), url("../fonts/exo/exo-regular.ttf") format("truetype"), url("../fonts/exo/exo-regular.svg#exo") format("svg");
-  font-weight: "normal";
-  font-style: "normal";
+  /* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "exo";
+  src: url("../fonts/exo/exo-bold.eot");
+  /* IE9 Compatibility Modes */
+  src: url("../fonts/exo/exo-bold.eot?#iefix") format("embedded-opentype"), url("../fonts/exo/exo-bold.woff2") format("woff2"), url("../fonts/exo/exo-bold.woff") format("woff"), url("../fonts/exo/exo-bold.ttf") format("truetype"), url("../fonts/exo/exo-bold.svg#exo") format("svg");
+  /* Legacy iOS */
+  font-weight: bold;
+  font-style: normal;
 }
 @font-face {
   font-family: "roboto";
   src: url("../fonts/roboto/roboto-regular.eot");
+  /* IE9 Compatibility Modes */
   src: url("../fonts/roboto/roboto-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/roboto-regular.woff2") format("woff2"), url("../fonts/roboto/roboto-regular.woff") format("woff"), url("../fonts/roboto/roboto-regular.ttf") format("truetype"), url("../fonts/roboto/roboto-regular.svg#roboto") format("svg");
-  font-weight: "normal";
-  font-style: "normal";
+  /* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "roboto";
+  src: url("../fonts/roboto/roboto-italic.eot");
+  /* IE9 Compatibility Modes */
+  src: url("../fonts/roboto/roboto-italic.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/roboto-italic.woff2") format("woff2"), url("../fonts/roboto/roboto-italic.woff") format("woff"), url("../fonts/roboto/roboto-italic.ttf") format("truetype"), url("../fonts/roboto/roboto-italic.svg#roboto") format("svg");
+  /* Legacy iOS */
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: "roboto";
+  src: url("../fonts/roboto/roboto-bold.eot");
+  /* IE9 Compatibility Modes */
+  src: url("../fonts/roboto/roboto-bold.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/roboto-bold.woff2") format("woff2"), url("../fonts/roboto/roboto-bold.woff") format("woff"), url("../fonts/roboto/roboto-bold.ttf") format("truetype"), url("../fonts/roboto/roboto-bold.svg#roboto") format("svg");
+  /* Legacy iOS */
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "roboto";
+  src: url("../fonts/roboto/roboto-bolditalic.eot");
+  /* IE9 Compatibility Modes */
+  src: url("../fonts/roboto/roboto-bolditalic.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/roboto-bolditalic.woff2") format("woff2"), url("../fonts/roboto/roboto-bolditalic.woff") format("woff"), url("../fonts/roboto/roboto-bolditalic.ttf") format("truetype"), url("../fonts/roboto/roboto-bolditalic.svg#roboto") format("svg");
+  /* Legacy iOS */
+  font-weight: bold;
+  font-style: italic;
 }
 html, body {
   margin: 0;
@@ -1283,30 +1324,30 @@ h1 {
   font-size: 2.5rem;
   margin: 0 0 1rem;
 }
+@media all and (min-width: 992px) {
+  h1 {
+    margin: 0 0 2rem;
+  }
+}
 @media all and (min-width: 768px) {
   h1 {
     font-size: 3.5rem;
     margin: 0 0 1.5rem;
   }
 }
-@media all and (min-width: 992px) {
-  h1 {
-    margin: 0 0 2rem;
-  }
-}
 
 h2 {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   margin: 0 0 0.8rem;
 }
 @media all and (min-width: 768px) {
   h2 {
-    font-size: 1.8rem;
+    font-size: 2.0rem;
   }
 }
 @media all and (min-width: 992px) {
   h2 {
-    font-size: 2.0rem;
+    font-size: 3rem;
   }
 }
 
@@ -1364,7 +1405,7 @@ pre {
 
 .brand-delimiter, .brand-subtitle {
   color: #666;
-  font: bold 1.8rem 'exo', serif;
+  font: 1.8rem 'exo', serif;
   text-transform: lowercase;
 }
 @media all and (min-width: 768px) {
@@ -1380,7 +1421,7 @@ pre {
 
 nav.top-nav {
   display: none;
-  font: bold 1.6rem/1 'exo', serif;
+  font: 1.6rem/1 'exo', serif;
   margin: 0;
   text-align: right;
 }
@@ -1508,6 +1549,10 @@ footer {
   text-align: center;
 }
 
+.center-block {
+  margin: 0 auto;
+}
+
 .small {
   font-size: 1.2rem;
 }
@@ -1525,6 +1570,7 @@ footer {
 }
 
 .headshot-inline-100 {
+  float: right;
   height: 10rem;
   padding-left: 1rem;
   width: 10rem;
@@ -1585,7 +1631,7 @@ footer {
   padding: 0;
 }
 .blog ul li {
-  margin: 0;
+  margin: 0 0 2rem;
   padding: 0;
 }
 

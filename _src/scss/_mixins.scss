@@ -1,16 +1,28 @@
 @mixin font-face($family, $filename, $weight, $style) {
   @font-face {
-      font-family: quote($family);
-    src: url('#{$filename}.eot');
-    src: url('#{$filename}.eot?#iefix') format('embedded-opentype'),
-         url('#{$filename}.woff2') format('woff2'),
-         url('#{$filename}.woff') format('woff'),
-         url('#{$filename}.ttf') format('truetype'),
-         url('#{$filename}.svg##{$family}') format('svg');
+    font-family: '#{$family}';
+    src: url('#{$filename}.eot');                                     /* IE9 Compatibility Modes */
+    src: url('#{$filename}.eot?#iefix') format('embedded-opentype'),  /* IE6-IE8 */  
+         url('#{$filename}.woff2') format('woff2'),                   /* Super Modern Browsers */
+         url('#{$filename}.woff') format('woff'),                     /* Pretty Modern Browsers */
+         url('#{$filename}.ttf') format('truetype'),                  /* Safari, Android, iOS */
+         url('#{$filename}.svg##{$family}') format('svg');            /* Legacy iOS */
     font-weight: $weight;
     font-style: $style;
   }
 }
+
+//@font-face {
+//  font-family: 'MyWebFont';
+//  src: url('webfont.eot'); /* IE9 Compat Modes */
+//  src: url('webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+//       url('webfont.woff2') format('woff2'), /* Super Modern Browsers */
+//       url('webfont.woff') format('woff'), /* Pretty Modern Browsers */
+//       url('webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+//       url('webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+//}
+
+
 
 @mixin bp($width) {
   @if $width == xs {

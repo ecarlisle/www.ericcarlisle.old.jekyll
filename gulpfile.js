@@ -21,7 +21,9 @@ var gulp = require('gulp'),
   uglify = require('gulp-uglify'),
   filter = require('gulp-filter'),
   argv = require('yargs').argv,
-  gulpif = require('gulp-if');
+  gulpif = require('gulp-if'),
+  htmlmin = require('gulp-htmlmin'),
+  prettify = require('gulp-prettify');
 
 gulp.task('clean', function() {
   return gulp.src(['_site/*','assets/*'])
@@ -61,6 +63,12 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest('assets/js'));
 });
 
+gulp.task('html', function() {
+  return gulp.src('./*.html')
+    .pipe(prettify({indent_size: 2}))
+    .pipe(gulp.dest('.'));
+});
+
 gulp.task('fonts', function() {
   return gulp.src(['_src/fonts/**/*'])
     .pipe(gulp.dest('assets/fonts'));
@@ -76,15 +84,17 @@ gulp.task('svg', function() {
     .pipe(gulp.dest('assets/svg'));
 });
 
+/*
 gulp.task('jekyll', function() {
   return cp.execSync(['jekyll build'], {
     stdio: 'inherit'
   });
 });
+*/
 
 gulp.task('default', function() {
   var server = livereload({start:true});
-  sequence('clean', ['scripts', 'styles', 'fonts', 'images', 'svg'], 'jekyll', 'watch');
+  sequence('clean', ['scripts', 'styles', 'fonts', 'images', 'svg', 'html'], 'watch');
 });
 
 
@@ -94,9 +104,12 @@ gulp.task('watch', function() {
   gulp.watch('_src/js/**/*.js', ['scripts']);
   gulp.watch('_src/img/**/*.*', ['images']);
   gulp.watch('_src/fonts/**/*.*', ['fonts']);
+  gulp.watch('./*.html', ['html']);
+  /*
   gulp.watch(['*.html', '_layouts/*.html', '_posts/*.*', '_includes/*.html'], function(file) {
     sequence('jekyll');
   });
+  */
 });
 
 function onError(err) {

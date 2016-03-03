@@ -1,75 +1,65 @@
 ---
-layout: default
-title: Eric Carlisle - UI Developer, UX Designer
-description: Eric Carlisle is a UI Developer and UX Designer.
+layout: default 
+title: Eric Carlisle - UI Developer, UX Designer 
+description: Eric Carlisle is a UI Developer and UX Designer. 
 ---
-
-<main>
-  <article class="row">
-    <section class="col-sm-10 col-md-9">
-      <h1>Hi!</h1>
-      <img class="headshot-inline-100 img-responsive" src="/assets/img/eric-carlisle-100.png" align="right" alt="Eric Carlisle" />
-      
-      <p>
-        As a UI Developer and UX Designer, my passion is in building the user-facing web and the experiences that make it engaging, compelling, and useful. My core approach is to <em>Keep It Stunningly Simple</em>, a practice encouraging creative innovation while maintaining pragmatic focus. Via this careful balance, outstanding solutions can be created with highest probability of project success.
-      </p>
-      
-      <p>
-        Over the past 20 years I've worked in many aspects of web production. Much of his time has been focused on consulting, allowing me to work in several commercial market vertical, nonprofit and not-for-profit organizations, and departments of state and federal government. Professional engagements include projects in  ecommerce, cybersecurity, automotive, sports entertainment, higher education, healthcare, real estate, financial, and nonprofit. I've worked with such companies as Universal Mind, Under Armour, Toyota, World Wildlife Fund, The Johns Hopkins University, and Duke Energy.
-      </p>
-
-    </section>
-    <figure class="col-sm-2 col-md-3 center" role="complementary">
-      <img class="headshot-aside-100 img-responsive" src="/assets/img/eric-carlisle-100.png" alt="Eric Carlisle" />
-      <img class="headshot-aside-200 img-responsive" src="/assets/img/eric-carlisle-200.png" alt="Eric Carlisle" />
-    </figure>
-  </article>
-
-  <article class="services row">
-    <section class="col-sm-4">
-      
-
-    </section>
-    <section class="col-sm-4">
-      
-
-    </section>
-    <section class="col-sm-4">
-      
-      
-    </section>
-
-  </article>
-  <article class="recent-posts row">
-    <div class="col-xs-12">
-    <h1>Recent Posts</h1>
-    <table>
-      {% for post in site.posts %}
-      <tr>
-        <td>
-          <strong>
-            &#8226;
-          </strong>
-        </td>
-        <td>
-          <strong>
-            <em>
-              <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%b %-d, %Y" }}</time>
-            </em>
-        </td>
-        <td>
-          </strong> 
-            <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-          </strong>
-        </td>
-      </tr>
-      {% endfor %}
-    </table>
+<main class="about">
+  <section class="row">
+    <div class="col-sm-10 col-md-9 cf">
+      <header>
+        <h1>Hi!</h1></header><img class="headshot-inline-100 img-responsive" src="/assets/img/eric-carlisle-100.png" alt="Eric Carlisle">
+      <p>As a UI Developer and UX Designer, my passion is in building the user-facing web and the experiences that make it engaging, compelling, and useful. My core approach is to <em>Keep It Stunningly Simple</em>, a practice encouraging creative innovation
+        while maintaining pragmatic focus. Via this careful balance, outstanding solutions can be created with highest probability of project success.</p>
+      <p>Over the past 20 years I've worked in many aspects of web production. Much of his time has been focused on consulting, allowing me to work in several commercial market vertical, nonprofit and not-for-profit organizations, and departments of state
+        and federal government. Professional engagements include projects in ecommerce, cybersecurity, automotive, sports entertainment, higher education, healthcare, real estate, financial, and nonprofit. I've worked with such companies as Universal
+        Mind, Under Armour, Toyota, World Wildlife Fund, The Johns Hopkins University, and Duke Energy.</p>
     </div>
-  </article>
+    <figure class="col-sm-2 col-md-3 center" role="complementary"><img class="headshot-aside-100 img-responsive" src="/assets/img/eric-carlisle-100.png" alt="Eric Carlisle"> <img class="headshot-aside-200 img-responsive" src="/assets/img/eric-carlisle-200.png" alt="Eric Carlisle">
+      <div>
+        <a href="https://www.twitter.com/eric_carlisle" title="Eric Carlisle on Twitter"><img src="/assets/svg/twitter.svg" alt="Eric Carlisle on Twitter"></a>
+        <a href="https://github.com/ecarlisle" title="Eric Carlisle on Github"><img src="/assets/svg/github.svg" alt="Eric Carlisle on GitHub"></a>
+        <a href="https://www.linkedin.com/in/ericcarlisle" title="Eric Carlisle on LinkedIn"><img src="/assets/svg/linkedin.svg" alt="Eric Carlisle on LinkedIn"></a>
+        <a href="https://www.http://www.slideshare.net/ericcarlisle" title="Eric Carlisle on SlideShare"><img src="/assets/svg/slideshare.svg" alt="Eric Carlisle on SlideShare"></a>
+      </div>
+    </figure>
+  </section>
+  <section class="services row">
+    <div class="col-sm-10 col-md-9 cf"><br>
+      <header>
+        <h2>Services</h2></header>
+    </div>
+    <div class="col-sm-6"><strong>User Interface Development</strong></div>
+    <div class="col-sm-6"><strong>User Experience Design</strong></div>
+  </section>
+  <!--
+    <section class="col-sm-12">
+      <h2>User Interface Development</h2>
+      <p>
+        Over the last few years the sophistication of the web presentation layer than grown at a stunning pace. This will continue. 
+      </p>
+    </section>
+
+    <section class="col-sm-12">
+      <h2>User Experience Design</h2>      
+
+    </section>
+
+    <section class="col-sm-12">
+      <h2>Social Channel Marketing</h2>
+      
+    </section>
+    -->
+  <section class="recent-posts row"><br>
+    <header class="col-sm-12">
+      <h2>Recent Posts</h2></header>
+    <table>{% for post in site.posts %}
+      <tr>
+        <td><strong>&#8226;</strong></td>
+        <td><strong><em><time datetime="{{ post.date | date_to_xmlschema }}"><!-- itemprop="datePublished" -->{{ post.date | date: "%b %-d, %Y" }}</time></em></strong></td>
+        <td><strong><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></strong></td>
+      </tr>{% endfor %}</table>
+  </section>
 </main>
 <!--
 <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 -->
-
-
