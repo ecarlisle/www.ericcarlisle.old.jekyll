@@ -36,7 +36,11 @@ gulp.task('notify', function() {
 gulp.task('styles', function() {
   return sass('_src/scss/main.scss',{ sourcemap: false, style: 'expanded' }).on('error', onError)
     .pipe(addsrc('_src/css/bootstrap-grid.css'))
-    .pipe(order(['_src/css/bootstrap-grid.css','_src/scss/main.scss'
+    .pipe(addsrc('bower_components/magnific-popup/dist/magnific-popup.css'))
+    .pipe(order([
+      '_src/css/bootstrap-grid.css',
+      '_src/scss/main.scss',
+      'bower_components/magnific-popup/dist/magnific-popup.css'
     ]))
     .pipe(concat('main.css'))
     //.pipe(combinemq({beautify: true}))
@@ -46,18 +50,30 @@ gulp.task('styles', function() {
 });
 
 gulp.task('scripts', function() {
-  return gulp.src('_src/js/main.js')
-    .pipe(sourcemaps.init())
-    .pipe(jshint())
-    .pipe(jshint.reporter(stylish))
-    .pipe(addsrc('bower_components/jquery/dist/jquery.js'))
-    .pipe(order([
+  return gulp.src([
       'bower_components/jquery/dist/jquery.js',
+      'bower_components/magnific-popup/dist/jquery.magnific-popup.js',
       '_src/js/main.js'
-    ]))
+      ],{base:'.'})
+//    .pipe(sourcemaps.init())
+//    .pipe(jshint())
+//    .pipe(jshint.reporter(stylish))
+    /*
+    .pipe(addsrc('bower_components/featherlight/src/featherlight.js'))
+    .pipe(addsrc('bower_components/featherlight/src/featherlight.gallery.js'))
+    */
+//    .pipe(addsrc('bower_components/jquery/dist/jquery.js'))
+/*
+    .pipe(order([
+      '_src/js/main.js',
+      'bower_components/jquery/dist/jquery.js',
+      'bower_components/featherlight/src/featherlight.js',
+      'bower_components/featherlight/src/featherlight.gallery.js'
+    ],{base: './'}))
+*/
     .pipe(concat('main.js'))
-    .pipe(uglify())
-    .pipe(sourcemaps.write())
+//      .pipe(uglify())
+//    .pipe(sourcemaps.write())
     .pipe(gulp.dest('assets/js'));
 });
 
@@ -84,7 +100,7 @@ gulp.task('jekyll', function() {
 
 gulp.task('default', function() {
   var server = livereload({start:true});
-  sequence('clean', ['scripts', 'styles', 'fonts', 'images', 'svg'], 'jekyll', 'watch');
+  sequence('clean', ['scripts', 'styles', 'fonts', 'images', 'svg'], 'watch');
 });
 
 
