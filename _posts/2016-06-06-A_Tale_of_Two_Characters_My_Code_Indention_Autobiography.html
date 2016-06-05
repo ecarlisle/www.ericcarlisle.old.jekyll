@@ -1,0 +1,85 @@
+---
+layout: post
+type: article
+title: "A Tale of Two Characters - My Code Indention Autobiography."
+date: 2016-05-04 9:00:00
+author: Eric Carlisle
+categories: CompSci Whitespace Indention
+description: "This is a personal history of code indention ober the last 20 yeats."  
+image:
+---
+
+<p>
+  The type and number of characters we use for code indention have and probably will always be a source of contention for programmers. Should we use tabs or spaces and if spaces, how many? While some consider it a tired argument, I find it interesting and often comical. Is there a best practice? Does this have more to do with preference and personal efficiency? Is this a Human Factors case as well as a Computer Science one?
+</p>
+
+<p>
+  This post is not for evalgenizing a certain way of indention or for trolling another. Consider it a story of why I chose to indent the way I do. The topic isn't conducive to being a page-turner, so we'll keep it short and use brevity when possible.
+</p>
+
+<h2>Chapter 1. - College, Tabs Made Me Cash for Beer Money</h2>
+<p>
+  It was the mid-ninties, I was an undergrad, and learned that HTML was lucrative. I learned by studying other people's code and used what I saw - tabs. I wasn't a CompSci major and the only other language I knew was Fortran 77 ("Whaaaaaat?") using spaces. What, there was another way to indenti?
+</p>
+
+<h2>Chapter 2. - Post Y2K, I Can Still Use Tabs, Right?</h2>
+<p>
+  Though the college plan was Sound Recording, I gravitated to a web career. I learned other languages, how to work with data, and things got generally more complicated. I also started seeing more space-indented code. Huh? Why use multiple characters when I could KISS with 1 character? I hadn't yet discovered (or thought to seek out) <span class="strike">editors</span> IDEs that auto-indented using spaces, so this was nuts! I resisted and sallied forth with tabs! 
+</p>
+
+<h2>Chapter 3. - The Aughts, Kneel Before <span class="strike">Zod</span> Space</h2>
+<p>
+  Ok, it's sounding like I'm trolling spaces now, but bear with me. As I worked with larger teams, source control, and distributed projects, *poof* spaces seemed to be the thing. At least, that was my perception. I used what my team used and tried to tweak editors to keep things looking readable. That being said, I chose a new preference.
+</p>
+
+<h2>Chapter 4. - Present Day, TabMan becomes TwoSpace</h2>
+<p>
+  I currently indent with two-spaces whenever I can. It's a preference because that works better for. My rationale is:
+</p>
+<ul>
+  <li>
+    I still <em>want</em> to use less characters.
+  </li>
+  <li>
+    Shallow indention is generally more readable <em>for me</em>.<sup><a href="#footnote1">1</a></sup>
+  </li>
+  <li>
+    It's easier <em>for me</em> to tell if the number of indents suggests refactoring needs.
+  </li>
+  <li>
+    <em>I</em> can better eyeball where I open and close code. I know editors help with this, but I don't like depending on that.
+  </li>
+  <li>
+    Diffs are easier <em>for me</em> to review in GitHub, BitBucket, Stash.
+  </li>
+  <li>
+    Editors like Sublime Text can make two spaces feel tab-ish.
+  </li>
+</ul>
+<a name="footnote1" style="font-size: 11px"><em>1. I like bigger indents with Python.</em></a>
+
+<h2>Chapter 5. - Present Day, TabMan becomes TwoSpace</h2>
+
+<p>
+  Do I still want to use a single character to indent?  Yes I do, but there's also the need to abide by different project styling requirements. I would love it if:
+</p>
+<ol>
+  <li>
+    My editor indented with tabs that were disdplayed like two-space depth.</li>
+  <li>
+    I could configure my editor to save files that saved these "short-tabs" as 2-spaces, 4-spaces, or whatever the project required.
+  </li>
+  <li>
+    I could reopen said code and still use groovy short-tabs.
+  </li>
+</ol>
+
+<p>
+  If someone sould speak out in the comments to say <em>"There are 10 editors that do EXACTLY that! What rock have you been living under?"</em>, please do so! You'd be my hero!</p>
+
+<p>
+  Bottom line - my choice of indentation is a combination of personal preference, what I feel makes me more productive, and the most manageable fit with existing standards. Do you feel another way? I dig that! Happy coding!
+</p>
+
+
+

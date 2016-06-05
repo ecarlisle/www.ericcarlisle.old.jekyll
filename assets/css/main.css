@@ -2022,6 +2022,7 @@ footer {
 .speaking h2 {
   font-size: 1.8rem;
   font-weight: bold;
+  margin-top: 2.4rem;
 }
 .speaking img.slide {
   box-shadow: 3px 3px 5px #ccc;
@@ -2042,6 +2043,10 @@ footer {
 .speaking ul.resources li {
   margin: 0;
   padding: 0;
+}
+
+.strike {
+  text-decoration: line-through;
 }
 
 .highlight {

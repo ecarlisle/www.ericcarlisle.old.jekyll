@@ -471,6 +471,7 @@ footer {
   h2 {
     font-size: 1.8rem;
     font-weight: bold;
+    margin-top: 2.4rem;
   }
 
   img.slide {
@@ -498,6 +499,10 @@ footer {
     }
   }
 
+}
+
+.strike {
+  text-decoration: line-through;
 }
 
 @import 'pygments';
