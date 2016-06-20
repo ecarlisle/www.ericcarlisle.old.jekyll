@@ -393,7 +393,9 @@ footer {
 }
 
 .blogroll h2 {
+  font-weight: bold;
   margin-top: 2rem;
+  line-height: 2rem;
 }
 .blogroll ul li {
   margin-bottom: 5rem;
