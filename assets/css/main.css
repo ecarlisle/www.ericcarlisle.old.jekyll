@@ -1955,6 +1955,10 @@ footer {
   padding: 0.4rem;
 }
 
+.blog h2 {
+  line-height: 3rem;
+  margin-top: 3rem;
+}
 .blog .date_author {
   display: inline-block;
   margin-bottom: 2rem;
@@ -1969,8 +1973,14 @@ footer {
   padding: 0;
 }
 
+.blogroll h2 {
+  margin-top: 2rem;
+}
 .blogroll ul li {
   margin-bottom: 5rem;
+}
+.blogroll .date_author {
+  margin-bottom: 1rem;
 }
 
 #disqus_thread {

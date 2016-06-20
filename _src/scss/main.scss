@@ -112,7 +112,7 @@ pre {
 .brand {
 //  text-align: center;
 
-//  @include bp(lg) 
+//  @include bp(lg)
 //    text-align: left;
 //  }
 }
@@ -132,7 +132,7 @@ pre {
   }
   @include bp(md) {
     font-size: 3.6rem;
-  } 
+  }
 }
 
 .brand-delimiter, .brand-subtitle {
@@ -171,7 +171,7 @@ nav.top-nav {
     @include bp(sm) {
       margin: 0;
     }
-    
+
     @include bp(lg) {
       text-align: right;
     }
@@ -203,7 +203,7 @@ nav.top-nav {
   }
 }
 
-main { 
+main {
   font: 1.6rem/1.8 'roboto', serif;
 
   padding: 2rem 1rem;
@@ -299,8 +299,8 @@ footer {
 
 // Rouge Highlight overrides
 .highlight {
-  .l-Scalar-Plain, .p-Indicator { 
-    color: #F92772; 
+  .l-Scalar-Plain, .p-Indicator {
+    color: #F92772;
   }
   color: #ccc;
   margin-bottom: 2rem;
@@ -325,7 +325,7 @@ footer {
 
 // ---------- Index Page ----------
 .headshot-inline-100 {
-  
+
   @include bp(sm) {
     display: none;
   }
@@ -380,6 +380,11 @@ footer {
 // ---------- Blog ----------
 .blog {
 
+  h2 {
+    line-height: 3rem;
+    margin-top: 3rem;
+  }
+
   .date_author {
     display: inline-block;
     margin-bottom: 2rem;
@@ -399,9 +404,18 @@ footer {
 
 .blogroll {
 
+  h2 {
+    margin-top: 2rem;
+  }
+
   ul li {
     margin-bottom: 5rem;
   }
+
+  .date_author {
+    margin-bottom: 1rem;
+  }
+
 
 }
 
